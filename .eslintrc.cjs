@@ -20,9 +20,15 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
-    'no-console': 'off',
-    'import/no-extraneous-dependencies': 'off',
+    'no-underscore-dangle': 'off',
     'import/no-unresolved': 'off',
+    'import/extensions': 'off',
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: ['vite.config.js'],
+      },
+    ],
   },
   parserOptions: {
     ecmaVersion: 'latest',
