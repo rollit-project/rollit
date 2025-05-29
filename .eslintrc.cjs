@@ -21,6 +21,8 @@ module.exports = {
       },
     ],
     'no-console': 'off',
+    'import/no-extraneous-dependencies': 'off',
+    'import/no-unresolved': 'off',
   },
   parserOptions: {
     ecmaVersion: 'latest',
