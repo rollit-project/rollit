@@ -23,12 +23,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: ['vite.config.js'],
-      },
-    ],
+    'import/no-extraneous-dependencies': 'off',
     'padding-line-between-statements': [
       'error',
       { blankLine: 'always', prev: ['const', 'let'], next: '*' },
@@ -36,6 +31,9 @@ module.exports = {
       { blankLine: 'always', prev: '*', next: 'return' },
     ],
     curly: ['error', 'all'],
+    'react/jsx-no-useless-fragment': 'off',
+    'react/require-default-props': 'off',
+    'import/prefer-default-export': 'off',
   },
   parserOptions: {
     ecmaVersion: 'latest',
