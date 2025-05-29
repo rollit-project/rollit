@@ -29,6 +29,13 @@ module.exports = {
         devDependencies: ['vite.config.js'],
       },
     ],
+    'padding-line-between-statements': [
+      'error',
+      { blankLine: 'always', prev: ['const', 'let'], next: '*' },
+      { blankLine: 'any', prev: ['const', 'let'], next: ['const', 'let'] },
+      { blankLine: 'always', prev: '*', next: 'return' },
+    ],
+    curly: ['error', 'all'],
   },
   parserOptions: {
     ecmaVersion: 'latest',
