@@ -9,9 +9,9 @@ const measurementData = [
 const Measurement = () => {
   return (
     <div className="flex justify-end p-5">
-      <div className="w-[260px] h-[190px] bg-black/40 rounded-xl px-6 py-6 text-white">
+      <div className="h-[190px] w-[260px] rounded-xl bg-black/40 px-6 py-6 text-white">
         {measurementData.map(({ name, measurement }) => (
-          <div key={name} className="flex justify-between mb-4">
+          <div key={name} className="mb-4 flex justify-between">
             <div className="text-right font-medium">{name}:</div>
             <div>{measurement}</div>
           </div>
