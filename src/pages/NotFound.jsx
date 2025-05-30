@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
 import { RollerCoasterIcon } from '@/assets/icons';
-import Button from '@/components/commons/Button';
 
 const NotFound = () => {
   return (
@@ -13,8 +12,8 @@ const NotFound = () => {
       <p className="mb-10 text-lg text-gray-600">
         I got lost on the way to <span className="font-bold text-black">ROLLIT</span>
       </p>
-      <Link to="/">
-        <Button buttonText="Back to Home" />
+      <Link to="/" className="btn-primary p-[15px] text-[20px]">
+        Back to Home
       </Link>
       <RollerCoasterIcon className="mt-10 h-auto w-[300px]" />
     </main>
