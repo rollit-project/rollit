@@ -1,3 +1,3 @@
-import RollerCoasterIcon from '@/assets/icons/RollerCoasterIcon.svg?react';
+import RollerCoasterIcon from '@/assets/icons/roller-coaster-icon.svg?react';
 
 export { RollerCoasterIcon };
