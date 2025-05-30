@@ -14,7 +14,7 @@ const TrackEditor = () => {
   };
 
   return (
-    <div className="fixed bottom-0 w-full transition-all duration-500 overflow-visible ">
+    <div className="fixed bottom-0 w-full overflow-visible transition-all duration-500">
       <PanelButton activeButton={activeButton} onButtonClick={handleButtonClick} />
       <div className={`w-full transition-all duration-500 ${activeButton ? 'h-[138px]' : 'h-0'}`}>
         <Panel isOpen={!!activeButton} trackMode={trackMode} />

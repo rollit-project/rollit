@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 
 const PanelList = ({ imageList }) => {
   return (
-    <div className="flex gap-[30px] h-4/5 overflow-auto scrollbar-hidden [&::-webkit-scrollbar]:hidden">
+    <div className="scrollbar-hidden flex h-4/5 gap-[30px] overflow-auto [&::-webkit-scrollbar]:hidden">
       {imageList.map((src, index) => (
         <img
           key={src}
-          className="h-full w-full object-contain flex-1"
+          className="h-full w-full flex-1 object-contain"
           src={src}
           alt={`패널 종류 ${index + 1}`}
         />

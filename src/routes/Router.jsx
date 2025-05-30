@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 
 import Intro from '@/pages/Intro';
-
-import Simulation from '../pages/Simulation';
-import TrackEditor from '../pages/TrackEditor';
+import NotFound from '@/pages/NotFound';
+import Simulation from '@/pages/Simulation';
+import TrackEditor from '@/pages/TrackEditor';
 
 const Router = () => {
   return (
@@ -11,6 +11,7 @@ const Router = () => {
       <Route path="/" element={<Intro />} />
       <Route path="/track-editor" element={<TrackEditor />} />
       <Route path="/simulation" element={<Simulation />} />
+      <Route path="/*" element={<NotFound />} />
     </Routes>
   );
 };

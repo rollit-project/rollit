@@ -26,9 +26,9 @@ const Panel = ({ isOpen, trackMode }) => {
 
   return (
     <div
-      className={`w-full h-[138px] pr-5 pl-5 ${
+      className={`h-[138px] w-full pr-5 pl-5 ${
         isOpen ? 'bg-[rgba(0,0,0,0.3)]' : 'bg-[#FFFFFF]'
-      } flex items-center z-40`}
+      } z-40 flex items-center`}
     >
       <PanelList imageList={imageList(trackMode)} />
     </div>

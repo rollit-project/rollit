@@ -2,12 +2,12 @@ import PropTypes from 'prop-types';
 
 const PanelButton = ({ activeButton, onButtonClick }) => {
   return (
-    <div className="relative w-[480px] h-[50px] rounded-tr-[10px] bg-[#FFFFFF] text-center transition-all duration-500">
-      <div className="flex justify-around items-center h-full">
+    <div className="relative h-[50px] w-[480px] rounded-tr-[10px] bg-[#FFFFFF] text-center transition-all duration-500">
+      <div className="flex h-full items-center justify-around">
         <button
           type="button"
           name="centerButton"
-          className={`flex-1 h-full px-4 cursor-pointer hover:text-red-600 ${activeButton === 'coster' ? 'bg-[rgba(0,0,0,0.3)]' : ''}`}
+          className={`h-full flex-1 cursor-pointer px-4 hover:text-red-600 ${activeButton === 'coster' ? 'bg-[rgba(0,0,0,0.3)]' : ''}`}
           onClick={() => onButtonClick('coster')}
         >
           coster
@@ -15,7 +15,7 @@ const PanelButton = ({ activeButton, onButtonClick }) => {
         <button
           type="button"
           name="trackButton"
-          className={`flex-1 h-full px-4 cursor-pointer hover:text-red-600 ${activeButton === 'track' ? 'bg-[rgba(0,0,0,0.3)]' : ''}`}
+          className={`h-full flex-1 cursor-pointer px-4 hover:text-red-600 ${activeButton === 'track' ? 'bg-[rgba(0,0,0,0.3)]' : ''}`}
           onClick={() => onButtonClick('track')}
         >
           Track
@@ -23,7 +23,7 @@ const PanelButton = ({ activeButton, onButtonClick }) => {
         <button
           type="button"
           name="itemButton"
-          className={`flex-1 h-full px-4 cursor-pointer rounded-tr-2xl hover:text-red-600 ${activeButton === 'item' ? 'bg-[rgba(0,0,0,0.3)]' : ''}`}
+          className={`h-full flex-1 cursor-pointer rounded-tr-2xl px-4 hover:text-red-600 ${activeButton === 'item' ? 'bg-[rgba(0,0,0,0.3)]' : ''}`}
           onClick={() => onButtonClick('item')}
         >
           Item
