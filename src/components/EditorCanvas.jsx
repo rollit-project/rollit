@@ -1,7 +1,8 @@
 import { OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
+import PropTypes from 'prop-types';
 
-const EditorCanvas = () => {
+const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed }) => {
   return (
     <Canvas camera={{ position: [0, 0, 2], fov: 75 }}>
       <ambientLight intensity={0.5} />
@@ -16,9 +17,16 @@ const EditorCanvas = () => {
           MIDDLE: 0,
           RIGHT: 2,
         }}
+        rotateSpeed={cameraRotationSpeed}
+        panSpeed={cameraMoveSpeed}
       />
     </Canvas>
   );
+};
+
+EditorCanvas.propTypes = {
+  cameraRotationSpeed: PropTypes.number.isRequired,
+  cameraMoveSpeed: PropTypes.number.isRequired,
 };
 
 export default EditorCanvas;
