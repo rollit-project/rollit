@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const PanelList = ({ imageList }) => {
   return (
-    <div className="scrollbar-hidden flex h-4/5 gap-[30px] overflow-auto [&::-webkit-scrollbar]:hidden">
+    <div className="scrollbar-hidden flex h-4/5 gap-[30px] overflow-auto pl-5 [&::-webkit-scrollbar]:hidden">
       {imageList.map((src, index) => (
         <img
           key={src}
