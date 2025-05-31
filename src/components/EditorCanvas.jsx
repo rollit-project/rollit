@@ -10,7 +10,13 @@ const EditorCanvas = () => {
         <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial color="skyblue" />
       </mesh>
-      <OrbitControls />
+      <OrbitControls
+        mouseButtons={{
+          LEFT: null,
+          MIDDLE: 0,
+          RIGHT: 2,
+        }}
+      />
     </Canvas>
   );
 };
