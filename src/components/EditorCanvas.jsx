@@ -31,6 +31,7 @@ const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed }) => {
         <meshStandardMaterial color="skyblue" />
       </mesh>
       <Ground />
+      <gridHelper args={[10, 10, 'red', 'white']} position={[0, -0.5, 0]} />
     </Canvas>
   );
 };
