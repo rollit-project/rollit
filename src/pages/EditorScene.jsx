@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import EditorCanvas from '@/components/EditorCanvas';
+import EditorPanel from '@/components/EditorPanel';
 import Slider from '@/components/Slider';
 import { MIN_CAMERA_SPEED } from '@/constants/cameraSensitivity';
 
@@ -18,6 +19,9 @@ const EditorScene = () => {
   return (
     <main className="h-full">
       <EditorCanvas cameraRotationSpeed={cameraRotationSpeed} cameraMoveSpeed={cameraMoveSpeed} />
+      <div className="h-screen bg-cover bg-center">
+        <EditorPanel />
+      </div>
       <aside className="fixed top-10 left-10 flex flex-col gap-3 rounded-xl bg-white/20 p-5 shadow-md backdrop-blur-md">
         <Slider
           label="회전 속도"
