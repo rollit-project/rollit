@@ -2,10 +2,11 @@ import { useState } from 'react';
 
 import EditorCanvas from '@/components/EditorCanvas';
 import Slider from '@/components/Slider';
+import { MIN_CAMERA_SPEED } from '@/constants/cameraSensitivity';
 
 const EditorScene = () => {
-  const [cameraRotationSpeed, setCameraRotationSpeed] = useState(0.1);
-  const [cameraMoveSpeed, setCameraMoveSpeed] = useState(0.1);
+  const [cameraRotationSpeed, setCameraRotationSpeed] = useState(MIN_CAMERA_SPEED);
+  const [cameraMoveSpeed, setCameraMoveSpeed] = useState(MIN_CAMERA_SPEED);
 
   const handleRotationSpeedChange = (value) => {
     setCameraRotationSpeed(value);
