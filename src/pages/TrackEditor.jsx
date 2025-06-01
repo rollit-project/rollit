@@ -1,9 +1,9 @@
-import Panel from '@/components/Panel';
+import EditorPanel from '@/components/EditorPanel';
 
 const TrackEditor = () => {
   return (
-    <div className="h-screen bg-[url(assets/images/background.png)] bg-cover bg-center">
-      <Panel />
+    <div className="h-screen bg-cover bg-center">
+      <EditorPanel />
     </div>
   );
 };
