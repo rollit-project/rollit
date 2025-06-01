@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const PanelList = ({ imageList }) => {
+const PanelItems = ({ imageList }) => {
   return (
     <div className="scrollbar-hidden flex h-4/5 gap-[30px] overflow-auto pl-5 [&::-webkit-scrollbar]:hidden">
       {imageList.map((src, index) => (
@@ -15,8 +15,8 @@ const PanelList = ({ imageList }) => {
   );
 };
 
-PanelList.propTypes = {
+PanelItems.propTypes = {
   imageList: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-export default PanelList;
+export default PanelItems;
