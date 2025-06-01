@@ -34,6 +34,7 @@ module.exports = {
     'react/jsx-no-useless-fragment': 'off',
     'react/require-default-props': 'off',
     'import/prefer-default-export': 'off',
+    'react/no-unknown-property': 'off',
   },
   parserOptions: {
     ecmaVersion: 'latest',
