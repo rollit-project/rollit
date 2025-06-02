@@ -3,20 +3,16 @@ import { Canvas } from '@react-three/fiber';
 import PropTypes from 'prop-types';
 import { useRef } from 'react';
 
-import MoveControls from '@/components/MoveControls';
+import DirectionalLight from '@/components/scene/DirectionalLight';
+import Ground from '@/components/scene/Ground';
+import MoveControls from '@/components/scene/MoveControls';
 
 const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed }) => {
   const orbitControlsRef = useRef();
 
   return (
-    <Canvas camera={{ position: [0, 0, 2], fov: 75 }}>
+    <Canvas shadows camera={{ position: [0, 0, 2], fov: 75 }}>
       <MoveControls moveSpeed={cameraMoveSpeed} orbitControlsRef={orbitControlsRef} />
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 5, 5]} />
-      <mesh position={[0, 0, 0]}>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color="skyblue" />
-      </mesh>
       <OrbitControls
         ref={orbitControlsRef}
         mouseButtons={{
@@ -26,7 +22,16 @@ const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed }) => {
         }}
         rotateSpeed={cameraRotationSpeed}
         panSpeed={cameraMoveSpeed}
+        maxPolarAngle={Math.PI / 2}
       />
+      <ambientLight intensity={0.4} />
+      <DirectionalLight />
+      <mesh position={[0, 0, 0]} castShadow>
+        <boxGeometry args={[1, 1, 1]} />
+        <meshStandardMaterial color="skyblue" />
+      </mesh>
+      <Ground />
+      <gridHelper args={[10, 10, 'red', 'white']} position={[0, -0.5, 0]} />
     </Canvas>
   );
 };
