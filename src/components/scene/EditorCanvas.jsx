@@ -3,9 +3,9 @@ import { Canvas } from '@react-three/fiber';
 import PropTypes from 'prop-types';
 import { useRef } from 'react';
 
-import DirectionalLight from '@/components/DirectionalLight';
-import Ground from '@/components/Ground';
-import MoveControls from '@/components/MoveControls';
+import DirectionalLight from '@/components/scene/DirectionalLight';
+import Ground from '@/components/scene/Ground';
+import MoveControls from '@/components/scene/MoveControls';
 
 const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed }) => {
   const orbitControlsRef = useRef();

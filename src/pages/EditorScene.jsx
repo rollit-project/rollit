@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import EditorCanvas from '@/components/EditorCanvas';
-import EditorPanel from '@/components/EditorPanel';
-import Slider from '@/components/Slider';
+import EditorCanvas from '@/components/scene/EditorCanvas';
+import EditorPanel from '@/components/ui/EditorPanel';
+import Slider from '@/components/ui/Slider';
 import { MIN_CAMERA_SPEED } from '@/constants/cameraSensitivity';
 
 const EditorScene = () => {
