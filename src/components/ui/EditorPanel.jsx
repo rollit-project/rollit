@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 
-import EditorActionControls from '@/components/EditorActionControls';
-import EditorCategorySelector from '@/components/EditorCategorySelector';
-import PanelItems from '@/components/PanelItems';
+import EditorActionControls from '@/components/ui/EditorActionControls';
+import EditorCategorySelector from '@/components/ui/EditorCategorySelector';
+import PanelItems from '@/components/ui/PanelItems';
 import { imageList } from '@/utils/imageMapping';
 
 const EditorPanel = () => {
