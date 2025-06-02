@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 const PanelItems = ({ imageList }) => {
   return (
     <div className="scrollbar-hidden flex h-4/5 gap-[30px] pl-5 [&::-webkit-scrollbar]:hidden">
-      {imageList.map((src, index) => (
+      {imageList.map((image) => (
         <img
-          key={src}
+          key={image.name}
           className="h-full w-full flex-1 object-contain hover:scale-110"
-          src={src}
-          alt={`패널 종류 ${index + 1}`}
+          src={image.src}
+          alt={image.name}
         />
       ))}
     </div>

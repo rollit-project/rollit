@@ -10,9 +10,23 @@ import stone from '@/assets/images/stone.png';
 import vine from '@/assets/images/vine.png';
 import windmill from '@/assets/images/windmill.png';
 
-const costerImages = [coster];
-const trackImages = [steel, stone, vine, smile];
-const itemImages = [carousel, chair, cream, racer, windmill, stall];
+const costerImages = [{ src: coster, name: 'coster' }];
+
+const trackImages = [
+  { src: steel, name: 'steel' },
+  { src: stone, name: 'stone' },
+  { src: vine, name: 'vine' },
+  { src: smile, name: 'smile' },
+];
+
+const itemImages = [
+  { src: carousel, name: 'carousel' },
+  { src: chair, name: 'chair' },
+  { src: cream, name: 'cream' },
+  { src: racer, name: 'racer' },
+  { src: windmill, name: 'windmill' },
+  { src: stall, name: 'stall' },
+];
 
 const imageSets = {
   coster: costerImages,
