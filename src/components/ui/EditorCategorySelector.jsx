@@ -10,7 +10,7 @@ const EditorCategorySelector = ({ activePanelType, onButtonClick }) => {
           <button
             type="button"
             key={type}
-            className={`h-full flex-1 cursor-pointer px-4 font-bold text-white transition-all duration-300 ${activePanelType === type ? 'bg-[rgba(0,0,0,0.3)]' : 'border-2 border-white bg-white'} ${type === 'item' ? 'rounded-tr-[10px]' : ''}`}
+            className={`h-full flex-1 cursor-pointer px-4 font-bold text-white transition-all duration-300 ${activePanelType === type ? 'bg-[rgba(0,0,0,0.3)]' : 'border-2 border-white bg-[rgba(255,255,255,0.3)]'} ${type === 'item' ? 'rounded-tr-[10px]' : ''}`}
             onClick={() => onButtonClick(type)}
           >
             {type}
