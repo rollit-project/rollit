@@ -19,9 +19,7 @@ const EditorScene = () => {
   return (
     <main className="h-full">
       <EditorCanvas cameraRotationSpeed={cameraRotationSpeed} cameraMoveSpeed={cameraMoveSpeed} />
-      <div className="h-screen bg-cover bg-center">
-        <EditorPanel />
-      </div>
+      <EditorPanel />
       <aside className="fixed top-10 left-10 flex flex-col gap-3 rounded-xl bg-white/20 p-5 shadow-md backdrop-blur-md">
         <Slider
           label="회전 속도"
