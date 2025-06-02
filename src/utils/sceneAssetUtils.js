@@ -1,75 +1,63 @@
-import bench from '@/assets/images/bench.png';
-import bumperCar from '@/assets/images/bumper-car.png';
-import carousel from '@/assets/images/carousel.png';
-import coffeeCart from '@/assets/images/coffee-cart.png';
-import coster from '@/assets/images/coster.png';
-import ferrisWheel from '@/assets/images/ferris-wheel.png';
-import iceCreamCar from '@/assets/images/ice-cream-car.png';
-import slime from '@/assets/images/slime.png';
-import steel from '@/assets/images/steel.png';
-import stone from '@/assets/images/stone.png';
-import vine from '@/assets/images/vine.png';
-
 export const SCENE_ASSET_LIST = [
   {
     type: 'coster',
     name: 'coster',
-    src: coster,
+    src: '/images/coster.png',
   },
   {
     type: 'track',
     name: 'steel',
-    src: steel,
+    src: '/images/steel.png',
   },
   {
     type: 'track',
     name: 'stone',
-    src: stone,
+    src: '/images/stone.png',
   },
   {
     type: 'track',
     name: 'vine',
-    src: vine,
+    src: '/images/vine.png',
   },
   {
     type: 'track',
     name: 'slime',
-    src: slime,
+    src: '/images/slime.png',
   },
   {
     type: 'item',
-    name: 'carousel',
-    src: carousel,
+    name: 'flying-swings',
+    src: '/images/flying-swings.png',
     model: '/objects/flying-swings.glb',
   },
   {
     type: 'item',
     name: 'bench',
-    src: bench,
+    src: '/images/bench.png',
     model: '/objects/bench.glb',
   },
   {
     type: 'item',
     name: 'iceCreamCar',
-    src: iceCreamCar,
+    src: '/images/ice-cream-car.png',
     model: '/objects/ice-cream-car.glb',
   },
   {
     type: 'item',
     name: 'bumperCar',
-    src: bumperCar,
+    src: '/images/bumper-car.png',
     model: '/objects/bumper-car.glb',
   },
   {
     type: 'item',
     name: 'ferrisWheel',
-    src: ferrisWheel,
+    src: '/images/ferris-wheel.png',
     model: '/objects/ferris-wheel.glb',
   },
   {
     type: 'item',
     name: 'coffeeCart',
-    src: coffeeCart,
+    src: '/images/coffee-cart.png',
     model: '/objects/coffee-cart.glb',
   },
 ];
