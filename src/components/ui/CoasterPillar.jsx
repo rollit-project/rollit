@@ -3,6 +3,7 @@ import * as THREE from 'three';
 
 const CoasterPillar = ({ positionX = 0, pillarHeight = 5 }) => {
   const centerY = pillarHeight / 2;
+  const baseY = 0;
 
   const material = new THREE.MeshStandardMaterial({
     color: '#888888',
@@ -15,9 +16,11 @@ const CoasterPillar = ({ positionX = 0, pillarHeight = 5 }) => {
       <mesh position={[0, centerY, 0]} material={material} castShadow>
         <cylinderGeometry args={[0.2, 0.2, pillarHeight, 16]} />
       </mesh>
-
       <mesh position={[0, pillarHeight, 0]} material={material} castShadow>
         <cylinderGeometry args={[0.3, 0.3, 0.1, 32]} />
+      </mesh>
+      <mesh position={[0, baseY, 0]} material={material}>
+        <cylinderGeometry args={[0.5, 0.8, 0.4, 32]} />
       </mesh>
     </group>
   );

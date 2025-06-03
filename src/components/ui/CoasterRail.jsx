@@ -26,11 +26,9 @@ const CoasterRail = ({ segmentCount = 5, segmentGap = 1.5, origin = [0, 0, 0] })
         >
           <cylinderGeometry args={[railRadius, railRadius, segmentGap, 16]} />
         </mesh>
-
         <mesh position={[railSpacing / 2, 0, 0]} material={material} rotation={[Math.PI / 2, 0, 0]}>
           <cylinderGeometry args={[railRadius, railRadius, segmentGap, 16]} />
         </mesh>
-
         <mesh position={[0, 0, 0]} material={material}>
           <boxGeometry args={[sleeperWidth, sleeperHeight, sleeperThickness]} />
         </mesh>
