@@ -4,9 +4,9 @@ const ResultModal = () => {
       <header className="flex h-[29px] w-[90px] items-center justify-center">
         <h1 className="text-lg font-bold text-black">RESULT</h1>
       </header>
-      <article className="mt-[30px] flex h-[187px] w-[391px] flex-col items-center justify-center rounded-md bg-red-50">
+      <div className="mt-[30px] flex h-[187px] w-[391px] flex-col items-center justify-center rounded-md bg-red-50">
         <ul className="w-[250px] space-y-3 text-lg text-black">
-          <li className="px0 flex h-[24px] justify-between">
+          <li className="flex h-[24px] justify-between px-0">
             <span>최고 속도:</span> <span>82.2km/h</span>
           </li>
           <li className="flex h-[24px] justify-between">
@@ -19,7 +19,7 @@ const ResultModal = () => {
             <span>총 소요시간:</span> <span>38.2초</span>
           </li>
         </ul>
-      </article>
+      </div>
       <footer className="mt-[30px]">
         <button
           type="button"
