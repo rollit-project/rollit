@@ -12,6 +12,10 @@ const MouseFollower = ({ selectedItem }) => {
   const planeRef = useRef(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0));
 
   useEffect(() => {
+    if (!camera || !gl?.domElement) {
+      return undefined;
+    }
+
     const handlePointerMove = (event) => {
       const x = (event.clientX / window.innerWidth) * 2 - 1;
       const y = -(event.clientY / window.innerHeight) * 2 + 1;
