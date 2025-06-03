@@ -4,11 +4,12 @@ import { useState } from 'react';
 import EditorActionControls from '@/components/ui/EditorActionControls';
 import EditorCategorySelector from '@/components/ui/EditorCategorySelector';
 import PanelItems from '@/components/ui/PanelItems';
-import { imageList } from '@/utils/imageMapping';
+import { getImageListByType } from '@/utils/sceneAssetUtils';
 
-const EditorPanel = () => {
+const EditorPanel = ({ handleSelectItem }) => {
   const [activePanelType, setActivePanelType] = useState('');
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+
   const handlePanelToggle = (buttonType) => {
     setIsPanelOpen(activePanelType !== buttonType);
     setActivePanelType(activePanelType !== buttonType ? buttonType : '');
@@ -32,19 +33,17 @@ const EditorPanel = () => {
           isPanelOpen ? 'h-[150px] pt-5' : 'h-0'
         } flex justify-start`}
       >
-        <PanelItems imageList={imageList(activePanelType)} />
+        <PanelItems
+          imageList={getImageListByType(activePanelType)}
+          handleSelectItem={handleSelectItem}
+        />
       </div>
     </div>
   );
 };
 
-EditorCategorySelector.propTypes = {
-  activePanelType: PropTypes.string,
-  onButtonClick: PropTypes.func.isRequired,
-};
-
-PanelItems.propTypes = {
-  imageList: PropTypes.arrayOf(PropTypes.string).isRequired,
+EditorPanel.propTypes = {
+  handleSelectItem: PropTypes.func.isRequired,
 };
 
 export default EditorPanel;

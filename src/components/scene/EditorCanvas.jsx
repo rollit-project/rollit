@@ -5,13 +5,15 @@ import { useRef } from 'react';
 
 import DirectionalLight from '@/components/scene/DirectionalLight';
 import Ground from '@/components/scene/Ground';
+import MouseFollower from '@/components/scene/MouseFollower';
 import MoveControls from '@/components/scene/MoveControls';
 
-const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed }) => {
+const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed, selectedItem }) => {
   const orbitControlsRef = useRef();
 
   return (
-    <Canvas shadows camera={{ position: [0, 0, 2], fov: 75 }}>
+    <Canvas shadows camera={{ position: [0, 5, 10], fov: 75 }}>
+      <MouseFollower selectedItem={selectedItem} />
       <MoveControls moveSpeed={cameraMoveSpeed} orbitControlsRef={orbitControlsRef} />
       <OrbitControls
         ref={orbitControlsRef}
@@ -39,6 +41,7 @@ const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed }) => {
 EditorCanvas.propTypes = {
   cameraRotationSpeed: PropTypes.number.isRequired,
   cameraMoveSpeed: PropTypes.number.isRequired,
+  selectedItem: PropTypes.string.isRequired,
 };
 
 export default EditorCanvas;
