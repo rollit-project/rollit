@@ -2,6 +2,7 @@ import { useThree } from '@react-three/fiber';
 import PropTypes from 'prop-types';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
+import { v4 as uuidv4 } from 'uuid';
 
 import PreviewModel from '@/components/scene/PreviewModel';
 
@@ -46,6 +47,7 @@ const MouseFollower = ({ selectedItem, handlePlaceItems, handleSelectItem }) => 
         handlePlaceItems({
           name: selectedItem,
           position: intersect.clone(),
+          id: uuidv4(),
         });
         handleSelectItem(null);
       }

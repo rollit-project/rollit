@@ -43,7 +43,7 @@ const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed, selectedItem, hand
         handleSelectItem={handleSelectItem}
       />
       {placedItems.map((item) => (
-        <PreviewModel key={item} selectedItem={item.name} position={item.position} />
+        <PreviewModel key={item.id} selectedItem={item.name} position={item.position} />
       ))}
       <Ground />
       <gridHelper args={[10, 10, 'red', 'white']} position={[0, -0.5, 0]} />
