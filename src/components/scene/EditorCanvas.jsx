@@ -13,6 +13,7 @@ const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed, selectedItem }) =>
 
   return (
     <Canvas shadows camera={{ position: [0, 5, 10], fov: 75 }}>
+      <color attach="background" args={['#b0eaff']} />
       <MouseFollower selectedItem={selectedItem} />
       <MoveControls moveSpeed={cameraMoveSpeed} orbitControlsRef={orbitControlsRef} />
       <OrbitControls
