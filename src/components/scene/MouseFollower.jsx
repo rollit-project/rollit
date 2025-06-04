@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { v4 as uuidv4 } from 'uuid';
 
-import PreviewModel from '@/components/scene/PreviewModel';
+import ItemModel from '@/components/scene/ItemModel';
 
 const MouseFollower = ({ selectedItem, handlePlaceItems, handleSelectItem }) => {
   const { camera, gl } = useThree();
@@ -68,7 +68,7 @@ const MouseFollower = ({ selectedItem, handlePlaceItems, handleSelectItem }) => 
     return null;
   }
 
-  return <PreviewModel selectedItem={selectedItem} position={previewPosition} />;
+  return <ItemModel selectedItem={selectedItem} position={previewPosition} />;
 };
 
 MouseFollower.propTypes = {

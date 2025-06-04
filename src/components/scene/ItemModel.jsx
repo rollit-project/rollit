@@ -5,7 +5,7 @@ import { Vector3 } from 'three';
 
 import { getModelPathByName } from '@/utils/sceneAssetUtils';
 
-const PreviewModel = ({ selectedItem, position = [0, 0, 0] }) => {
+const ItemModel = ({ selectedItem, position = [0, 0, 0] }) => {
   const modelPath = getModelPathByName(selectedItem);
 
   const { scene } = useGLTF(modelPath);
@@ -15,9 +15,9 @@ const PreviewModel = ({ selectedItem, position = [0, 0, 0] }) => {
   return <primitive object={clonedScene} position={position} scale={0.5} />;
 };
 
-PreviewModel.propTypes = {
+ItemModel.propTypes = {
   selectedItem: PropTypes.string.isRequired,
   position: PropTypes.instanceOf(Vector3),
 };
 
-export default PreviewModel;
+export default ItemModel;

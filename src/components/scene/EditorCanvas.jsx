@@ -5,9 +5,9 @@ import { useRef, useState } from 'react';
 
 import DirectionalLight from '@/components/scene/DirectionalLight';
 import Ground from '@/components/scene/Ground';
+import ItemModel from '@/components/scene/ItemModel';
 import MouseFollower from '@/components/scene/MouseFollower';
 import MoveControls from '@/components/scene/MoveControls';
-import PreviewModel from '@/components/scene/PreviewModel';
 
 const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed, selectedItem, handleSelectItem }) => {
   const orbitControlsRef = useRef();
@@ -43,7 +43,7 @@ const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed, selectedItem, hand
         handleSelectItem={handleSelectItem}
       />
       {placedItems.map((item) => (
-        <PreviewModel key={item.id} selectedItem={item.name} position={item.position} />
+        <ItemModel key={item.id} selectedItem={item.name} position={item.position} />
       ))}
       <Ground />
       <gridHelper args={[10, 10, 'red', 'white']} position={[0, -0.5, 0]} />
