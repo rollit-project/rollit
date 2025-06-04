@@ -1,22 +1,18 @@
 import { useThree } from '@react-three/fiber';
 import PropTypes from 'prop-types';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 
 import PreviewModel from '@/components/scene/PreviewModel';
 
-const MouseFollower = ({ selectedItem }) => {
+const MouseFollower = ({ selectedItem, handlePlaceItems, handleSelectItem }) => {
   const { camera, gl } = useThree();
   const raycaster = useRef(new THREE.Raycaster());
-  const [previewPosition, setPreviewPosition] = useState(new THREE.Vector3(0, 0, 0));
   const planeRef = useRef(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0));
+  const [previewPosition, setPreviewPosition] = useState(new THREE.Vector3());
 
-  useEffect(() => {
-    if (!camera || !gl?.domElement) {
-      return undefined;
-    }
-
-    const handlePointerMove = (event) => {
+  const computeIntersectPosition = useCallback(
+    (event) => {
       const x = (event.clientX / window.innerWidth) * 2 - 1;
       const y = -(event.clientY / window.innerHeight) * 2 + 1;
 
@@ -25,13 +21,46 @@ const MouseFollower = ({ selectedItem }) => {
 
       raycaster.current.ray.intersectPlane(planeRef.current, intersect);
 
-      setPreviewPosition(intersect);
+      return intersect;
+    },
+    [camera],
+  );
+
+  useEffect(() => {
+    if (!gl?.domElement || !selectedItem) {
+      return undefined;
+    }
+
+    const handlePointerMove = (event) => {
+      const intersect = computeIntersectPosition(event);
+
+      if (intersect) {
+        setPreviewPosition(intersect.clone());
+      }
     };
 
-    gl.domElement.addEventListener('pointermove', handlePointerMove);
+    const handlePointerDown = (event) => {
+      const intersect = computeIntersectPosition(event);
 
-    return () => gl.domElement.removeEventListener('pointermove', handlePointerMove);
-  }, [camera, gl]);
+      if (intersect && selectedItem) {
+        handlePlaceItems({
+          name: selectedItem,
+          position: intersect.clone(),
+        });
+        handleSelectItem(null);
+      }
+    };
+
+    const dom = gl.domElement;
+
+    dom.addEventListener('pointermove', handlePointerMove);
+    dom.addEventListener('pointerdown', handlePointerDown);
+
+    return () => {
+      dom.removeEventListener('pointermove', handlePointerMove);
+      dom.removeEventListener('pointerdown', handlePointerDown);
+    };
+  }, [gl, selectedItem, handleSelectItem, handlePlaceItems, computeIntersectPosition]);
 
   if (!selectedItem) {
     return null;
@@ -42,6 +71,8 @@ const MouseFollower = ({ selectedItem }) => {
 
 MouseFollower.propTypes = {
   selectedItem: PropTypes.string.isRequired,
+  handlePlaceItems: PropTypes.func.isRequired,
+  handleSelectItem: PropTypes.func.isRequired,
 };
 
 export default MouseFollower;
