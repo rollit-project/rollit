@@ -1,8 +1,9 @@
 export const SCENE_ASSET_LIST = [
   {
-    type: 'coster',
-    name: 'coster',
-    src: '/images/coster.png',
+    type: 'coaster',
+    name: 'coaster',
+    src: '/images/coaster.png',
+    model: '/objects/coaster.glb',
   },
   {
     type: 'track',
@@ -23,12 +24,6 @@ export const SCENE_ASSET_LIST = [
     type: 'track',
     name: 'slime',
     src: '/images/slime.png',
-  },
-  {
-    type: 'item',
-    name: 'flying-swings',
-    src: '/images/flying-swings.png',
-    model: '/objects/flying-swings.glb',
   },
   {
     type: 'item',
