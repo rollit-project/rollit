@@ -28,6 +28,7 @@ const EditorScene = () => {
         cameraRotationSpeed={cameraRotationSpeed}
         cameraMoveSpeed={cameraMoveSpeed}
         selectedItem={selectedItem}
+        handleSelectItem={handleSelectItem}
       />
       <EditorPanel handleSelectItem={handleSelectItem} />
       <aside className="fixed top-10 left-10 flex flex-col gap-3 rounded-xl bg-white/20 p-5 shadow-md backdrop-blur-md">

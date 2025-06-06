@@ -1,15 +1,21 @@
 import { OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import PropTypes from 'prop-types';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import DirectionalLight from '@/components/scene/DirectionalLight';
 import Ground from '@/components/scene/Ground';
+import ItemModel from '@/components/scene/ItemModel';
 import MouseFollower from '@/components/scene/MouseFollower';
 import MoveControls from '@/components/scene/MoveControls';
 
-const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed, selectedItem }) => {
+const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed, selectedItem, handleSelectItem }) => {
   const orbitControlsRef = useRef();
+  const [placedItems, setPlacedItems] = useState([]);
+
+  const handlePlaceItems = (item) => {
+    setPlacedItems((prev) => [...prev, item]);
+  };
 
   return (
     <Canvas shadows camera={{ position: [0, 5, 10], fov: 75 }}>
@@ -33,6 +39,14 @@ const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed, selectedItem }) =>
         <boxGeometry args={[1, 1, 1]} />
         <meshStandardMaterial color="skyblue" />
       </mesh>
+      <MouseFollower
+        selectedItem={selectedItem}
+        handlePlaceItems={handlePlaceItems}
+        handleSelectItem={handleSelectItem}
+      />
+      {placedItems.map((item) => (
+        <ItemModel key={item.id} selectedItem={item.name} position={item.position} />
+      ))}
       <Ground />
       <gridHelper args={[10, 10, 'red', 'white']} position={[0, -0.5, 0]} />
     </Canvas>
@@ -43,6 +57,7 @@ EditorCanvas.propTypes = {
   cameraRotationSpeed: PropTypes.number.isRequired,
   cameraMoveSpeed: PropTypes.number.isRequired,
   selectedItem: PropTypes.string.isRequired,
+  handleSelectItem: PropTypes.func.isRequired,
 };
 
 export default EditorCanvas;
