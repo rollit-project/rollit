@@ -6,23 +6,33 @@ export const SCENE_ASSET_LIST = [
   },
   {
     type: 'track',
-    name: 'steel',
-    src: '/images/steel.png',
+    name: 'railStraight',
+    src: '/images/rail-straight.png',
   },
   {
     type: 'track',
-    name: 'stone',
-    src: '/images/stone.png',
+    name: 'railUp',
+    src: '/images/rail-up.png',
   },
   {
     type: 'track',
-    name: 'vine',
-    src: '/images/vine.png',
+    name: 'railDown',
+    src: '/images/rail-down.png',
   },
   {
     type: 'track',
-    name: 'slime',
-    src: '/images/slime.png',
+    name: 'railCircle',
+    src: '/images/rail-circle.png',
+  },
+  {
+    type: 'track',
+    name: 'railCurveLeft',
+    src: '/images/rail-curve-left.png',
+  },
+  {
+    type: 'track',
+    name: 'railCurveRight',
+    src: '/images/rail-curve-right.png',
   },
   {
     type: 'item',
