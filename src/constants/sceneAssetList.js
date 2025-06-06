@@ -26,13 +26,13 @@ export const SCENE_ASSET_LIST = [
   },
   {
     type: 'track',
-    name: 'railCurveLeft',
-    src: '/images/rail-curve-left.png',
+    name: 'railCurveRight',
+    src: '/images/rail-curve-right.png',
   },
   {
     type: 'track',
-    name: 'railCurveRight',
-    src: '/images/rail-curve-right.png',
+    name: 'railCurveLeft',
+    src: '/images/rail-curve-left.png',
   },
   {
     type: 'item',
