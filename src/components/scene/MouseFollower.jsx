@@ -14,10 +14,10 @@ const MouseFollower = ({ selectedItem, handlePlaceItems, handleSelectItem }) => 
 
   const computeIntersectPosition = useCallback(
     (event) => {
-      const x = (event.clientX / window.innerWidth) * 2 - 1;
-      const y = -(event.clientY / window.innerHeight) * 2 + 1;
+      const normalizedX = (event.clientX / window.innerWidth) * 2 - 1;
+      const normalizedY = -(event.clientY / window.innerHeight) * 2 + 1;
 
-      raycaster.current.setFromCamera(new THREE.Vector2(x, y), camera);
+      raycaster.current.setFromCamera(new THREE.Vector2(normalizedX, normalizedY), camera);
       const intersect = new THREE.Vector3();
 
       raycaster.current.ray.intersectPlane(planeRef.current, intersect);
@@ -62,7 +62,7 @@ const MouseFollower = ({ selectedItem, handlePlaceItems, handleSelectItem }) => 
       dom.removeEventListener('pointermove', handlePointerMove);
       dom.removeEventListener('pointerdown', handlePointerDown);
     };
-  }, [gl, selectedItem, handleSelectItem, handlePlaceItems, computeIntersectPosition]);
+  }, [gl, selectedItem]);
 
   if (!selectedItem) {
     return null;
