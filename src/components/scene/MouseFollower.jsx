@@ -66,6 +66,7 @@ const MouseFollower = ({ selectedItem, handlePlaceItems, handleSelectItem }) => 
           rotationY,
         });
         handleSelectItem(null);
+        setRotationY(0);
       }
     };
 
