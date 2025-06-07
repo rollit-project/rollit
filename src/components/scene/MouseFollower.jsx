@@ -11,6 +11,7 @@ const MouseFollower = ({ selectedItem, handlePlaceItems, handleSelectItem }) => 
   const raycaster = useRef(new THREE.Raycaster());
   const planeRef = useRef(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0));
   const [previewPosition, setPreviewPosition] = useState(new THREE.Vector3());
+  const [rotationY, setRotationY] = useState(0);
 
   const computeIntersectPosition = useCallback(
     (event) => {
@@ -26,6 +27,20 @@ const MouseFollower = ({ selectedItem, handlePlaceItems, handleSelectItem }) => 
     },
     [camera],
   );
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.code === 'KeyQ') {
+        setRotationY((prev) => prev - Math.PI / 6);
+      } else if (event.code === 'KeyE') {
+        setRotationY((prev) => prev + Math.PI / 6);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   useEffect(() => {
     if (!gl?.domElement || !selectedItem) {
@@ -48,6 +63,7 @@ const MouseFollower = ({ selectedItem, handlePlaceItems, handleSelectItem }) => 
           name: selectedItem,
           position: intersect.clone(),
           id: uuidv4(),
+          rotationY,
         });
         handleSelectItem(null);
       }
@@ -62,13 +78,19 @@ const MouseFollower = ({ selectedItem, handlePlaceItems, handleSelectItem }) => 
       dom.removeEventListener('pointermove', handlePointerMove);
       dom.removeEventListener('pointerdown', handlePointerDown);
     };
-  }, [gl, selectedItem]);
+  }, [gl, selectedItem, rotationY]);
 
   if (!selectedItem) {
     return null;
   }
 
-  return <ItemModel selectedItem={selectedItem} position={previewPosition} />;
+  return (
+    <ItemModel
+      selectedItem={selectedItem}
+      position={previewPosition}
+      rotation={[0, rotationY, 0]}
+    />
+  );
 };
 
 MouseFollower.propTypes = {
