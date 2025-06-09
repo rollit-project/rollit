@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import EditorCanvas from '@/components/scene/EditorCanvas';
 import EditorPanel from '@/components/ui/EditorPanel';
@@ -23,8 +24,11 @@ const EditorScene = () => {
     setSelectedItem(item);
   };
 
-  const handleSelectRail = (rail) => {
-    setSelectedRail(rail);
+  const handleSelectRail = (railName) => {
+    setSelectedRail({
+      name: railName,
+      id: uuidv4(),
+    });
   };
 
   return (
