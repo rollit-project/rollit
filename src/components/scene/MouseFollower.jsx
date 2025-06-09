@@ -43,10 +43,6 @@ const MouseFollower = ({ selectedItem, handlePlaceItems, handleSelectItem }) => 
   }, []);
 
   useEffect(() => {
-    if (!gl?.domElement || !selectedItem) {
-      return undefined;
-    }
-
     const handlePointerMove = (event) => {
       const intersect = computeIntersectPosition(event);
 
