@@ -1,4 +1,4 @@
-import { OrbitControls } from '@react-three/drei';
+import { OrbitControls, useGLTF } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
@@ -12,7 +12,8 @@ import MoveControls from '@/components/scene/MoveControls';
 const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed, selectedItem, handleSelectItem }) => {
   const orbitControlsRef = useRef();
   const [placedItems, setPlacedItems] = useState([]);
-
+  const { scene: coaster } = useGLTF('/objects/coaster.glb');
+  const { scene: railStraight } = useGLTF('/objects/rail-straight.glb');
   const handlePlaceItems = (item) => {
     setPlacedItems((prev) => [...prev, item]);
   };
@@ -47,6 +48,10 @@ const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed, selectedItem, hand
           rotation={[0, item.rotationY, 0]}
         />
       ))}
+      <primitive object={coaster.clone()} position={[0, 0, 0]} />
+      <primitive object={railStraight.clone()} position={[0, 0, 0]} />
+      <primitive object={railStraight.clone()} position={[0, 0, 6]} />
+      <primitive object={railStraight.clone()} position={[0, 0, 12]} />
       <Ground />
       <gridHelper args={[10, 10, 'red', 'white']} position={[0, -0.5, 0]} />
     </Canvas>
