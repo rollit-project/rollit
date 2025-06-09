@@ -1,8 +1,7 @@
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import PropTypes from 'prop-types';
-import { useEffect, useRef, useState } from 'react';
-import * as THREE from 'three';
+import { useRef, useState } from 'react';
 
 import DirectionalLight from '@/components/scene/DirectionalLight';
 import Ground from '@/components/scene/Ground';
@@ -10,10 +9,7 @@ import ItemModel from '@/components/scene/ItemModel';
 import MouseFollower from '@/components/scene/MouseFollower';
 import MoveControls from '@/components/scene/MoveControls';
 import RailRenderer from '@/components/scene/RailRenderer';
-import { RAIL_POINT_TEMPLATES } from '@/constants/railPointTemplates';
-import { RAIL_ROTATION_MAP } from '@/constants/railRotationMap';
-import { getWorldRailPoints } from '@/utils/getWorldRailPoints';
-import { getModelPathByName } from '@/utils/sceneAssetUtils';
+import { usePlaceRails } from '@/hooks/usePlaceRails';
 
 const EditorCanvas = ({
   cameraRotationSpeed,
@@ -24,7 +20,7 @@ const EditorCanvas = ({
 }) => {
   const orbitControlsRef = useRef();
   const [placedItems, setPlacedItems] = useState([]);
-  const [placedRails, setPlacedRails] = useState([]);
+  const placedRails = usePlaceRails(selectedRail);
 
   const { scene: coaster } = useGLTF('/objects/coaster.glb');
   const { scene: railStraight } = useGLTF('/objects/rail-straight.glb');
@@ -32,34 +28,6 @@ const EditorCanvas = ({
   const handlePlaceItems = (item) => {
     setPlacedItems((prev) => [...prev, item]);
   };
-
-  useEffect(() => {
-    if (!selectedRail) {
-      return;
-    }
-
-    const lastPlacedRail = placedRails.at(-1);
-    const startPosition = lastPlacedRail?.endPoint ?? new THREE.Vector3(0, 0, -6);
-    const previousYRotation = lastPlacedRail?.accumulatedRotY ?? 0;
-
-    const railPoints = RAIL_POINT_TEMPLATES[selectedRail.name];
-    const currentRailYRotation = RAIL_ROTATION_MAP[selectedRail.name] ?? 0;
-    const accumulatedRotY = previousYRotation + currentRailYRotation;
-    const worldPoints = getWorldRailPoints(railPoints, startPosition, [0, previousYRotation, 0]);
-    const endPosition = worldPoints.at(-1);
-
-    const newRail = {
-      id: selectedRail.id,
-      modelPath: getModelPathByName(selectedRail.name),
-      position: startPosition,
-      rotation: [0, previousYRotation, 0],
-      points: worldPoints,
-      endPoint: endPosition,
-      accumulatedRotY,
-    };
-
-    setPlacedRails((prev) => [...prev, newRail]);
-  }, [selectedRail]);
 
   return (
     <Canvas shadows camera={{ position: [0, 5, 10], fov: 75 }}>
