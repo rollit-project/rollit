@@ -18,7 +18,7 @@ const ItemModel = ({ selectedItem, position = [0, 0, 0], rotation = [0, 0, 0] })
 ItemModel.propTypes = {
   selectedItem: PropTypes.string.isRequired,
   position: PropTypes.instanceOf(Vector3),
-  rotation: PropTypes.instanceOf(Vector3),
+  rotation: PropTypes.arrayOf(PropTypes.number),
 };
 
 export default ItemModel;
