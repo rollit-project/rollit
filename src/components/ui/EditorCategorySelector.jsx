@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const EditorCategorySelector = ({ activePanelType, onButtonClick }) => {
-  const PANEL_INFO = ['coaster', 'track', 'item'];
+  const PANEL_INFO = ['coaster', 'rail', 'item'];
 
   return (
     <div className="relative h-[50px] w-[480px] rounded-tr-[10px] text-center transition-all duration-500">
