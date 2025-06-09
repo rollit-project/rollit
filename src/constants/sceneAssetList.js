@@ -7,34 +7,35 @@ export const SCENE_ASSET_LIST = [
   },
   {
     type: 'track',
-    name: 'railStraight',
+    name: 'straight',
     src: '/images/rail-straight.png',
+    model: '/objects/rail-straight.glb',
   },
   {
     type: 'track',
-    name: 'railUp',
+    name: 'up',
     src: '/images/rail-up.png',
+    model: '/objects/rail-up.glb',
   },
   {
     type: 'track',
-    name: 'railDown',
+    name: 'down',
     src: '/images/rail-down.png',
+    model: '/objects/rail-down.glb',
   },
   {
     type: 'track',
-    name: 'railCircle',
-    src: '/images/rail-circle.png',
-  },
-  {
-    type: 'track',
-    name: 'railCurveRight',
-    src: '/images/rail-curve-right.png',
-  },
-  {
-    type: 'track',
-    name: 'railCurveLeft',
+    name: 'curveLeft',
     src: '/images/rail-curve-left.png',
+    model: 'objects/rail-curve-left.glb',
   },
+  {
+    type: 'track',
+    name: 'curveRight',
+    src: '/images/rail-curve-right.png',
+    model: 'objects/rail-curve-right.glb',
+  },
+
   {
     type: 'item',
     name: 'bench',
