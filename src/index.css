@@ -12,3 +12,7 @@ body {
 canvas {
   height: 100vh;
 }
+
+button {
+  cursor: pointer;
+}
