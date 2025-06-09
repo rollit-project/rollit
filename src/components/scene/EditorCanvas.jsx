@@ -20,7 +20,11 @@ const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed, selectedItem, hand
   return (
     <Canvas shadows camera={{ position: [0, 5, 10], fov: 75 }}>
       <color attach="background" args={['#b0eaff']} />
-      <MouseFollower selectedItem={selectedItem} />
+      <MouseFollower
+        selectedItem={selectedItem}
+        handlePlaceItems={handlePlaceItems}
+        handleSelectItem={handleSelectItem}
+      />
       <MoveControls moveSpeed={cameraMoveSpeed} orbitControlsRef={orbitControlsRef} />
       <OrbitControls
         ref={orbitControlsRef}
@@ -35,17 +39,13 @@ const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed, selectedItem, hand
       />
       <ambientLight intensity={0.4} />
       <DirectionalLight />
-      <mesh position={[0, 0, 0]} castShadow>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color="skyblue" />
-      </mesh>
-      <MouseFollower
-        selectedItem={selectedItem}
-        handlePlaceItems={handlePlaceItems}
-        handleSelectItem={handleSelectItem}
-      />
       {placedItems.map((item) => (
-        <ItemModel key={item.id} selectedItem={item.name} position={item.position} />
+        <ItemModel
+          key={item.id}
+          selectedItem={item.name}
+          position={item.position}
+          rotation={[0, item.rotationY, 0]}
+        />
       ))}
       <Ground />
       <gridHelper args={[10, 10, 'red', 'white']} position={[0, -0.5, 0]} />
