@@ -9,6 +9,7 @@ import ItemModel from '@/components/scene/ItemModel';
 import MouseFollower from '@/components/scene/MouseFollower';
 import MoveControls from '@/components/scene/MoveControls';
 import RailRenderer from '@/components/scene/RailRenderer';
+import { INITIAL_RAILS } from '@/constants/initialRails';
 import { usePlaceRails } from '@/hooks/usePlaceRails';
 
 const EditorCanvas = ({
@@ -20,10 +21,8 @@ const EditorCanvas = ({
 }) => {
   const orbitControlsRef = useRef();
   const [placedItems, setPlacedItems] = useState([]);
-  const placedRails = usePlaceRails(selectedRail);
-
+  const placedRails = usePlaceRails(selectedRail, INITIAL_RAILS);
   const { scene: coaster } = useGLTF('/objects/coaster.glb');
-  const { scene: railStraight } = useGLTF('/objects/rail-straight.glb');
 
   const handlePlaceItems = (item) => {
     setPlacedItems((prev) => [...prev, item]);
@@ -61,9 +60,6 @@ const EditorCanvas = ({
       ))}
       <RailRenderer placedRails={placedRails} />
       <primitive object={coaster.clone()} position={[0, 0, 0]} />
-      <primitive object={railStraight.clone()} position={[0, 0, 0]} />
-      <primitive object={railStraight.clone()} position={[0, 0, 6]} />
-      <primitive object={railStraight.clone()} position={[0, 0, 12]} />
       <Ground />
       <gridHelper args={[10, 10, 'red', 'white']} position={[0, -0.5, 0]} />
     </Canvas>

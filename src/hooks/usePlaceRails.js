@@ -6,8 +6,8 @@ import { RAIL_ROTATION_MAP } from '@/constants/railRotationMap';
 import { getWorldRailPoints } from '@/utils/getWorldRailPoints';
 import { getModelPathByName } from '@/utils/sceneAssetUtils';
 
-export function usePlaceRails(selectedRail) {
-  const [placedRails, setPlacedRails] = useState([]);
+export function usePlaceRails(selectedRail, initialRails = []) {
+  const [placedRails, setPlacedRails] = useState(initialRails);
 
   useEffect(() => {
     if (!selectedRail) {
