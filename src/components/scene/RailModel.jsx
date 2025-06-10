@@ -17,7 +17,10 @@ const Rail = ({ path, position = [0, 0, 0], rotation = [0, 0, 0] }) => {
 
 Rail.propTypes = {
   path: PropTypes.string.isRequired,
-  position: PropTypes.instanceOf(Vector3),
+  position: PropTypes.oneOfType([
+    PropTypes.instanceOf(Vector3),
+    PropTypes.arrayOf(PropTypes.number),
+  ]),
   rotation: PropTypes.arrayOf(PropTypes.number),
 };
 

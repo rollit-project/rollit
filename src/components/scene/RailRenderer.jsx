@@ -23,7 +23,10 @@ RailRenderer.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       modelPath: PropTypes.string.isRequired,
-      position: PropTypes.instanceOf(Vector3).isRequired,
+      position: PropTypes.oneOfType([
+        PropTypes.instanceOf(Vector3),
+        PropTypes.arrayOf(PropTypes.number),
+      ]),
       rotation: PropTypes.arrayOf(PropTypes.number).isRequired,
       points: PropTypes.arrayOf(PropTypes.instanceOf(Vector3)).isRequired,
     }),
