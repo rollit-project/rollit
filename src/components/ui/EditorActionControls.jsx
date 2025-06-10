@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import {
@@ -7,7 +8,7 @@ import {
 } from '@/assets/icons';
 import SpeedSettingModal from '@/components/ui/modal/SpeedSettingModal';
 
-const EditorActionControls = () => {
+const EditorActionControls = ({ handleStartSimulation }) => {
   const [showModal, setShowModal] = useState(false);
 
   const controlButtons = [
@@ -41,9 +42,15 @@ const EditorActionControls = () => {
           </button>
         ))}
       </div>
-      {showModal && <SpeedSettingModal onCancel={() => setShowModal(false)} />}
+      {showModal && (
+        <SpeedSettingModal onCancel={() => setShowModal(false)} onStart={handleStartSimulation} />
+      )}
     </div>
   );
+};
+
+EditorActionControls.propTypes = {
+  handleStartSimulation: PropTypes.func.isRequired,
 };
 
 export default EditorActionControls;

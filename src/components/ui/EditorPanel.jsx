@@ -6,7 +6,7 @@ import EditorCategorySelector from '@/components/ui/EditorCategorySelector';
 import PanelItems from '@/components/ui/PanelItems';
 import { getImageListByType } from '@/utils/sceneAssetUtils';
 
-const EditorPanel = ({ handleSelectItem, handleSelectRail }) => {
+const EditorPanel = ({ handleSelectItem, handleSelectRail, handleStartSimulation }) => {
   const [activePanelType, setActivePanelType] = useState('');
   const [isPanelOpen, setIsPanelOpen] = useState(false);
 
@@ -26,7 +26,7 @@ const EditorPanel = ({ handleSelectItem, handleSelectRail }) => {
           activePanelType={activePanelType}
           onButtonClick={handlePanelToggle}
         />
-        <EditorActionControls />
+        <EditorActionControls handleStartSimulation={handleStartSimulation} />
       </div>
       <div
         className={`w-full overflow-hidden bg-[rgba(0,0,0,0.3)] transition-all duration-500 ${
@@ -45,6 +45,7 @@ const EditorPanel = ({ handleSelectItem, handleSelectRail }) => {
 EditorPanel.propTypes = {
   handleSelectItem: PropTypes.func.isRequired,
   handleSelectRail: PropTypes.func.isRequired,
+  handleStartSimulation: PropTypes.func.isRequired,
 };
 
 export default EditorPanel;

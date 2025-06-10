@@ -1,7 +1,9 @@
-import { OrbitControls, useGLTF } from '@react-three/drei';
+import { Line, OrbitControls, useGLTF } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
+import { Vector3 } from 'three';
+import * as THREE from 'three';
 
 import DirectionalLight from '@/components/scene/DirectionalLight';
 import Ground from '@/components/scene/Ground';
@@ -9,19 +11,17 @@ import ItemModel from '@/components/scene/ItemModel';
 import MouseFollower from '@/components/scene/MouseFollower';
 import MoveControls from '@/components/scene/MoveControls';
 import RailRenderer from '@/components/scene/RailRenderer';
-import { INITIAL_RAILS } from '@/constants/initialRails';
-import { usePlaceRails } from '@/hooks/usePlaceRails';
 
 const EditorCanvas = ({
   cameraRotationSpeed,
   cameraMoveSpeed,
   selectedItem,
-  selectedRail,
+  placedRails,
   handleSelectItem,
+  curve,
 }) => {
   const orbitControlsRef = useRef();
   const [placedItems, setPlacedItems] = useState([]);
-  const placedRails = usePlaceRails(selectedRail, INITIAL_RAILS);
   const { scene: coaster } = useGLTF('/objects/coaster.glb');
 
   const handlePlaceItems = (item) => {
@@ -62,6 +62,7 @@ const EditorCanvas = ({
       <primitive object={coaster.clone()} position={[0, 0, 0]} />
       <Ground />
       <gridHelper args={[10, 10, 'red', 'white']} position={[0, -0.5, 0]} />
+      {curve && <Line points={curve.getPoints(100)} color="yellow" lineWidth={2} />}
     </Canvas>
   );
 };
@@ -75,6 +76,19 @@ EditorCanvas.propTypes = {
     name: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
   }),
+  placedRails: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      modelPath: PropTypes.string.isRequired,
+      position: PropTypes.oneOfType([
+        PropTypes.instanceOf(Vector3),
+        PropTypes.arrayOf(PropTypes.number),
+      ]),
+      rotation: PropTypes.arrayOf(PropTypes.number).isRequired,
+      points: PropTypes.arrayOf(PropTypes.instanceOf(Vector3)).isRequired,
+    }),
+  ).isRequired,
+  curve: PropTypes.instanceOf(THREE.CatmullRomCurve3),
 };
 
 export default EditorCanvas;
