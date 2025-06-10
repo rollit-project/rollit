@@ -1,18 +1,29 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import EditorActionControls from '@/components/ui/EditorActionControls';
 import EditorCategorySelector from '@/components/ui/EditorCategorySelector';
 import PanelItems from '@/components/ui/PanelItems';
+import { useSceneStore } from '@/store/useSceneStore';
 import { getImageListByType } from '@/utils/sceneAssetUtils';
 
-const EditorPanel = ({ handleSelectItem, handleSelectRail, handleStartSimulation }) => {
+const EditorPanel = () => {
   const [activePanelType, setActivePanelType] = useState('');
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+  const setSelectedItem = useSceneStore((state) => state.setSelectedItem);
+  const setSelectedRail = useSceneStore((state) => state.setSelectedRail);
 
   const handlePanelToggle = (buttonType) => {
     setIsPanelOpen(activePanelType !== buttonType);
     setActivePanelType(activePanelType !== buttonType ? buttonType : '');
+  };
+
+  const handlePanelItemClick = (name) => {
+    if (activePanelType === 'rail') {
+      setSelectedRail({ name, id: uuidv4() });
+    } else {
+      setSelectedItem(name);
+    }
   };
 
   return (
@@ -26,7 +37,7 @@ const EditorPanel = ({ handleSelectItem, handleSelectRail, handleStartSimulation
           activePanelType={activePanelType}
           onButtonClick={handlePanelToggle}
         />
-        <EditorActionControls handleStartSimulation={handleStartSimulation} />
+        <EditorActionControls />
       </div>
       <div
         className={`w-full overflow-hidden bg-[rgba(0,0,0,0.3)] transition-all duration-500 ${
@@ -35,17 +46,11 @@ const EditorPanel = ({ handleSelectItem, handleSelectRail, handleStartSimulation
       >
         <PanelItems
           imageList={getImageListByType(activePanelType)}
-          onClick={activePanelType === 'rail' ? handleSelectRail : handleSelectItem}
+          onClick={handlePanelItemClick}
         />
       </div>
     </div>
   );
-};
-
-EditorPanel.propTypes = {
-  handleSelectItem: PropTypes.func.isRequired,
-  handleSelectRail: PropTypes.func.isRequired,
-  handleStartSimulation: PropTypes.func.isRequired,
 };
 
 export default EditorPanel;

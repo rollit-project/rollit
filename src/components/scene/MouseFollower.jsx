@@ -5,13 +5,19 @@ import * as THREE from 'three';
 import { v4 as uuidv4 } from 'uuid';
 
 import ItemModel from '@/components/scene/ItemModel';
+import { useSceneStore } from '@/store/useSceneStore';
 
-const MouseFollower = ({ selectedItem, handlePlaceItems, handleSelectItem }) => {
+const MouseFollower = () => {
   const { camera, gl } = useThree();
   const raycaster = useRef(new THREE.Raycaster());
   const planeRef = useRef(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0));
   const [previewPosition, setPreviewPosition] = useState(new THREE.Vector3());
   const [rotationY, setRotationY] = useState(0);
+
+  const selectedItem = useSceneStore((state) => state.selectedItem);
+  const setSelectedItem = useSceneStore((state) => state.setSelectedItem);
+  const placedItems = useSceneStore((state) => state.placedItems);
+  const setPlacedItems = useSceneStore((state) => state.setPlacedItems);
 
   const computeIntersectPosition = useCallback(
     (event) => {
@@ -55,13 +61,11 @@ const MouseFollower = ({ selectedItem, handlePlaceItems, handleSelectItem }) => 
       const intersect = computeIntersectPosition(event);
 
       if (intersect && selectedItem) {
-        handlePlaceItems({
-          name: selectedItem,
-          position: intersect.clone(),
-          id: uuidv4(),
-          rotationY,
-        });
-        handleSelectItem(null);
+        setPlacedItems([
+          ...placedItems,
+          { name: selectedItem, position: intersect.clone(), id: uuidv4(), rotationY },
+        ]);
+        setSelectedItem(null);
         setRotationY(0);
       }
     };
@@ -88,12 +92,6 @@ const MouseFollower = ({ selectedItem, handlePlaceItems, handleSelectItem }) => 
       rotation={[0, rotationY, 0]}
     />
   );
-};
-
-MouseFollower.propTypes = {
-  selectedItem: PropTypes.string.isRequired,
-  handlePlaceItems: PropTypes.func.isRequired,
-  handleSelectItem: PropTypes.func.isRequired,
 };
 
 export default MouseFollower;

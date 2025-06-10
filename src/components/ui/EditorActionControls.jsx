@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import {
@@ -7,9 +6,13 @@ import {
   RollerCoasterUndoIcon,
 } from '@/assets/icons';
 import SpeedSettingModal from '@/components/ui/modal/SpeedSettingModal';
+import { useSceneStore } from '@/store/useSceneStore';
+import { generateTrackCurve } from '@/utils/generateTrackCurve';
 
-const EditorActionControls = ({ handleStartSimulation }) => {
+const EditorActionControls = () => {
   const [showModal, setShowModal] = useState(false);
+  const placedRails = useSceneStore((state) => state.placedRails);
+  const setCoasterPath = useSceneStore((state) => state.setCoasterPath);
 
   const controlButtons = [
     {
@@ -33,6 +36,13 @@ const EditorActionControls = ({ handleStartSimulation }) => {
     },
   ];
 
+  const handleStartSimulation = () => {
+    const points = placedRails.flatMap((rail) => rail.points);
+    const generatedCurve = generateTrackCurve(points);
+
+    setCoasterPath(generatedCurve);
+  };
+
   return (
     <div className="relative h-[50px] w-[200px] rounded-tl-[10px] border border-white bg-[rgba(255,255,255,0.3)] text-right transition-transform duration-500">
       <div className="flex h-full items-center justify-end gap-10 pr-4">
@@ -47,10 +57,6 @@ const EditorActionControls = ({ handleStartSimulation }) => {
       )}
     </div>
   );
-};
-
-EditorActionControls.propTypes = {
-  handleStartSimulation: PropTypes.func.isRequired,
 };
 
 export default EditorActionControls;
