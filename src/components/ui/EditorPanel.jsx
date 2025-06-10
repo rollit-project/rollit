@@ -6,7 +6,7 @@ import EditorCategorySelector from '@/components/ui/EditorCategorySelector';
 import PanelItems from '@/components/ui/PanelItems';
 import { getImageListByType } from '@/utils/sceneAssetUtils';
 
-const EditorPanel = ({ handleSelectItem, handleSelectTrack }) => {
+const EditorPanel = ({ handleSelectItem, handleSelectRail }) => {
   const [activePanelType, setActivePanelType] = useState('');
   const [isPanelOpen, setIsPanelOpen] = useState(false);
 
@@ -35,7 +35,7 @@ const EditorPanel = ({ handleSelectItem, handleSelectTrack }) => {
       >
         <PanelItems
           imageList={getImageListByType(activePanelType)}
-          onClick={activePanelType === 'track' ? handleSelectTrack : handleSelectItem}
+          onClick={activePanelType === 'rail' ? handleSelectRail : handleSelectItem}
         />
       </div>
     </div>
@@ -44,7 +44,7 @@ const EditorPanel = ({ handleSelectItem, handleSelectTrack }) => {
 
 EditorPanel.propTypes = {
   handleSelectItem: PropTypes.func.isRequired,
-  handleSelectTrack: PropTypes.func.isRequired,
+  handleSelectRail: PropTypes.func.isRequired,
 };
 
 export default EditorPanel;
