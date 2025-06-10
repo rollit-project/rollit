@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import * as THREE from 'three';
 
 import { RAIL_POINT_TEMPLATES } from '@/constants/railPointTemplates';
 import { RAIL_ROTATION_MAP } from '@/constants/railRotationMap';
 import { getWorldRailPoints } from '@/utils/getWorldRailPoints';
 import { getModelPathByName } from '@/utils/sceneAssetUtils';
 
-export function usePlaceRails(selectedRail, initialRails = []) {
+export const usePlaceRails = (selectedRail, initialRails = []) => {
   const [placedRails, setPlacedRails] = useState(initialRails);
 
   useEffect(() => {
@@ -38,4 +37,4 @@ export function usePlaceRails(selectedRail, initialRails = []) {
   }, [selectedRail]);
 
   return placedRails;
-}
+};
