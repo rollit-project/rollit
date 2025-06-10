@@ -15,8 +15,8 @@ export function usePlaceRails(selectedRail, initialRails = []) {
     }
 
     const lastPlacedRail = placedRails.at(-1);
-    const startPosition = lastPlacedRail?.endPoint ?? new THREE.Vector3(0, 0, -6);
-    const previousYRotation = lastPlacedRail?.accumulatedYRotation ?? 0;
+    const startPosition = lastPlacedRail.endPoint;
+    const previousYRotation = lastPlacedRail.accumulatedYRotation;
 
     const railPoints = RAIL_POINT_TEMPLATES[selectedRail.name];
     const currentRailYRotation = RAIL_ROTATION_MAP[selectedRail.name] ?? 0;
