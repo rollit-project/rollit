@@ -8,7 +8,13 @@ import ItemRenderer from '@/components/scene/ItemRenderer';
 import RailRenderer from '@/components/scene/RailRenderer';
 
 const SimulationCanvas = () => {
-  const { scene: coaster } = useGLTF('/objects/coaster.glb');
+  const gltf = useGLTF('/objects/coasterEntrance.glb');
+
+  if (!gltf?.scene) {
+    return null;
+  }
+
+  const { scene: coasterEntrance } = gltf;
 
   return (
     <Canvas shadows camera={{ position: [10, 5, 10], fov: 75 }}>
@@ -17,7 +23,7 @@ const SimulationCanvas = () => {
       <DirectionalLight />
       <ItemRenderer />
       <RailRenderer />
-      <primitive object={coaster.clone()} position={[0, 0, 0]} />
+      <primitive object={coasterEntrance.clone()} position={[0, 0, 0]} />
       <CartModel />
       <Ground />
     </Canvas>

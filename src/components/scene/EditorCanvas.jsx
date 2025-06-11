@@ -12,7 +12,13 @@ import RailRenderer from '@/components/scene/RailRenderer';
 
 const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed }) => {
   const orbitControlsRef = useRef();
-  const { scene: coaster } = useGLTF('/objects/coaster.glb');
+  const gltf = useGLTF('/objects/coasterEntrance.glb');
+
+  if (!gltf?.scene) {
+    return null;
+  }
+
+  const { scene: coasterEntrance } = gltf;
 
   return (
     <Canvas shadows camera={{ position: [0, 5, 10], fov: 75 }}>
@@ -34,7 +40,7 @@ const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed }) => {
       <DirectionalLight />
       <ItemRenderer />
       <RailRenderer />
-      <primitive object={coaster.clone()} position={[0, 0, 0]} />
+      <primitive object={coasterEntrance} position={[0, 0, 0]} />
       <Ground />
     </Canvas>
   );

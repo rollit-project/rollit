@@ -1,9 +1,15 @@
 import { useGLTF } from '@react-three/drei';
 
 const CartModel = () => {
-  const { scene } = useGLTF('/objects/cart.glb');
+  const gltf = useGLTF('/objects/cart.glb');
 
-  return <primitive object={scene} position={[0, 2, 5]} />;
+  if (!gltf?.scene) {
+    return null;
+  }
+
+  const { scene: cart } = gltf;
+
+  return <primitive object={cart} position={[0, 2, 5]} />;
 };
 
 export default CartModel;
