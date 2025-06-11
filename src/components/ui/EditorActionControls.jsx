@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import {
   RollerCoasterPlayIcon,
@@ -13,6 +14,7 @@ const EditorActionControls = () => {
   const [showModal, setShowModal] = useState(false);
   const placedRails = useSceneStore((state) => state.placedRails);
   const setCoasterPath = useSceneStore((state) => state.setCoasterPath);
+  const navigate = useNavigate();
 
   const controlButtons = [
     {
@@ -41,6 +43,7 @@ const EditorActionControls = () => {
     const generatedCurve = generateTrackCurve(points);
 
     setCoasterPath(generatedCurve);
+    navigate('/simulation');
   };
 
   return (
