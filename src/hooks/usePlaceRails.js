@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 import { RAIL_POINT_TEMPLATES } from '@/constants/railPointTemplates';
 import { RAIL_ROTATION_MAP } from '@/constants/railRotationMap';
 import { useSceneStore } from '@/store/useSceneStore';
+import { checkGroundCollision } from '@/utils/checkGroundCollision';
 import { getWorldRailPoints } from '@/utils/getWorldRailPoints';
+import { isRailCollision } from '@/utils/isRailCollision';
 import { getModelPathByName } from '@/utils/sceneAssetUtils';
 
 export const usePlaceRails = (initialRails = []) => {
@@ -39,6 +42,15 @@ export const usePlaceRails = (initialRails = []) => {
       endPoint: endPosition,
       accumulatedYRotation,
     };
+
+    const isCollidingWithRail = isRailCollision(newRail, placedRails);
+    const isCollidingWithGround = checkGroundCollision(newRail);
+
+    if (isCollidingWithRail || isCollidingWithGround) {
+      toast.error('레일 설치 실패: 충돌이 감지되었습니다');
+
+      return;
+    }
 
     setPlacedRails([...placedRails, newRail]);
   }, [selectedRail]);
