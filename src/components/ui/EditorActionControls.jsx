@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 import {
@@ -19,7 +20,9 @@ const EditorActionControls = () => {
 
   const handlePlayClick = () => {
     if (!isRailConnected()) {
-      console.log('트랙이 완전히 연결되지 않았습니다.');
+      toast.error('레일이 완전히 연결되지 않았습니다! ', {
+        duration: 1000,
+      });
 
       return;
     }
