@@ -1,7 +1,7 @@
-import { OrbitControls, useGLTF } from '@react-three/drei';
+import { Line, OrbitControls, useGLTF } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import PropTypes from 'prop-types';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 import DirectionalLight from '@/components/scene/DirectionalLight';
 import Ground from '@/components/scene/Ground';
@@ -9,33 +9,18 @@ import ItemModel from '@/components/scene/ItemModel';
 import MouseFollower from '@/components/scene/MouseFollower';
 import MoveControls from '@/components/scene/MoveControls';
 import RailRenderer from '@/components/scene/RailRenderer';
-import { INITIAL_RAILS } from '@/constants/initialRails';
-import { usePlaceRails } from '@/hooks/usePlaceRails';
+import { useSceneStore } from '@/store/useSceneStore';
 
-const EditorCanvas = ({
-  cameraRotationSpeed,
-  cameraMoveSpeed,
-  selectedItem,
-  selectedRail,
-  handleSelectItem,
-}) => {
+const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed }) => {
   const orbitControlsRef = useRef();
-  const [placedItems, setPlacedItems] = useState([]);
-  const placedRails = usePlaceRails(selectedRail, INITIAL_RAILS);
   const { scene: coaster } = useGLTF('/objects/coaster.glb');
-
-  const handlePlaceItems = (item) => {
-    setPlacedItems((prev) => [...prev, item]);
-  };
+  const placedItems = useSceneStore((state) => state.placedItems);
+  const coasterPath = useSceneStore((state) => state.coasterPath);
 
   return (
     <Canvas shadows camera={{ position: [0, 5, 10], fov: 75 }}>
       <color attach="background" args={['#b0eaff']} />
-      <MouseFollower
-        selectedItem={selectedItem}
-        handlePlaceItems={handlePlaceItems}
-        handleSelectItem={handleSelectItem}
-      />
+      <MouseFollower />
       <MoveControls moveSpeed={cameraMoveSpeed} orbitControlsRef={orbitControlsRef} />
       <OrbitControls
         ref={orbitControlsRef}
@@ -58,10 +43,11 @@ const EditorCanvas = ({
           rotation={[0, item.rotationY, 0]}
         />
       ))}
-      <RailRenderer placedRails={placedRails} />
+      <RailRenderer />
       <primitive object={coaster.clone()} position={[0, 0, 0]} />
       <Ground />
       <gridHelper args={[10, 10, 'red', 'white']} position={[0, -0.5, 0]} />
+      {coasterPath && <Line points={coasterPath.getPoints(100)} color="yellow" lineWidth={2} />}
     </Canvas>
   );
 };
@@ -69,12 +55,6 @@ const EditorCanvas = ({
 EditorCanvas.propTypes = {
   cameraRotationSpeed: PropTypes.number.isRequired,
   cameraMoveSpeed: PropTypes.number.isRequired,
-  selectedItem: PropTypes.string.isRequired,
-  handleSelectItem: PropTypes.func.isRequired,
-  selectedRail: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-  }),
 };
 
 export default EditorCanvas;

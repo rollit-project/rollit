@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-export function getWorldRailPoints(railPoints, position, rotation) {
+export const getWorldRailPoints = (railPoints, position, rotation) => {
   const worldPosition = position.clone();
   const worldRotation = new THREE.Euler(...rotation);
 
@@ -10,4 +10,4 @@ export function getWorldRailPoints(railPoints, position, rotation) {
 
     return worldPoint;
   });
-}
+};

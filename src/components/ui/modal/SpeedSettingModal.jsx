@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import ModalLayout from '@/components/ui/modal/ModalLayout';
 
-const SpeedSettingModal = ({ onCancel }) => {
+const SpeedSettingModal = ({ onCancel, onStart }) => {
   const [speed, setSpeed] = useState(1);
 
   return (
@@ -33,6 +33,7 @@ const SpeedSettingModal = ({ onCancel }) => {
         <button
           type="button"
           className="w-full rounded-lg border border-yellow-400 px-4 py-2 hover:bg-yellow-300"
+          onClick={onStart}
         >
           시작
         </button>
@@ -43,6 +44,7 @@ const SpeedSettingModal = ({ onCancel }) => {
 
 SpeedSettingModal.propTypes = {
   onCancel: PropTypes.func.isRequired,
+  onStart: PropTypes.func.isRequired,
 };
 
 export default SpeedSettingModal;

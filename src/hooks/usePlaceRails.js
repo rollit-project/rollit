@@ -1,13 +1,19 @@
-import { useEffect, useState } from 'react';
-import * as THREE from 'three';
+import { useEffect } from 'react';
 
 import { RAIL_POINT_TEMPLATES } from '@/constants/railPointTemplates';
 import { RAIL_ROTATION_MAP } from '@/constants/railRotationMap';
+import { useSceneStore } from '@/store/useSceneStore';
 import { getWorldRailPoints } from '@/utils/getWorldRailPoints';
 import { getModelPathByName } from '@/utils/sceneAssetUtils';
 
-export function usePlaceRails(selectedRail, initialRails = []) {
-  const [placedRails, setPlacedRails] = useState(initialRails);
+export const usePlaceRails = (initialRails = []) => {
+  const selectedRail = useSceneStore((state) => state.selectedRail);
+  const placedRails = useSceneStore((state) => state.placedRails);
+  const setPlacedRails = useSceneStore((state) => state.setPlacedRails);
+
+  useEffect(() => {
+    setPlacedRails(initialRails);
+  }, []);
 
   useEffect(() => {
     if (!selectedRail) {
@@ -34,8 +40,8 @@ export function usePlaceRails(selectedRail, initialRails = []) {
       accumulatedYRotation,
     };
 
-    setPlacedRails((prev) => [...prev, newRail]);
+    setPlacedRails([...placedRails, newRail]);
   }, [selectedRail]);
 
   return placedRails;
-}
+};
