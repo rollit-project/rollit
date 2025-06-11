@@ -5,17 +5,14 @@ import { useRef } from 'react';
 
 import DirectionalLight from '@/components/scene/DirectionalLight';
 import Ground from '@/components/scene/Ground';
-import ItemModel from '@/components/scene/ItemModel';
+import ItemRenderer from '@/components/scene/ItemRenderer';
 import MouseFollower from '@/components/scene/MouseFollower';
 import MoveControls from '@/components/scene/MoveControls';
 import RailRenderer from '@/components/scene/RailRenderer';
-import { useSceneStore } from '@/store/useSceneStore';
 
 const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed }) => {
   const orbitControlsRef = useRef();
   const { scene: coaster } = useGLTF('/objects/coaster.glb');
-  const placedItems = useSceneStore((state) => state.placedItems);
-  const coasterPath = useSceneStore((state) => state.coasterPath);
 
   return (
     <Canvas shadows camera={{ position: [0, 5, 10], fov: 75 }}>
@@ -35,19 +32,10 @@ const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed }) => {
       />
       <ambientLight intensity={0.4} />
       <DirectionalLight />
-      {placedItems.map((item) => (
-        <ItemModel
-          key={item.id}
-          selectedItem={item.name}
-          position={item.position}
-          rotation={[0, item.rotationY, 0]}
-        />
-      ))}
+      <ItemRenderer />
       <RailRenderer />
       <primitive object={coaster.clone()} position={[0, 0, 0]} />
       <Ground />
-      <gridHelper args={[10, 10, 'red', 'white']} position={[0, -0.5, 0]} />
-      {coasterPath && <Line points={coasterPath.getPoints(100)} color="yellow" lineWidth={2} />}
     </Canvas>
   );
 };
