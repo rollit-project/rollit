@@ -1,4 +1,4 @@
-import ItemModel from '@/components/scene/ItemModel';
+import ItemModel from '@/components/scene/common/ItemModel';
 import { useSceneStore } from '@/store/useSceneStore';
 
 const ItemRenderer = () => {

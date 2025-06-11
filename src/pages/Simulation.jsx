@@ -1,4 +1,4 @@
-import SimulationCanvas from '@/components/scene/SimulationCanvas';
+import SimulationCanvas from '@/components/canvas/SimulationCanvas';
 
 const Simulation = () => {
   return (

@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-import EditorCanvas from '@/components/scene/EditorCanvas';
-import EditorPanel from '@/components/ui/EditorPanel';
-import Slider from '@/components/ui/Slider';
+import EditorCanvas from '@/components/canvas/EditorCanvas';
+import EditorPanel from '@/components/ui/editor/EditorPanel';
+import Slider from '@/components/ui/editor/Slider';
 import { MIN_CAMERA_SPEED } from '@/constants/cameraSensitivity';
 import { INITIAL_RAILS } from '@/constants/initialRails';
 import { usePlaceRails } from '@/hooks/usePlaceRails';
 
-const EditorScene = () => {
+const Editor = () => {
   const [cameraRotationSpeed, setCameraRotationSpeed] = useState(MIN_CAMERA_SPEED);
   const [cameraMoveSpeed, setCameraMoveSpeed] = useState(MIN_CAMERA_SPEED);
 
@@ -43,4 +43,4 @@ const EditorScene = () => {
   );
 };
 
-export default EditorScene;
+export default Editor;

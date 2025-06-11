@@ -4,10 +4,10 @@ import { FaRegPlayCircle } from 'react-icons/fa';
 import { RiArrowGoBackFill, RiResetLeftFill } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
 
-import ActionButton from '@/components/ui/ActionButton';
+import ActionButton from '@/components/ui/editor/ActionButton';
 import SpeedSettingModal from '@/components/ui/modal/SpeedSettingModal';
 import { useSceneStore } from '@/store/useSceneStore';
-import { generateTrackCurve } from '@/utils/generateTrackCurve';
+import { generateRailCurve } from '@/utils/generateRailCurve';
 import { isRailConnected } from '@/utils/isRailConnected';
 
 const EditorActionControls = () => {
@@ -30,7 +30,7 @@ const EditorActionControls = () => {
 
   const handleStartSimulation = () => {
     const points = placedRails.flatMap((rail) => rail.points);
-    const generatedCurve = generateTrackCurve(points);
+    const generatedCurve = generateRailCurve(points);
 
     setCoasterPath(generatedCurve);
     navigate('/simulation');

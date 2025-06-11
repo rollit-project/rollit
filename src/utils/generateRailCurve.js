@@ -1,5 +1,5 @@
 import * as THREE from 'three';
 
-export const generateTrackCurve = (trackPoints) => {
+export const generateRailCurve = (trackPoints) => {
   return new THREE.CatmullRomCurve3(trackPoints);
 };
