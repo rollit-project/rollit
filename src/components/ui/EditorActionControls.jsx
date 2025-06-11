@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { FaRegPlayCircle } from 'react-icons/fa';
+import { RiArrowGoBackFill, RiResetLeftFill } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
 
-import {
-  RollerCoasterPlayIcon,
-  RollerCoasterResetIcon,
-  RollerCoasterUndoIcon,
-} from '@/assets/icons';
+import ActionButton from '@/components/ui/ActionButton';
 import SpeedSettingModal from '@/components/ui/modal/SpeedSettingModal';
 import { useSceneStore } from '@/store/useSceneStore';
 import { generateTrackCurve } from '@/utils/generateTrackCurve';
@@ -41,22 +39,16 @@ const EditorActionControls = () => {
   const controlButtons = [
     {
       key: 'play',
-      icon: (
-        <RollerCoasterPlayIcon className="fill-white transition-all duration-300 hover:fill-black" />
-      ),
+      icon: FaRegPlayCircle,
       onClick: handlePlayClick,
     },
     {
       key: 'undo',
-      icon: (
-        <RollerCoasterUndoIcon className="stroke-white transition-all duration-300 hover:stroke-black" />
-      ),
+      icon: RiArrowGoBackFill,
     },
     {
       key: 'reset',
-      icon: (
-        <RollerCoasterResetIcon className="fill-white stroke-white transition-all duration-300 hover:fill-black hover:stroke-black" />
-      ),
+      icon: RiResetLeftFill,
     },
   ];
 
@@ -64,9 +56,7 @@ const EditorActionControls = () => {
     <div className="relative h-[50px] w-[200px] rounded-tl-[10px] border border-white bg-[rgba(255,255,255,0.3)] text-right transition-transform duration-500">
       <div className="flex h-full items-center justify-end gap-10 pr-4">
         {controlButtons.map(({ key, icon, onClick }) => (
-          <button type="button" key={key} onClick={onClick} className="h-full cursor-pointer">
-            {icon}
-          </button>
+          <ActionButton key={key} icon={icon} onClick={onClick} />
         ))}
       </div>
       {showSpeedModal && (
