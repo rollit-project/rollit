@@ -3,12 +3,12 @@ import { Canvas } from '@react-three/fiber';
 import PropTypes from 'prop-types';
 import { useRef } from 'react';
 
-import DirectionalLight from '@/components/scene/DirectionalLight';
-import Ground from '@/components/scene/Ground';
-import ItemRenderer from '@/components/scene/ItemRenderer';
-import MouseFollower from '@/components/scene/MouseFollower';
-import MoveControls from '@/components/scene/MoveControls';
-import RailRenderer from '@/components/scene/RailRenderer';
+import DirectionalLight from '@/components/scene/common/DirectionalLight';
+import Ground from '@/components/scene/common/Ground';
+import ItemRenderer from '@/components/scene/common/ItemRenderer';
+import RailRenderer from '@/components/scene/common/RailRenderer';
+import MouseFollower from '@/components/scene/editor/MouseFollower';
+import MoveControls from '@/components/scene/editor/MoveControls';
 
 const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed }) => {
   const orbitControlsRef = useRef();

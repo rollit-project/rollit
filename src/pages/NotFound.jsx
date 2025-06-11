@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 
-import { RollerCoasterIcon } from '@/assets/icons';
-
 const NotFound = () => {
   return (
     <main className="flex h-screen flex-col items-center justify-center bg-blue-100 text-center">
@@ -15,7 +13,11 @@ const NotFound = () => {
       <Link to="/" className="btn-primary p-[15px] text-[20px]">
         Back to Home
       </Link>
-      <RollerCoasterIcon className="mt-10 h-auto w-[300px]" />
+      <img
+        src="/images/roller-coaster.png"
+        alt="rollercoaster"
+        className="mt-10 h-auto w-[300px]"
+      />
     </main>
   );
 };

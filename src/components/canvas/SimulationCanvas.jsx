@@ -1,11 +1,11 @@
 import { Line, useGLTF } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 
-import CartModel from '@/components/scene/CartModel';
-import DirectionalLight from '@/components/scene/DirectionalLight';
-import Ground from '@/components/scene/Ground';
-import ItemRenderer from '@/components/scene/ItemRenderer';
-import RailRenderer from '@/components/scene/RailRenderer';
+import DirectionalLight from '@/components/scene/common/DirectionalLight';
+import Ground from '@/components/scene/common/Ground';
+import ItemRenderer from '@/components/scene/common/ItemRenderer';
+import RailRenderer from '@/components/scene/common/RailRenderer';
+import CartModel from '@/components/scene/simulation/CartModel';
 
 const SimulationCanvas = () => {
   const gltf = useGLTF('/objects/coasterEntrance.glb');

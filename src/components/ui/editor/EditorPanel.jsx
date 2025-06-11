@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import EditorActionControls from '@/components/ui/EditorActionControls';
-import EditorCategorySelector from '@/components/ui/EditorCategorySelector';
-import PanelItems from '@/components/ui/PanelItems';
+import EditorActionControls from '@/components/ui/editor/EditorActionControls';
+import EditorCategorySelector from '@/components/ui/editor/EditorCategorySelector';
+import PanelItems from '@/components/ui/editor/PanelItems';
 import { useSceneStore } from '@/store/useSceneStore';
 import { getImageListByType } from '@/utils/sceneAssetUtils';
 

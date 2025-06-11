@@ -1,4 +1,4 @@
-import RailModel from '@/components/scene/RailModel';
+import RailModel from '@/components/scene/common/RailModel';
 import { useSceneStore } from '@/store/useSceneStore';
 
 const RailRenderer = () => {

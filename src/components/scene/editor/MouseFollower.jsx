@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { v4 as uuidv4 } from 'uuid';
 
-import ItemModel from '@/components/scene/ItemModel';
+import ItemModel from '@/components/scene/common/ItemModel';
 import { useSceneStore } from '@/store/useSceneStore';
 
 const MouseFollower = () => {
