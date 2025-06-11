@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import {
   RollerCoasterPlayIcon,
@@ -8,11 +9,31 @@ import {
 import SpeedSettingModal from '@/components/ui/modal/SpeedSettingModal';
 import { useSceneStore } from '@/store/useSceneStore';
 import { generateTrackCurve } from '@/utils/generateTrackCurve';
+import { isRailConnected } from '@/utils/isRailConnected';
 
 const EditorActionControls = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showSpeedModal, setShowSpeedModal] = useState(false);
+  const navigate = useNavigate();
   const placedRails = useSceneStore((state) => state.placedRails);
   const setCoasterPath = useSceneStore((state) => state.setCoasterPath);
+
+  const handlePlayClick = () => {
+    if (!isRailConnected()) {
+      console.log('트랙이 완전히 연결되지 않았습니다.');
+
+      return;
+    }
+
+    setShowSpeedModal(true);
+  };
+
+  const handleStartSimulation = () => {
+    const points = placedRails.flatMap((rail) => rail.points);
+    const generatedCurve = generateTrackCurve(points);
+
+    setCoasterPath(generatedCurve);
+    navigate('/simulation');
+  };
 
   const controlButtons = [
     {
@@ -20,7 +41,7 @@ const EditorActionControls = () => {
       icon: (
         <RollerCoasterPlayIcon className="fill-white transition-all duration-300 hover:fill-black" />
       ),
-      onClick: () => setShowModal(true),
+      onClick: handlePlayClick,
     },
     {
       key: 'undo',
@@ -36,13 +57,6 @@ const EditorActionControls = () => {
     },
   ];
 
-  const handleStartSimulation = () => {
-    const points = placedRails.flatMap((rail) => rail.points);
-    const generatedCurve = generateTrackCurve(points);
-
-    setCoasterPath(generatedCurve);
-  };
-
   return (
     <div className="relative h-[50px] w-[200px] rounded-tl-[10px] border border-white bg-[rgba(255,255,255,0.3)] text-right transition-transform duration-500">
       <div className="flex h-full items-center justify-end gap-10 pr-4">
@@ -52,8 +66,11 @@ const EditorActionControls = () => {
           </button>
         ))}
       </div>
-      {showModal && (
-        <SpeedSettingModal onCancel={() => setShowModal(false)} onStart={handleStartSimulation} />
+      {showSpeedModal && (
+        <SpeedSettingModal
+          onCancel={() => setShowSpeedModal(false)}
+          onStart={handleStartSimulation}
+        />
       )}
     </div>
   );
