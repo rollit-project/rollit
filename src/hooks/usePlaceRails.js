@@ -4,8 +4,8 @@ import toast from 'react-hot-toast';
 import { RAIL_POINT_TEMPLATES } from '@/constants/railPointTemplates';
 import { RAIL_ROTATION_MAP } from '@/constants/railRotationMap';
 import { useSceneStore } from '@/store/useSceneStore';
-import { checkGroundCollision } from '@/utils/checkGroundCollision';
 import { getWorldRailPoints } from '@/utils/getWorldRailPoints';
+import { isGroundCollision } from '@/utils/isGroundCollision';
 import { isRailCollision } from '@/utils/isRailCollision';
 import { getModelPathByName } from '@/utils/sceneAssetUtils';
 
@@ -44,7 +44,7 @@ export const usePlaceRails = (initialRails = []) => {
     };
 
     const isCollidingWithRail = isRailCollision(newRail, placedRails);
-    const isCollidingWithGround = checkGroundCollision(newRail);
+    const isCollidingWithGround = isGroundCollision(newRail);
 
     if (isCollidingWithRail || isCollidingWithGround) {
       toast.error('레일 설치 실패: 충돌이 감지되었습니다');
