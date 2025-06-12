@@ -1,4 +1,4 @@
-import { Line, OrbitControls, useGLTF } from '@react-three/drei';
+import { OrbitControls, useGLTF } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import PropTypes from 'prop-types';
 import { useRef } from 'react';

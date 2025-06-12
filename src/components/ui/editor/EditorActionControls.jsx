@@ -8,6 +8,7 @@ import ActionButton from '@/components/ui/editor/ActionButton';
 import SpeedSettingModal from '@/components/ui/modal/SpeedSettingModal';
 import { useSceneStore } from '@/store/useSceneStore';
 import { generateRailCurve } from '@/utils/generateRailCurve';
+import { generateSmoothCurvePoints } from '@/utils/generateSmoothCurvePoints';
 import { isRailConnected } from '@/utils/isRailConnected';
 
 const EditorActionControls = () => {
@@ -29,8 +30,8 @@ const EditorActionControls = () => {
   };
 
   const handleStartSimulation = () => {
-    const points = placedRails.flatMap((rail) => rail.points);
-    const generatedCurve = generateRailCurve(points);
+    const smoothPoints = generateSmoothCurvePoints(placedRails);
+    const generatedCurve = generateRailCurve(smoothPoints);
 
     setCoasterPath(generatedCurve);
     navigate('/simulation');
