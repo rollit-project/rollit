@@ -1,9 +1,9 @@
 import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useRef, useState } from 'react';
-import * as THREE from 'three';
 
 import { useSceneStore } from '@/store/useSceneStore';
+import { getRotationFromDirection } from '@/utils/getRotationFromDirection';
 
 const CartFollower = () => {
   const cartRef = useRef();
@@ -25,12 +25,8 @@ const CartFollower = () => {
     const cartHeightOffset = 2;
     const currentPosition = coasterPath.getPointAt(newProgress);
     const direction = coasterPath.getTangentAt(newProgress);
-    const up = new THREE.Vector3(0, 1, 0);
-    const right = new THREE.Vector3().crossVectors(up, direction).normalize();
-    const adjustedUp = new THREE.Vector3().crossVectors(direction, right).normalize();
 
-    const rotationMatrix = new THREE.Matrix4().makeBasis(right, adjustedUp, direction);
-    const rotationQuaternion = new THREE.Quaternion().setFromRotationMatrix(rotationMatrix);
+    const { rotationQuaternion, adjustedUp } = getRotationFromDirection(direction);
 
     const raisedPosition = currentPosition.add(adjustedUp.multiplyScalar(cartHeightOffset));
 
