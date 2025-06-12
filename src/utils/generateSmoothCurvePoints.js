@@ -1,4 +1,4 @@
-export function generateSmoothCurvePoints(placedRails) {
+export const generateSmoothCurvePoints = (placedRails) => {
   if (!placedRails || placedRails.length === 0) {
     return [];
   }
@@ -16,4 +16,4 @@ export function generateSmoothCurvePoints(placedRails) {
   }
 
   return smoothPoints;
-}
+};
