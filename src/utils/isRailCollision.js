@@ -1,5 +1,7 @@
 import * as THREE from 'three';
 
+import { RAIL_COLLISION_THRESHOLD, RAIL_LOOP_CLOSURE_THRESHOLD } from '@/constants/collision';
+
 const getDistanceFromPointToSegment = (point, segmentStart, segmentEnd) => {
   const segmentDirection = new THREE.Vector3().subVectors(segmentEnd, segmentStart);
   const pointDirection = new THREE.Vector3().subVectors(point, segmentStart);
@@ -34,13 +36,18 @@ const doesRailCollide = (candidatePoints, existingPoints, threshold) =>
     return doesSegmentIntersect(start, end, existingPoints, threshold);
   });
 
-export const isRailCollision = (candidateRail, placedRails, threshold = 0.3) => {
+export const isRailCollision = (
+  candidateRail,
+  placedRails,
+  threshold = RAIL_COLLISION_THRESHOLD,
+) => {
   if (placedRails.length === 0) {
     return false;
   }
 
   const isClosingLoop =
-    candidateRail.endPoint.distanceTo(new THREE.Vector3(...placedRails[0].position)) < 0.05;
+    candidateRail.endPoint.distanceTo(new THREE.Vector3(...placedRails[0].position)) <
+    RAIL_LOOP_CLOSURE_THRESHOLD;
 
   const railsToCheck = placedRails
     .slice(0, -1)
