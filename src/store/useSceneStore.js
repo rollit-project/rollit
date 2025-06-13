@@ -7,8 +7,8 @@ export const useSceneStore = create((set) => ({
   selectedRail: null,
   coasterPath: null,
   placedItems: [],
-  placedRails: [],
-  railHistory: [],
+  placedRails: [...INITIAL_RAILS],
+  railHistory: [[...INITIAL_RAILS]],
   setSelectedItem: (item) => set({ selectedItem: item }),
   setSelectedRail: (rail) => set({ selectedRail: rail }),
   setCoasterPath: (path) => set({ coasterPath: path }),
@@ -16,12 +16,16 @@ export const useSceneStore = create((set) => ({
   setPlacedRails: (rails) =>
     set((state) => ({
       placedRails: rails,
-      railHistory: [...state.railHistory, state.placedRails],
+      railHistory: [...state.railHistory, [...state.placedRails]],
     })),
+
   undoRail: () =>
     set((state) => {
-      if (state.railHistory.length === 0) {
-        return {};
+      if (state.railHistory.length <= 1) {
+        return {
+          placedRails: state.railHistory[0],
+          railHistory: state.railHistory,
+        };
       }
 
       const newHistory = [...state.railHistory];
@@ -32,9 +36,10 @@ export const useSceneStore = create((set) => ({
         railHistory: newHistory,
       };
     }),
+
   resetRails: () =>
     set(() => ({
       placedRails: [...INITIAL_RAILS],
-      railHistory: [],
+      railHistory: [[...INITIAL_RAILS]],
     })),
 }));
