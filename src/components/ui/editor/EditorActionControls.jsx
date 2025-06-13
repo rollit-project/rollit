@@ -16,6 +16,8 @@ const EditorActionControls = () => {
   const navigate = useNavigate();
   const placedRails = useSceneStore((state) => state.placedRails);
   const setCoasterPath = useSceneStore((state) => state.setCoasterPath);
+  const undoRail = useSceneStore((state) => state.undoRail);
+  const resetRails = useSceneStore((state) => state.resetRails);
 
   const handlePlayClick = () => {
     if (!isRailConnected()) {
@@ -46,10 +48,12 @@ const EditorActionControls = () => {
     {
       key: 'undo',
       icon: RiArrowGoBackFill,
+      onClick: undoRail,
     },
     {
       key: 'reset',
       icon: RiResetLeftFill,
+      onClick: resetRails,
     },
   ];
 
