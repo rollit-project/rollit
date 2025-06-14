@@ -9,6 +9,7 @@ const PanelItems = ({ imageList, onClick }) => {
     <div className="scrollbar-hidden flex h-[120px] gap-[30px] overflow-x-auto pr-5 pl-5 [&::-webkit-scrollbar]:hidden">
       {imageList.map((image) => (
         <button
+          key={image.name}
           type="button"
           onClick={() => onClick(image.name)}
           title={getTooltipText(image.name)}
