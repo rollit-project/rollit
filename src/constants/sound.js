@@ -3,6 +3,7 @@ export const SOUND_CONFIG = {
     DEFAULT_VOLUME: 0.01,
     MAX_VOLUME: 1.0,
     MIN_VOLUME: 0.0,
+    STEP: 0.01,
   },
   SFX: {
     RAIL_INSTALL_VOLUME: 1.0,
