@@ -6,7 +6,6 @@ import { RAIL_ROTATION_MAP } from '@/constants/railRotationMap';
 import { useSceneStore } from '@/store/useSceneStore';
 import { getWorldRailPoints } from '@/utils/getWorldRailPoints';
 import { isGroundCollision } from '@/utils/isGroundCollision';
-import { isRailCollision } from '@/utils/isRailCollision';
 import { getModelPathByName } from '@/utils/sceneAssetUtils';
 
 export const usePlaceRails = (initialRails = []) => {
@@ -43,11 +42,10 @@ export const usePlaceRails = (initialRails = []) => {
       accumulatedYRotation,
     };
 
-    const isCollidingWithRail = isRailCollision(newRail, placedRails);
     const isCollidingWithGround = isGroundCollision(newRail);
 
-    if (isCollidingWithRail || isCollidingWithGround) {
-      toast.error('레일 설치 실패: 충돌이 감지되었습니다');
+    if (isCollidingWithGround) {
+      toast.error('레일 설치 실패: 지형과 충돌했습니다');
 
       return;
     }
