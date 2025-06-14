@@ -27,7 +27,7 @@ export const RAIL_POINT_TEMPLATES = {
   ],
   downStart: [
     new THREE.Vector3(0, 0, 0),
-    new THREE.Vector3(0, 0, -0.6),
+    new THREE.Vector3(0, 0, -1.1),
     new THREE.Vector3(0, -0.4, -1.7),
   ],
   downMiddle: [new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, -2.4, -2.6)],
