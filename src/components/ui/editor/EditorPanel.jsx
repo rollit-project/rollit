@@ -4,14 +4,17 @@ import { v4 as uuidv4 } from 'uuid';
 import EditorActionControls from '@/components/ui/editor/EditorActionControls';
 import EditorCategorySelector from '@/components/ui/editor/EditorCategorySelector';
 import PanelItems from '@/components/ui/editor/PanelItems';
+import { useAudioStore } from '@/store/useAudioStore';
 import { useSceneStore } from '@/store/useSceneStore';
 import { getImageListByType } from '@/utils/sceneAssetUtils';
 
 const EditorPanel = () => {
   const [activePanelType, setActivePanelType] = useState('');
   const [isPanelOpen, setIsPanelOpen] = useState(false);
+
   const setSelectedItem = useSceneStore((state) => state.setSelectedItem);
   const setSelectedRail = useSceneStore((state) => state.setSelectedRail);
+  const playSfx = useAudioStore((state) => state.playSfx);
 
   const handlePanelToggle = (buttonType) => {
     setIsPanelOpen(activePanelType !== buttonType);
@@ -21,6 +24,7 @@ const EditorPanel = () => {
   const handlePanelItemClick = (name) => {
     if (activePanelType === 'rail') {
       setSelectedRail({ name, id: uuidv4() });
+      playSfx('/sounds/railInstall.mp3');
     } else {
       setSelectedItem(name);
     }
