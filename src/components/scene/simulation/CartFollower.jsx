@@ -2,18 +2,25 @@ import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useRef, useState } from 'react';
 
+import { useRailSoundEffect } from '@/hooks/useRailSoundEffect';
 import { useSceneStore } from '@/store/useSceneStore';
 import { getRotationFromDirection } from '@/utils/getRotationFromDirection';
 
 const CartFollower = () => {
   const cartRef = useRef();
   const [progress, setProgress] = useState(0);
+
   const coasterPath = useSceneStore((state) => state.coasterPath);
+  const placedRails = useSceneStore((state) => state.placedRails);
 
   const { scene: cart } = useGLTF('/objects/cart.glb');
 
+  useRailSoundEffect({ progress, placedRails });
+
   useFrame((_, delta) => {
-    if (!coasterPath || !cartRef.current) {
+    const isCartReady = coasterPath && cartRef.current && placedRails.length > 0;
+
+    if (!isCartReady) {
       return;
     }
 
@@ -27,7 +34,6 @@ const CartFollower = () => {
     const direction = coasterPath.getTangentAt(newProgress);
 
     const { rotationQuaternion, adjustedUp } = getRotationFromDirection(direction);
-
     const raisedPosition = currentPosition.add(adjustedUp.multiplyScalar(cartHeightOffset));
 
     cartRef.current.position.copy(raisedPosition);
