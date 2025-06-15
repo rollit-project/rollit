@@ -2,13 +2,13 @@ import * as THREE from 'three';
 
 export const RAIL_POINT_TEMPLATES = {
   straight: [new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, -6)],
-  upCombined: [
+  upSlopeFull: [
     new THREE.Vector3(0, 0, 0),
     new THREE.Vector3(0, 0.6, -2),
     new THREE.Vector3(0, 3, -4.8),
     new THREE.Vector3(0, 3.4, -6),
   ],
-  downCombined: [
+  downSlopeFull: [
     new THREE.Vector3(0, 0, 0),
     new THREE.Vector3(0, -0.6, -2),
     new THREE.Vector3(0, -3, -4.8),

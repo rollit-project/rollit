@@ -25,15 +25,15 @@ export const SCENE_ASSET_LIST = [
   },
   {
     type: 'rail',
-    name: 'upCombined',
-    src: '/images/rail-up-combined.png',
-    model: '/objects/rail-up-combined.glb',
+    name: 'upSlopeFull',
+    src: '/images/rail-up-slope-full.png',
+    model: '/objects/rail-up-slope-full.glb',
   },
   {
     type: 'rail',
-    name: 'downCombined',
-    src: '/images/rail-down-combined.png',
-    model: '/objects/rail-down-combined.glb',
+    name: 'downSlopeFull',
+    src: '/images/rail-down-slope-full.png',
+    model: '/objects/rail-down-slope-full.glb',
   },
 
   {
