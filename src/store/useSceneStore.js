@@ -28,8 +28,8 @@ export const useSceneStore = create((set) => ({
         };
       }
 
-      const newHistory = [...state.railHistory];
-      const previous = newHistory.pop();
+      const previous = state.railHistory[state.railHistory.length - 2];
+      const newHistory = state.railHistory.slice(0, -1);
 
       return {
         placedRails: previous,
