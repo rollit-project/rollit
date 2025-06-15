@@ -9,6 +9,8 @@ export const useAudioStore = create((set, get) => {
     SFX: { RAIL_INSTALL_VOLUME },
   } = SOUND_CONFIG;
 
+  let loopAudio = null;
+
   return {
     src: null,
     playing: false,
@@ -26,25 +28,55 @@ export const useAudioStore = create((set, get) => {
       set({ playing: false });
     },
 
-    playSfx: async (src, sfxVolume = RAIL_INSTALL_VOLUME) => {
-      const { currentSfxAudio } = get();
-      const isSoundActiveAndPlaying = currentSfxAudio && !currentSfxAudio.ended;
+    playSfx: async (src, sfxVolume = RAIL_INSTALL_VOLUME, loop = false) => {
+      try {
+        if (loop && loopAudio) {
+          loopAudio.pause();
+          loopAudio.currentTime = 0;
+          loopAudio.src = '';
+          loopAudio = null;
+        }
 
-      if (isSoundActiveAndPlaying) {
+        if (loop) {
+          const audio = new Audio(src);
+
+          audio.volume = sfxVolume;
+          audio.loop = true;
+          loopAudio = audio;
+
+          audio.addEventListener('canplaythrough', () => {
+            audio.play().catch(() => {
+              toast.error('🔇 효과음 재생 실패', { duration: 1000 });
+            });
+          });
+
+          audio.load();
+        } else {
+          const sfx = new Audio(src);
+
+          sfx.volume = sfxVolume;
+          await sfx.play();
+          set({ currentSfxAudio: sfx });
+        }
+      } catch (error) {
+        toast.error('🔇 효과음 재생 실패', { duration: 1000 });
+      }
+    },
+
+    stopSfx: () => {
+      const { currentSfxAudio } = get();
+
+      if (currentSfxAudio) {
         currentSfxAudio.pause();
         currentSfxAudio.currentTime = 0;
+        set({ currentSfxAudio: null });
       }
 
-      const sfx = new Audio(src);
-
-      sfx.volume = sfxVolume;
-
-      set({ currentSfxAudio: sfx });
-
-      try {
-        await sfx.play();
-      } catch (error) {
-        toast.error('🔇 효과음 재생 실패: ', { duration: 1000 });
+      if (loopAudio) {
+        loopAudio.pause();
+        loopAudio.currentTime = 0;
+        loopAudio.src = '';
+        loopAudio = null;
       }
     },
 
@@ -52,17 +84,6 @@ export const useAudioStore = create((set, get) => {
       const numericVolume = parseFloat(volume);
 
       set({ volume: numericVolume });
-    },
-
-    stopSfx: () => {
-      const { currentSfxAudio } = get();
-      const isSoundActiveAndPlaying = currentSfxAudio && !currentSfxAudio.ended;
-
-      if (isSoundActiveAndPlaying) {
-        currentSfxAudio.pause();
-        currentSfxAudio.currentTime = 0;
-        set({ currentSfxAudio: null });
-      }
     },
 
     setLastRailType: (type) => set({ lastRailType: type }),
