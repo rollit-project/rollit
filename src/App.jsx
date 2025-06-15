@@ -1,13 +1,15 @@
 import { Toaster } from 'react-hot-toast';
 import { BrowserRouter } from 'react-router-dom';
 
+import GlobalAudioPlayer from '@/components/sound/GlobalAudioPlayer';
 import Router from '@/routes/Router';
 
 const App = () => {
   return (
     <BrowserRouter>
       <Router />
-      <Toaster position="top-center" reverseOrder={false} />
+      <GlobalAudioPlayer />
+      <Toaster position="top-center" />
     </BrowserRouter>
   );
 };
