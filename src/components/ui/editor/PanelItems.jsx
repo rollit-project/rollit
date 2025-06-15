@@ -27,7 +27,12 @@ const PanelItems = ({ imageList, onClick }) => {
 };
 
 PanelItems.propTypes = {
-  imageList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  imageList: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      src: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
   onClick: PropTypes.func.isRequired,
 };
 
