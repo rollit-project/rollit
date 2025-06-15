@@ -9,6 +9,7 @@ const CartFollower = () => {
   const cartRef = useRef();
   const [progress, setProgress] = useState(0);
   const coasterPath = useSceneStore((state) => state.coasterPath);
+  const simulationSpeed = useSceneStore((state) => state.simulationSpeed);
 
   const { scene: cart } = useGLTF('/objects/cart.glb');
 
@@ -30,7 +31,7 @@ const CartFollower = () => {
       speed = Math.max(speed, MIN_SPEED);
     }
 
-    const newProgress = Math.min(progress + delta * speed, 1);
+    const newProgress = Math.min(progress + delta * speed * simulationSpeed, 1);
 
     setProgress(newProgress);
 
