@@ -1,40 +1,24 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-import { RAIL_SOUNDS } from '@/constants/sound';
+import { SFX_PATHS, SOUND_CONFIG } from '@/constants/sound';
 import { useAudioStore } from '@/store/useAudioStore';
 
-export const useRailSoundEffect = ({ progress, placedRails }) => {
-  const playSfx = useAudioStore((s) => s.playSfx);
-  const stopSfx = useAudioStore((s) => s.stopSfx);
-  const lastRailType = useAudioStore((s) => s.lastRailType);
-  const setLastRailType = useAudioStore((s) => s.setLastRailType);
+export const useRailSoundEffect = ({ progress }) => {
+  const playSfx = useAudioStore((state) => state.playSfx);
+  const stopSfx = useAudioStore((state) => state.stopSfx);
+  const hasPlayedRef = useRef(false);
 
   useEffect(() => {
     if (progress >= 1) {
       stopSfx();
+      hasPlayedRef.current = false;
 
       return;
     }
 
-    const index = Math.floor(progress * placedRails.length);
-    const rail = placedRails[index];
-
-    if (!rail) {
-      return;
+    if (!hasPlayedRef.current) {
+      playSfx(SFX_PATHS.run, SOUND_CONFIG.BGM.DEFAULT_VOLUME, true);
+      hasPlayedRef.current = true;
     }
-
-    const getRailTypeFromPath = (path) =>
-      ['straight', 'up', 'down'].find((type) => path.includes(type)) || 'straight';
-
-    const currentType = getRailTypeFromPath(rail.modelPath);
-
-    if (currentType !== lastRailType) {
-      const sfx = RAIL_SOUNDS[currentType];
-
-      if (sfx) {
-        playSfx(sfx);
-        setLastRailType(currentType);
-      }
-    }
-  }, [progress, placedRails, lastRailType]);
+  }, [progress]);
 };
