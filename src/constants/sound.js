@@ -1,6 +1,6 @@
 export const SOUND_CONFIG = {
   BGM: {
-    DEFAULT_VOLUME: 0.01,
+    DEFAULT_VOLUME: 0.2,
     MAX_VOLUME: 1.0,
     MIN_VOLUME: 0.0,
     STEP: 0.01,
@@ -10,8 +10,10 @@ export const SOUND_CONFIG = {
   },
 };
 
-export const RAIL_SOUNDS = {
-  straight: '/sounds/rail-straight.mp3',
-  up: '/sounds/rail-up.mp3',
-  down: '/sounds/rail-down.mp3',
+export const SFX_PATHS = {
+  start: '/sounds/start.mp3',
+  action: '/sounds/reset.mp3',
+  undo: '/sounds/undo.mp3',
+  install: '/sounds/install.mp3',
+  play: '/sounds/play.mp3',
 };
