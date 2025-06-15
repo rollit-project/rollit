@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 import ActionButton from '@/components/ui/editor/ActionButton';
 import SpeedSettingModal from '@/components/ui/modal/SpeedSettingModal';
+import { SFX_PATHS } from '@/constants/sound'; // ✅ 상수 import
+import { useAudioStore } from '@/store/useAudioStore';
 import { useSceneStore } from '@/store/useSceneStore';
 import { generateRailCurve } from '@/utils/generateRailCurve';
 import { generateSmoothCurvePoints } from '@/utils/generateSmoothCurvePoints';
@@ -16,16 +18,18 @@ const EditorActionControls = () => {
   const navigate = useNavigate();
   const placedRails = useSceneStore((state) => state.placedRails);
   const setCoasterPath = useSceneStore((state) => state.setCoasterPath);
+  const playSfx = useAudioStore((state) => state.playSfx);
 
   const handlePlayClick = () => {
     if (!isRailConnected()) {
-      toast.error('레일이 완전히 연결되지 않았습니다! ', {
+      toast.error('레일이 완전히 연결되지 않았습니다!', {
         duration: 1000,
       });
 
       return;
     }
 
+    playSfx(SFX_PATHS.start);
     setShowSpeedModal(true);
   };
 
@@ -34,6 +38,7 @@ const EditorActionControls = () => {
     const generatedCurve = generateRailCurve(smoothPoints);
 
     setCoasterPath(generatedCurve);
+    playSfx(SFX_PATHS.play);
     navigate('/simulation');
   };
 
@@ -46,10 +51,12 @@ const EditorActionControls = () => {
     {
       key: 'undo',
       icon: RiArrowGoBackFill,
+      onClick: () => playSfx(SFX_PATHS.action),
     },
     {
       key: 'reset',
       icon: RiResetLeftFill,
+      onClick: () => playSfx(SFX_PATHS.action),
     },
   ];
 
