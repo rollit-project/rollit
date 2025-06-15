@@ -1,12 +1,18 @@
 import PropTypes from 'prop-types';
+import { forwardRef } from 'react';
 
 import { RAIL_TOOLTIP_MAP } from '@/constants/railTooltipMap';
 
-const PanelItems = ({ imageList, onClick }) => {
+const PanelItems = forwardRef(({ imageList, onClick, onMouseMove, onMouseLeave }, ref) => {
   const getTooltipText = (name) => RAIL_TOOLTIP_MAP[name] ?? '설명 없음';
 
   return (
-    <div className="scrollbar-hidden flex h-[120px] gap-[30px] overflow-x-auto pr-5 pl-5 [&::-webkit-scrollbar]:hidden">
+    <div
+      ref={ref}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      className="scrollbar-hidden flex h-[120px] gap-[30px] overflow-x-auto pr-5 pl-5 [&::-webkit-scrollbar]:hidden"
+    >
       {imageList.map((image) => (
         <button
           key={image.name}
@@ -24,7 +30,7 @@ const PanelItems = ({ imageList, onClick }) => {
       ))}
     </div>
   );
-};
+});
 
 PanelItems.propTypes = {
   imageList: PropTypes.arrayOf(
@@ -34,6 +40,8 @@ PanelItems.propTypes = {
     }),
   ).isRequired,
   onClick: PropTypes.func.isRequired,
+  onMouseMove: PropTypes.func,
+  onMouseLeave: PropTypes.func,
 };
 
 export default PanelItems;
