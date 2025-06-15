@@ -13,18 +13,6 @@ export const SCENE_ASSET_LIST = [
   },
   {
     type: 'rail',
-    name: 'up',
-    src: '/images/rail-up.png',
-    model: '/objects/rail-up.glb',
-  },
-  {
-    type: 'rail',
-    name: 'down',
-    src: '/images/rail-down.png',
-    model: '/objects/rail-down.glb',
-  },
-  {
-    type: 'rail',
     name: 'curveLeft',
     src: '/images/rail-curve-left.png',
     model: 'objects/rail-curve-left.glb',
@@ -35,7 +23,55 @@ export const SCENE_ASSET_LIST = [
     src: '/images/rail-curve-right.png',
     model: 'objects/rail-curve-right.glb',
   },
+  {
+    type: 'rail',
+    name: 'upSlopeFull',
+    src: '/images/rail-up-slope-full.png',
+    model: '/objects/rail-up-slope-full.glb',
+  },
+  {
+    type: 'rail',
+    name: 'downSlopeFull',
+    src: '/images/rail-down-slope-full.png',
+    model: '/objects/rail-down-slope-full.glb',
+  },
 
+  {
+    type: 'rail',
+    name: 'upStart',
+    src: '/images/rail-up-start.png',
+    model: '/objects/rail-up-start.glb',
+  },
+  {
+    type: 'rail',
+    name: 'upMiddle',
+    src: '/images/rail-up-middle.png',
+    model: '/objects/rail-up-middle.glb',
+  },
+  {
+    type: 'rail',
+    name: 'upEnd',
+    src: '/images/rail-up-end.png',
+    model: '/objects/rail-up-end.glb',
+  },
+  {
+    type: 'rail',
+    name: 'downStart',
+    src: '/images/rail-down-start.png',
+    model: '/objects/rail-down-start.glb',
+  },
+  {
+    type: 'rail',
+    name: 'downMiddle',
+    src: '/images/rail-down-middle.png',
+    model: '/objects/rail-down-middle.glb',
+  },
+  {
+    type: 'rail',
+    name: 'downEnd',
+    src: '/images/rail-down-end.png',
+    model: '/objects/rail-down-end.glb',
+  },
   {
     type: 'item',
     name: 'bench',
