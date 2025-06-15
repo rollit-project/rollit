@@ -24,7 +24,7 @@ const EditorPanel = () => {
   const handlePanelItemClick = (name) => {
     if (activePanelType === 'rail') {
       setSelectedRail({ name, id: uuidv4() });
-      playSfx('/sounds/railInstall.mp3');
+      playSfx('/sounds/install.mp3');
     } else {
       setSelectedItem(name);
     }
