@@ -9,6 +9,7 @@ export const useSceneStore = create((set) => ({
   placedItems: [],
   placedRails: [...INITIAL_RAILS],
   railHistory: [[...INITIAL_RAILS]],
+  simulationSpeed: 1,
   setSelectedItem: (item) => set({ selectedItem: item }),
   setSelectedRail: (rail) => set({ selectedRail: rail }),
   setCoasterPath: (path) => set({ coasterPath: path }),
@@ -18,6 +19,7 @@ export const useSceneStore = create((set) => ({
       placedRails: rails,
       railHistory: [...state.railHistory, [...state.placedRails]],
     })),
+  setSimulationSpeed: (value) => set({ simulationSpeed: value }),
 
   undoRail: () =>
     set((state) => {
