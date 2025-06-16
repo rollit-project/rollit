@@ -2,13 +2,10 @@ import { useGLTF } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
 import { useEffect, useRef } from 'react';
 
+import { BASE_CART_SPEED, MIN_CART_SPEED, SPEED_REDUCTION } from '@/constants/cartSpeed';
 import { SIMULATION_CAMERA } from '@/constants/simulationCamera';
 import { useSceneStore } from '@/store/useSceneStore';
 import { getRotationFromDirection } from '@/utils/getRotationFromDirection';
-
-const BASE_SPEED = 0.3;
-const SPEED_REDUCTION = 0.3;
-const MIN_SPEED = 0.05;
 
 const CartFollower = () => {
   const cartRef = useRef();
@@ -56,6 +53,16 @@ const CartFollower = () => {
     }
   };
 
+  const getCartSpeed = (direction) => {
+    if (direction.y > 0) {
+      const reducedSpeed = BASE_CART_SPEED - direction.y * SPEED_REDUCTION;
+
+      return Math.max(reducedSpeed, MIN_CART_SPEED);
+    }
+
+    return BASE_CART_SPEED;
+  };
+
   useEffect(() => {
     setSimulationProgress(0);
   }, []);
@@ -65,15 +72,9 @@ const CartFollower = () => {
       return;
     }
     const direction = coasterPath.getTangentAt(simulationProgress);
+    const cartSpeed = getCartSpeed(direction);
 
-    let speed = BASE_SPEED;
-
-    if (direction.y > 0) {
-      speed = BASE_SPEED - direction.y * SPEED_REDUCTION;
-      speed = Math.max(speed, MIN_SPEED);
-    }
-
-    const nextProgress = Math.min(simulationProgress + delta * speed * simulationSpeed, 1);
+    const nextProgress = Math.min(simulationProgress + delta * cartSpeed * simulationSpeed, 1);
 
     setSimulationProgress(nextProgress);
     updateCartAndCamera(nextProgress, direction);
