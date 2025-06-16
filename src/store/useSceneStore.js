@@ -19,7 +19,7 @@ export const useSceneStore = create((set) => ({
       placedRails: rails,
       railHistory: [...state.railHistory, [...state.placedRails]],
     })),
-  setViewMode: () =>
+  toggleViewMode: () =>
     set((state) => ({
       viewMode: state.viewMode === 'firstPerson' ? 'thirdPerson' : 'firstPerson',
     })),
