@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const EditorCategorySelector = ({ activePanelType, onButtonClick }) => {
-  const PANEL_INFO = ['coaster', 'rail', 'item'];
+  const PANEL_INFO = ['rail', 'item'];
 
   return (
     <div className="relative h-[50px] w-[480px] rounded-tr-[10px] text-center transition-all duration-500">
@@ -13,7 +13,7 @@ const EditorCategorySelector = ({ activePanelType, onButtonClick }) => {
             className={`h-full flex-1 cursor-pointer px-4 font-bold text-white transition-all duration-300 ${activePanelType === type ? 'bg-[rgba(0,0,0,0.3)]' : 'border-2 border-white bg-[rgba(255,255,255,0.3)]'} ${type === 'item' ? 'rounded-tr-[10px]' : ''}`}
             onClick={() => onButtonClick(type)}
           >
-            {type}
+            {type === 'rail' ? '레일' : '아이템'}
           </button>
         ))}
       </div>
