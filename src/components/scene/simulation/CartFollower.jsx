@@ -14,15 +14,10 @@ const CartFollower = () => {
   const { scene: cart } = useGLTF('/objects/cart.glb');
   const { camera } = useThree();
 
-  useFrame((_, delta) => {
+  const updateCartAndCamera = (newProgress) => {
     if (!coasterPath || !cartRef.current) {
       return;
     }
-
-    const speed = 0.2;
-    const newProgress = Math.min(progress + delta * speed, 1);
-
-    setProgress(newProgress);
 
     const cartHeightOffset = 2;
     const currentPosition = coasterPath.getPointAt(newProgress);
@@ -52,6 +47,18 @@ const CartFollower = () => {
       camera.position.lerp(cameraPosition, 0.1);
       camera.lookAt(raisedPosition);
     }
+  };
+
+  useFrame((_, delta) => {
+    if (progress >= 1) {
+      return;
+    }
+
+    const speed = 0.2;
+    const nextProgress = Math.min(progress + delta * speed, 1);
+
+    setProgress(nextProgress);
+    updateCartAndCamera(nextProgress);
   });
 
   return <primitive ref={cartRef} object={cart} scale={[1, 1, 0.8]} />;
