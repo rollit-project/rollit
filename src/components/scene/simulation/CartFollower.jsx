@@ -1,6 +1,6 @@
 import { useGLTF } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
-import { useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { SIMULATION_CAMERA } from '@/constants/simulationCamera';
 import { useSceneStore } from '@/store/useSceneStore';
@@ -12,14 +12,15 @@ const MIN_SPEED = 0.05;
 
 const CartFollower = () => {
   const cartRef = useRef();
-  const [progress, setProgress] = useState(0);
 
-  const { scene: cart } = useGLTF('/objects/cart.glb');
-  const { camera } = useThree();
-
+  const simulationProgress = useSceneStore((state) => state.simulationProgress);
+  const setSimulationProgress = useSceneStore((state) => state.setSimulationProgress);
   const coasterPath = useSceneStore((state) => state.coasterPath);
   const viewMode = useSceneStore((state) => state.viewMode);
   const simulationSpeed = useSceneStore((state) => state.simulationSpeed);
+
+  const { scene: cart } = useGLTF('/objects/cart.glb');
+  const { camera } = useThree();
 
   const { FIRST_PERSON, THIRD_PERSON, LERP } = SIMULATION_CAMERA;
 
@@ -55,12 +56,15 @@ const CartFollower = () => {
     }
   };
 
+  useEffect(() => {
+    setSimulationProgress(0);
+  }, []);
+
   useFrame((_, delta) => {
-    if (!coasterPath || !cartRef.current || progress >= 1) {
+    if (!coasterPath || !cartRef.current || simulationProgress >= 1) {
       return;
     }
-
-    const direction = coasterPath.getTangentAt(progress);
+    const direction = coasterPath.getTangentAt(simulationProgress);
 
     let speed = BASE_SPEED;
 
@@ -69,9 +73,9 @@ const CartFollower = () => {
       speed = Math.max(speed, MIN_SPEED);
     }
 
-    const nextProgress = Math.min(progress + delta * speed * simulationSpeed, 1);
+    const nextProgress = Math.min(simulationProgress + delta * speed * simulationSpeed, 1);
 
-    setProgress(nextProgress);
+    setSimulationProgress(nextProgress);
     updateCartAndCamera(nextProgress, direction);
   });
 
