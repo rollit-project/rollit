@@ -9,6 +9,7 @@ export const useSceneStore = create((set) => ({
   placedItems: [],
   placedRails: [...INITIAL_RAILS],
   railHistory: [[...INITIAL_RAILS]],
+  viewMode: 'thirdPerson',
   setSelectedItem: (item) => set({ selectedItem: item }),
   setSelectedRail: (rail) => set({ selectedRail: rail }),
   setCoasterPath: (path) => set({ coasterPath: path }),
@@ -18,7 +19,10 @@ export const useSceneStore = create((set) => ({
       placedRails: rails,
       railHistory: [...state.railHistory, [...state.placedRails]],
     })),
-
+  setViewMode: () =>
+    set((state) => ({
+      viewMode: state.viewMode === 'firstPerson' ? 'thirdPerson' : 'firstPerson',
+    })),
   undoRail: () =>
     set((state) => {
       if (state.railHistory.length <= 1) {
@@ -36,7 +40,6 @@ export const useSceneStore = create((set) => ({
         railHistory: newHistory,
       };
     }),
-
   resetRails: () =>
     set(() => ({
       placedRails: [...INITIAL_RAILS],
