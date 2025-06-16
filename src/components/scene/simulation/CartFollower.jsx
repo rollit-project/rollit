@@ -6,24 +6,26 @@ import { SIMULATION_CAMERA } from '@/constants/simulationCamera';
 import { useSceneStore } from '@/store/useSceneStore';
 import { getRotationFromDirection } from '@/utils/getRotationFromDirection';
 
+const BASE_SPEED = 0.3;
+const SPEED_REDUCTION = 0.3;
+const MIN_SPEED = 0.05;
+
 const CartFollower = () => {
   const cartRef = useRef();
   const [progress, setProgress] = useState(0);
-  const coasterPath = useSceneStore((state) => state.coasterPath);
-  const viewMode = useSceneStore((state) => state.viewMode);
 
   const { scene: cart } = useGLTF('/objects/cart.glb');
   const { camera } = useThree();
+
+  const coasterPath = useSceneStore((state) => state.coasterPath);
+  const viewMode = useSceneStore((state) => state.viewMode);
+  const simulationSpeed = useSceneStore((state) => state.simulationSpeed);
+
   const { FIRST_PERSON, THIRD_PERSON, LERP } = SIMULATION_CAMERA;
 
-  const updateCartAndCamera = (newProgress) => {
-    if (!coasterPath || !cartRef.current) {
-      return;
-    }
-
+  const updateCartAndCamera = (newProgress, direction) => {
     const cartHeightOffset = 2;
     const currentPosition = coasterPath.getPointAt(newProgress);
-    const direction = coasterPath.getTangentAt(newProgress);
 
     const { rotationQuaternion, adjustedUp } = getRotationFromDirection(direction);
 
@@ -54,15 +56,23 @@ const CartFollower = () => {
   };
 
   useFrame((_, delta) => {
-    if (progress >= 1) {
+    if (!coasterPath || !cartRef.current || progress >= 1) {
       return;
     }
 
-    const speed = 0.2;
-    const nextProgress = Math.min(progress + delta * speed, 1);
+    const direction = coasterPath.getTangentAt(progress);
+
+    let speed = BASE_SPEED;
+
+    if (direction.y > 0) {
+      speed = BASE_SPEED - direction.y * SPEED_REDUCTION;
+      speed = Math.max(speed, MIN_SPEED);
+    }
+
+    const nextProgress = Math.min(progress + delta * speed * simulationSpeed, 1);
 
     setProgress(nextProgress);
-    updateCartAndCamera(nextProgress);
+    updateCartAndCamera(nextProgress, direction);
   });
 
   return <primitive ref={cartRef} object={cart} scale={[1, 1, 0.8]} />;

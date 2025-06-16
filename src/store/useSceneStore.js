@@ -10,6 +10,7 @@ export const useSceneStore = create((set) => ({
   placedRails: [...INITIAL_RAILS],
   railHistory: [[...INITIAL_RAILS]],
   viewMode: 'thirdPerson',
+  simulationSpeed: 1,
   setSelectedItem: (item) => set({ selectedItem: item }),
   setSelectedRail: (rail) => set({ selectedRail: rail }),
   setCoasterPath: (path) => set({ coasterPath: path }),
@@ -23,6 +24,7 @@ export const useSceneStore = create((set) => ({
     set((state) => ({
       viewMode: state.viewMode === 'firstPerson' ? 'thirdPerson' : 'firstPerson',
     })),
+  setSimulationSpeed: (value) => set({ simulationSpeed: value }),
   undoRail: () =>
     set((state) => {
       if (state.railHistory.length <= 1) {
