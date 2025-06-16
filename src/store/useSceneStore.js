@@ -9,6 +9,7 @@ export const useSceneStore = create((set) => ({
   placedItems: [],
   placedRails: [...INITIAL_RAILS],
   railHistory: [[...INITIAL_RAILS]],
+  viewMode: 'thirdPerson',
   simulationSpeed: 1,
   setSelectedItem: (item) => set({ selectedItem: item }),
   setSelectedRail: (rail) => set({ selectedRail: rail }),
@@ -19,8 +20,11 @@ export const useSceneStore = create((set) => ({
       placedRails: rails,
       railHistory: [...state.railHistory, [...state.placedRails]],
     })),
+  toggleViewMode: () =>
+    set((state) => ({
+      viewMode: state.viewMode === 'firstPerson' ? 'thirdPerson' : 'firstPerson',
+    })),
   setSimulationSpeed: (value) => set({ simulationSpeed: value }),
-
   undoRail: () =>
     set((state) => {
       if (state.railHistory.length <= 1) {
@@ -38,7 +42,6 @@ export const useSceneStore = create((set) => ({
         railHistory: newHistory,
       };
     }),
-
   resetRails: () =>
     set(() => ({
       placedRails: [...INITIAL_RAILS],

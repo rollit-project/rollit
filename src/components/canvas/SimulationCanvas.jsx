@@ -17,7 +17,7 @@ const SimulationCanvas = () => {
   const { scene: coasterEntrance } = gltf;
 
   return (
-    <Canvas shadows camera={{ position: [10, 10, 10], fov: 75 }}>
+    <Canvas shadows camera={{ fov: 100 }}>
       <color attach="background" args={['#b0eaff']} />
       <ambientLight intensity={0.4} />
       <DirectionalLight />

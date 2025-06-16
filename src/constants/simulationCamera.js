@@ -1,0 +1,12 @@
+export const SIMULATION_CAMERA = {
+  LERP: 0.1,
+  FIRST_PERSON: {
+    UP_OFFSET: 2.0,
+    FORWARD_OFFSET: 1.0,
+    LOOK_AHEAD: 5,
+  },
+  THIRD_PERSON: {
+    BACKWARD_OFFSET: -10,
+    HEIGHT_OFFSET: 4,
+  },
+};
