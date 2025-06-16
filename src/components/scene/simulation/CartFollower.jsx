@@ -9,22 +9,34 @@ const CartFollower = () => {
   const cartRef = useRef();
   const [progress, setProgress] = useState(0);
   const coasterPath = useSceneStore((state) => state.coasterPath);
+  const simulationSpeed = useSceneStore((state) => state.simulationSpeed);
 
   const { scene: cart } = useGLTF('/objects/cart.glb');
+
+  const BASE_SPEED = 0.3;
+  const SPEED_REDUCTION = 0.3;
+  const MIN_SPEED = 0.05;
 
   useFrame((_, delta) => {
     if (!coasterPath || !cartRef.current) {
       return;
     }
 
-    const speed = 0.2;
-    const newProgress = Math.min(progress + delta * speed, 1);
+    const direction = coasterPath.getTangentAt(progress);
+
+    let speed = BASE_SPEED;
+
+    if (direction.y > 0) {
+      speed = BASE_SPEED - direction.y * SPEED_REDUCTION;
+      speed = Math.max(speed, MIN_SPEED);
+    }
+
+    const newProgress = Math.min(progress + delta * speed * simulationSpeed, 1);
 
     setProgress(newProgress);
 
     const cartHeightOffset = 2;
     const currentPosition = coasterPath.getPointAt(newProgress);
-    const direction = coasterPath.getTangentAt(newProgress);
 
     const { rotationQuaternion, adjustedUp } = getRotationFromDirection(direction);
 

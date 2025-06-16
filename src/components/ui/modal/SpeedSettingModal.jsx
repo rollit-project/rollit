@@ -2,9 +2,16 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import ModalLayout from '@/components/ui/modal/ModalLayout';
+import { useSceneStore } from '@/store/useSceneStore';
 
 const SpeedSettingModal = ({ onCancel, onStart }) => {
-  const [speed, setSpeed] = useState(1);
+  const [sliderSpeed, setSliderSpeed] = useState(1);
+  const setSimulationSpeed = useSceneStore((state) => state.setSimulationSpeed);
+
+  const handleStart = () => {
+    setSimulationSpeed(sliderSpeed);
+    onStart();
+  };
 
   return (
     <ModalLayout>
@@ -16,11 +23,13 @@ const SpeedSettingModal = ({ onCancel, onStart }) => {
           min="0.5"
           max="2"
           step="0.1"
-          value={speed}
-          onChange={(e) => setSpeed(parseFloat(e.target.value))}
+          value={sliderSpeed}
+          onChange={(e) => setSliderSpeed(parseFloat(e.target.value))}
           className="w-full cursor-pointer appearance-none rounded-lg border-1 border-amber-300 bg-white accent-yellow-300 dark:bg-gray-700"
         />
-        <p className="mt-2 text-center text-lg font-semibold">현재 속도: {speed.toFixed(1)}x</p>
+        <p className="mt-2 text-center text-lg font-semibold">
+          현재 속도: {sliderSpeed.toFixed(1)}x
+        </p>
       </div>
       <footer className="flex justify-center gap-5">
         <button
@@ -33,7 +42,7 @@ const SpeedSettingModal = ({ onCancel, onStart }) => {
         <button
           type="button"
           className="w-full rounded-lg border border-yellow-400 px-4 py-2 hover:bg-yellow-300"
-          onClick={onStart}
+          onClick={handleStart}
         >
           시작
         </button>
