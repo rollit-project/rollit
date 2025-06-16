@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import EditorActionControls from '@/components/ui/editor/EditorActionControls';
 import EditorCategorySelector from '@/components/ui/editor/EditorCategorySelector';
 import PanelItems from '@/components/ui/editor/PanelItems';
-import { SCROLL_DIRECTION, SCROLL_HOVER_ZONE, SCROLL_SPEED } from '@/constants/scroll';
+import { SCROLL_ACTIVATION_ZONE, SCROLL_DIRECTION, SCROLL_SPEED } from '@/constants/scroll';
 import { useSceneStore } from '@/store/useSceneStore';
 import { getImageListByType } from '@/utils/sceneAssetUtils';
 
@@ -32,32 +32,32 @@ const EditorPanel = () => {
   };
 
   const animateScroll = () => {
-    const scrollElement = scrollRef.current;
-    const isScrollable = scrollElement && scrollDirectionRef.current !== SCROLL_DIRECTION.NONE;
+    const scrollContainer = scrollRef.current;
+    const isScrollable = scrollContainer && scrollDirectionRef.current !== SCROLL_DIRECTION.NONE;
 
     if (isScrollable) {
-      scrollElement.scrollLeft += scrollDirectionRef.current * SCROLL_SPEED;
+      scrollContainer.scrollLeft += scrollDirectionRef.current * SCROLL_SPEED;
     }
 
     scrollAnimationRef.current = requestAnimationFrame(animateScroll);
   };
 
   const handleMouseMove = (e) => {
-    const scrollElement = scrollRef.current;
+    const scrollContainer = scrollRef.current;
 
-    if (!scrollElement) {
+    if (!scrollContainer) {
       return;
     }
 
-    const { left, width } = scrollElement.getBoundingClientRect();
+    const { left, width } = scrollContainer.getBoundingClientRect();
     const mouseXInPanel = e.clientX - left;
 
-    const isInLefEdge = mouseXInPanel < SCROLL_HOVER_ZONE;
-    const isInRightEdge = mouseXInPanel > width - SCROLL_HOVER_ZONE;
+    const isMouseInLeftZone = mouseXInPanel < SCROLL_ACTIVATION_ZONE;
+    const isMouseInRightZone = mouseXInPanel > width - SCROLL_ACTIVATION_ZONE;
 
-    if (isInLefEdge) {
+    if (isMouseInLeftZone) {
       scrollDirectionRef.current = SCROLL_DIRECTION.LEFT;
-    } else if (isInRightEdge) {
+    } else if (isMouseInRightZone) {
       scrollDirectionRef.current = SCROLL_DIRECTION.RIGHT;
     } else {
       scrollDirectionRef.current = SCROLL_DIRECTION.NONE;
