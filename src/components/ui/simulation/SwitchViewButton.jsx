@@ -5,6 +5,8 @@ import { useSceneStore } from '@/store/useSceneStore';
 const SwitchViewButton = () => {
   const viewMode = useSceneStore((state) => state.viewMode);
   const setViewMode = useSceneStore((state) => state.setViewMode);
+  const icon = viewMode === 'firstPerson' ? <FaUser /> : <FaEye />;
+  const label = viewMode === 'firstPerson' ? '3인칭 보기' : '1인칭 보기';
 
   return (
     <button
@@ -13,17 +15,8 @@ const SwitchViewButton = () => {
       className="absolute top-5 right-5 z-10 flex items-center gap-2 rounded-full bg-yellow-300 px-4 py-3 text-sm font-semibold text-black shadow transition hover:scale-105 active:scale-95"
       title="시점 전환"
     >
-      {viewMode === 'firstPerson' ? (
-        <>
-          <FaUser />
-          <span>3인칭 보기</span>
-        </>
-      ) : (
-        <>
-          <FaEye />
-          <span>1인칭 보기</span>
-        </>
-      )}
+      {icon}
+      <span>{label}</span>
     </button>
   );
 };
