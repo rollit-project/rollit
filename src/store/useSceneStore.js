@@ -36,7 +36,7 @@ export const useSceneStore = create((set) => ({
         };
       }
 
-      const previous = state.railHistory[state.railHistory.length - 2];
+      const previous = state.railHistory[state.railHistory.length - 1];
       const newHistory = state.railHistory.slice(0, -1);
 
       return {
@@ -48,5 +48,9 @@ export const useSceneStore = create((set) => ({
     set(() => ({
       placedRails: [...INITIAL_RAILS],
       railHistory: [[...INITIAL_RAILS]],
+    })),
+  resetItems: () =>
+    set(() => ({
+      placedItems: [],
     })),
 }));

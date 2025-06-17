@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import EditorCanvas from '@/components/canvas/EditorCanvas';
 import EditorPanel from '@/components/ui/editor/EditorPanel';
@@ -6,11 +6,14 @@ import Slider from '@/components/ui/editor/Slider';
 import { MIN_CAMERA_SPEED } from '@/constants/cameraSensitivity';
 import { INITIAL_RAILS } from '@/constants/initialRails';
 import { usePlaceRails } from '@/hooks/usePlaceRails';
+import { useSceneStore } from '@/store/useSceneStore';
 
 const Editor = () => {
   const [cameraRotationSpeed, setCameraRotationSpeed] = useState(MIN_CAMERA_SPEED);
   const [cameraMoveSpeed, setCameraMoveSpeed] = useState(MIN_CAMERA_SPEED);
-
+  const resetRails = useSceneStore((state) => state.resetRails);
+  const resetItems = useSceneStore((state) => state.resetItems);
+  const setCoasterPath = useSceneStore((state) => state.setCoasterPath);
   const handleRotationSpeedChange = (value) => {
     setCameraRotationSpeed(value);
   };
@@ -20,6 +23,12 @@ const Editor = () => {
   };
 
   usePlaceRails(INITIAL_RAILS);
+
+  useEffect(() => {
+    resetRails();
+    resetItems();
+    setCoasterPath(null);
+  }, []);
 
   return (
     <main className="h-full">
