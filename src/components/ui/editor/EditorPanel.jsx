@@ -4,8 +4,10 @@ import { v4 as uuidv4 } from 'uuid';
 import EditorActionControls from '@/components/ui/editor/EditorActionControls';
 import EditorCategorySelector from '@/components/ui/editor/EditorCategorySelector';
 import PanelItems from '@/components/ui/editor/PanelItems';
+import { PRESET_LIST } from '@/constants/presetList';
 import { useAutoHorizontalScroll } from '@/hooks/useAutoHorizontalScroll';
 import { useSceneStore } from '@/store/useSceneStore';
+import { loadPreset } from '@/utils/loadPreset';
 import { getImageListByType } from '@/utils/sceneAssetUtils';
 
 const EditorPanel = () => {
@@ -14,16 +16,33 @@ const EditorPanel = () => {
   const setSelectedItem = useSceneStore((state) => state.setSelectedItem);
   const setSelectedRail = useSceneStore((state) => state.setSelectedRail);
   const { scrollRef, handleMouseMove, handleMouseLeave } = useAutoHorizontalScroll();
+
   const handlePanelToggle = (buttonType) => {
     setIsPanelOpen(activePanelType !== buttonType);
     setActivePanelType(activePanelType !== buttonType ? buttonType : '');
   };
 
+  const handlePresetClick = (name) => {
+    const jsonPath = PRESET_LIST.find((preset) => preset.name === name)?.json;
+
+    if (jsonPath) {
+      loadPreset(jsonPath);
+    }
+  };
+
   const handlePanelItemClick = (name) => {
-    if (activePanelType === 'rail') {
-      setSelectedRail({ name, id: uuidv4() });
-    } else {
-      setSelectedItem(name);
+    switch (activePanelType) {
+      case 'preset':
+        handlePresetClick(name);
+        break;
+      case 'rail':
+        setSelectedRail({ name, id: uuidv4() });
+        break;
+      case 'item':
+        setSelectedItem(name);
+        break;
+      default:
+        break;
     }
   };
 
