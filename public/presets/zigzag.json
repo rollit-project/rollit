@@ -1,0 +1,1010 @@
+[
+  {
+    "id": "init-1",
+    "modelPath": "/objects/rail-straight.glb",
+    "position": [
+      0,
+      0,
+      12
+    ],
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "points": [
+      [
+        0,
+        0,
+        12
+      ],
+      [
+        0,
+        0,
+        6
+      ]
+    ],
+    "endPoint": [
+      0,
+      0,
+      6
+    ],
+    "accumulatedYRotation": 0
+  },
+  {
+    "id": "init-2",
+    "modelPath": "/objects/rail-straight.glb",
+    "position": [
+      0,
+      0,
+      6
+    ],
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "points": [
+      [
+        0,
+        0,
+        6
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "endPoint": [
+      0,
+      0,
+      0
+    ],
+    "accumulatedYRotation": 0
+  },
+  {
+    "id": "init-3",
+    "modelPath": "/objects/rail-straight.glb",
+    "position": [
+      0,
+      0,
+      0
+    ],
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "points": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        -6
+      ]
+    ],
+    "endPoint": [
+      0,
+      0,
+      -6
+    ],
+    "accumulatedYRotation": 0
+  },
+  {
+    "id": "d3bee6b7-c17f-471f-93aa-33f6dc9036db",
+    "modelPath": "/objects/rail-up-slope-full.glb",
+    "position": [
+      0,
+      0,
+      -6
+    ],
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "points": [
+      [
+        0,
+        0,
+        -6
+      ],
+      [
+        0,
+        0.6,
+        -8
+      ],
+      [
+        0,
+        3,
+        -10.8
+      ],
+      [
+        0,
+        3.4,
+        -12
+      ]
+    ],
+    "endPoint": [
+      0,
+      3.4,
+      -12
+    ],
+    "accumulatedYRotation": 0
+  },
+  {
+    "id": "e9e927c6-a261-404e-9425-18c195df3dd1",
+    "modelPath": "/objects/rail-down-slope-full.glb",
+    "position": [
+      0,
+      3.4,
+      -12
+    ],
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "points": [
+      [
+        0,
+        3.4,
+        -12
+      ],
+      [
+        0,
+        2.8,
+        -14
+      ],
+      [
+        0,
+        0.3999999999999999,
+        -16.8
+      ],
+      [
+        0,
+        0,
+        -18
+      ]
+    ],
+    "endPoint": [
+      0,
+      0,
+      -18
+    ],
+    "accumulatedYRotation": 0
+  },
+  {
+    "id": "fd51057d-1c13-4a55-a30e-07e3d8abe154",
+    "modelPath": "/objects/rail-up-slope-full.glb",
+    "position": [
+      0,
+      0,
+      -18
+    ],
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "points": [
+      [
+        0,
+        0,
+        -18
+      ],
+      [
+        0,
+        0.6,
+        -20
+      ],
+      [
+        0,
+        3,
+        -22.8
+      ],
+      [
+        0,
+        3.4,
+        -24
+      ]
+    ],
+    "endPoint": [
+      0,
+      3.4,
+      -24
+    ],
+    "accumulatedYRotation": 0
+  },
+  {
+    "id": "7ef3c578-9985-4a02-b93a-5755f4388824",
+    "modelPath": "/objects/rail-down-slope-full.glb",
+    "position": [
+      0,
+      3.4,
+      -24
+    ],
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "points": [
+      [
+        0,
+        3.4,
+        -24
+      ],
+      [
+        0,
+        2.8,
+        -26
+      ],
+      [
+        0,
+        0.3999999999999999,
+        -28.8
+      ],
+      [
+        0,
+        0,
+        -30
+      ]
+    ],
+    "endPoint": [
+      0,
+      0,
+      -30
+    ],
+    "accumulatedYRotation": 0
+  },
+  {
+    "id": "acd2d7e0-9fd2-468c-8316-52a5a74f1d06",
+    "modelPath": "/objects/rail-up-slope-full.glb",
+    "position": [
+      0,
+      0,
+      -30
+    ],
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "points": [
+      [
+        0,
+        0,
+        -30
+      ],
+      [
+        0,
+        0.6,
+        -32
+      ],
+      [
+        0,
+        3,
+        -34.8
+      ],
+      [
+        0,
+        3.4,
+        -36
+      ]
+    ],
+    "endPoint": [
+      0,
+      3.4,
+      -36
+    ],
+    "accumulatedYRotation": 0
+  },
+  {
+    "id": "50fe89c8-d1b9-45e4-9aeb-b6c61abd71e7",
+    "modelPath": "/objects/rail-down-slope-full.glb",
+    "position": [
+      0,
+      3.4,
+      -36
+    ],
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "points": [
+      [
+        0,
+        3.4,
+        -36
+      ],
+      [
+        0,
+        2.8,
+        -38
+      ],
+      [
+        0,
+        0.3999999999999999,
+        -40.8
+      ],
+      [
+        0,
+        0,
+        -42
+      ]
+    ],
+    "endPoint": [
+      0,
+      0,
+      -42
+    ],
+    "accumulatedYRotation": 0
+  },
+  {
+    "id": "f234aa15-8c04-4440-a1b6-1d85d0b4afbf",
+    "modelPath": "objects/rail-curve-left.glb",
+    "position": [
+      0,
+      0,
+      -42
+    ],
+    "rotation": [
+      0,
+      0,
+      0
+    ],
+    "points": [
+      [
+        0,
+        0,
+        -42
+      ],
+      [
+        -0.5,
+        0,
+        -44
+      ],
+      [
+        -0.8,
+        0,
+        -45
+      ],
+      [
+        -2,
+        0,
+        -47
+      ],
+      [
+        -4,
+        0,
+        -48
+      ],
+      [
+        -6.6,
+        0,
+        -48.6
+      ]
+    ],
+    "endPoint": [
+      -6.6,
+      0,
+      -48.6
+    ],
+    "accumulatedYRotation": 1.5707963267948966
+  },
+  {
+    "id": "ef255bf3-68f7-4d99-a0b1-89f214515a96",
+    "modelPath": "objects/rail-curve-left.glb",
+    "position": [
+      -6.6,
+      0,
+      -48.6
+    ],
+    "rotation": [
+      0,
+      1.5707963267948966,
+      0
+    ],
+    "points": [
+      [
+        -6.6,
+        0,
+        -48.6
+      ],
+      [
+        -8.6,
+        0,
+        -48.1
+      ],
+      [
+        -9.6,
+        0,
+        -47.800000000000004
+      ],
+      [
+        -11.6,
+        0,
+        -46.6
+      ],
+      [
+        -12.600000000000001,
+        0,
+        -44.6
+      ],
+      [
+        -13.2,
+        0,
+        -42
+      ]
+    ],
+    "endPoint": [
+      -13.2,
+      0,
+      -42
+    ],
+    "accumulatedYRotation": 3.141592653589793
+  },
+  {
+    "id": "0ed61e94-c070-4824-bc86-32f37cf177aa",
+    "modelPath": "/objects/rail-up-slope-full.glb",
+    "position": [
+      -13.2,
+      0,
+      -42
+    ],
+    "rotation": [
+      0,
+      3.141592653589793,
+      0
+    ],
+    "points": [
+      [
+        -13.2,
+        0,
+        -42
+      ],
+      [
+        -13.2,
+        0.6,
+        -40
+      ],
+      [
+        -13.2,
+        3,
+        -37.2
+      ],
+      [
+        -13.2,
+        3.4,
+        -36
+      ]
+    ],
+    "endPoint": [
+      -13.2,
+      3.4,
+      -36
+    ],
+    "accumulatedYRotation": 3.141592653589793
+  },
+  {
+    "id": "5f97a3cc-fb3f-4bf7-8d73-3edf673cd8e0",
+    "modelPath": "/objects/rail-down-slope-full.glb",
+    "position": [
+      -13.2,
+      3.4,
+      -36
+    ],
+    "rotation": [
+      0,
+      3.141592653589793,
+      0
+    ],
+    "points": [
+      [
+        -13.2,
+        3.4,
+        -36
+      ],
+      [
+        -13.2,
+        2.8,
+        -34
+      ],
+      [
+        -13.2,
+        0.3999999999999999,
+        -31.2
+      ],
+      [
+        -13.2,
+        0,
+        -30
+      ]
+    ],
+    "endPoint": [
+      -13.2,
+      0,
+      -30
+    ],
+    "accumulatedYRotation": 3.141592653589793
+  },
+  {
+    "id": "f1831c2b-1e2d-4dfd-ae8f-c67911def4db",
+    "modelPath": "/objects/rail-up-slope-full.glb",
+    "position": [
+      -13.2,
+      0,
+      -30
+    ],
+    "rotation": [
+      0,
+      3.141592653589793,
+      0
+    ],
+    "points": [
+      [
+        -13.2,
+        0,
+        -30
+      ],
+      [
+        -13.2,
+        0.6,
+        -28
+      ],
+      [
+        -13.2,
+        3,
+        -25.2
+      ],
+      [
+        -13.2,
+        3.4,
+        -24
+      ]
+    ],
+    "endPoint": [
+      -13.2,
+      3.4,
+      -24
+    ],
+    "accumulatedYRotation": 3.141592653589793
+  },
+  {
+    "id": "41793f65-3a20-4a78-bab0-4b5cd7b77f7b",
+    "modelPath": "/objects/rail-down-slope-full.glb",
+    "position": [
+      -13.2,
+      3.4,
+      -24
+    ],
+    "rotation": [
+      0,
+      3.141592653589793,
+      0
+    ],
+    "points": [
+      [
+        -13.2,
+        3.4,
+        -24
+      ],
+      [
+        -13.2,
+        2.8,
+        -22
+      ],
+      [
+        -13.2,
+        0.3999999999999999,
+        -19.2
+      ],
+      [
+        -13.2,
+        0,
+        -18
+      ]
+    ],
+    "endPoint": [
+      -13.2,
+      0,
+      -18
+    ],
+    "accumulatedYRotation": 3.141592653589793
+  },
+  {
+    "id": "ce88b672-4487-4511-bda7-e63e39c407fa",
+    "modelPath": "/objects/rail-up-slope-full.glb",
+    "position": [
+      -13.2,
+      0,
+      -18
+    ],
+    "rotation": [
+      0,
+      3.141592653589793,
+      0
+    ],
+    "points": [
+      [
+        -13.2,
+        0,
+        -18
+      ],
+      [
+        -13.2,
+        0.6,
+        -16
+      ],
+      [
+        -13.2,
+        3,
+        -13.2
+      ],
+      [
+        -13.2,
+        3.4,
+        -12
+      ]
+    ],
+    "endPoint": [
+      -13.2,
+      3.4,
+      -12
+    ],
+    "accumulatedYRotation": 3.141592653589793
+  },
+  {
+    "id": "892c4bd4-76c0-4446-b1dc-4396edc06a66",
+    "modelPath": "/objects/rail-down-slope-full.glb",
+    "position": [
+      -13.2,
+      3.4,
+      -12
+    ],
+    "rotation": [
+      0,
+      3.141592653589793,
+      0
+    ],
+    "points": [
+      [
+        -13.2,
+        3.4,
+        -12
+      ],
+      [
+        -13.2,
+        2.8,
+        -10
+      ],
+      [
+        -13.2,
+        0.3999999999999999,
+        -7.2
+      ],
+      [
+        -13.2,
+        0,
+        -6
+      ]
+    ],
+    "endPoint": [
+      -13.2,
+      0,
+      -6
+    ],
+    "accumulatedYRotation": 3.141592653589793
+  },
+  {
+    "id": "4661f495-4851-4990-9058-8682ef329b97",
+    "modelPath": "/objects/rail-up-slope-full.glb",
+    "position": [
+      -13.2,
+      0,
+      -6
+    ],
+    "rotation": [
+      0,
+      3.141592653589793,
+      0
+    ],
+    "points": [
+      [
+        -13.2,
+        0,
+        -6
+      ],
+      [
+        -13.2,
+        0.6,
+        -4
+      ],
+      [
+        -13.2,
+        3,
+        -1.2000000000000002
+      ],
+      [
+        -13.2,
+        3.4,
+        0
+      ]
+    ],
+    "endPoint": [
+      -13.2,
+      3.4,
+      0
+    ],
+    "accumulatedYRotation": 3.141592653589793
+  },
+  {
+    "id": "64407ae0-9b77-4286-bfab-11bda2935a7f",
+    "modelPath": "/objects/rail-down-slope-full.glb",
+    "position": [
+      -13.2,
+      3.4,
+      0
+    ],
+    "rotation": [
+      0,
+      3.141592653589793,
+      0
+    ],
+    "points": [
+      [
+        -13.2,
+        3.4,
+        0
+      ],
+      [
+        -13.2,
+        2.8,
+        2
+      ],
+      [
+        -13.2,
+        0.3999999999999999,
+        4.8
+      ],
+      [
+        -13.2,
+        0,
+        6
+      ]
+    ],
+    "endPoint": [
+      -13.2,
+      0,
+      6
+    ],
+    "accumulatedYRotation": 3.141592653589793
+  },
+  {
+    "id": "ffa929ae-6cd4-4b9a-8eb1-20724ac874bd",
+    "modelPath": "/objects/rail-up-slope-full.glb",
+    "position": [
+      -13.2,
+      0,
+      6
+    ],
+    "rotation": [
+      0,
+      3.141592653589793,
+      0
+    ],
+    "points": [
+      [
+        -13.2,
+        0,
+        6
+      ],
+      [
+        -13.2,
+        0.6,
+        8
+      ],
+      [
+        -13.2,
+        3,
+        10.8
+      ],
+      [
+        -13.2,
+        3.4,
+        12
+      ]
+    ],
+    "endPoint": [
+      -13.2,
+      3.4,
+      12
+    ],
+    "accumulatedYRotation": 3.141592653589793
+  },
+  {
+    "id": "312860e9-41e2-415b-8aa0-9999eb3f2c56",
+    "modelPath": "/objects/rail-down-slope-full.glb",
+    "position": [
+      -13.2,
+      3.4,
+      12
+    ],
+    "rotation": [
+      0,
+      3.141592653589793,
+      0
+    ],
+    "points": [
+      [
+        -13.2,
+        3.4,
+        12
+      ],
+      [
+        -13.2,
+        2.8,
+        14
+      ],
+      [
+        -13.2,
+        0.3999999999999999,
+        16.8
+      ],
+      [
+        -13.2,
+        0,
+        18
+      ]
+    ],
+    "endPoint": [
+      -13.2,
+      0,
+      18
+    ],
+    "accumulatedYRotation": 3.141592653589793
+  },
+  {
+    "id": "200815a3-a509-445f-9a2e-a88469697aa1",
+    "modelPath": "objects/rail-curve-left.glb",
+    "position": [
+      -13.2,
+      0,
+      18
+    ],
+    "rotation": [
+      0,
+      3.141592653589793,
+      0
+    ],
+    "points": [
+      [
+        -13.2,
+        0,
+        18
+      ],
+      [
+        -12.7,
+        0,
+        20
+      ],
+      [
+        -12.4,
+        0,
+        21
+      ],
+      [
+        -11.2,
+        0,
+        23
+      ],
+      [
+        -9.2,
+        0,
+        24
+      ],
+      [
+        -6.6000000000000005,
+        0,
+        24.6
+      ]
+    ],
+    "endPoint": [
+      -6.6000000000000005,
+      0,
+      24.6
+    ],
+    "accumulatedYRotation": 4.71238898038469
+  },
+  {
+    "id": "8377f2b3-215a-494c-98e4-e13608a77738",
+    "modelPath": "objects/rail-curve-left.glb",
+    "position": [
+      -6.6000000000000005,
+      0,
+      24.6
+    ],
+    "rotation": [
+      0,
+      4.71238898038469,
+      0
+    ],
+    "points": [
+      [
+        -6.6000000000000005,
+        0,
+        24.6
+      ],
+      [
+        -4.6000000000000005,
+        0,
+        24.1
+      ],
+      [
+        -3.6,
+        0,
+        23.8
+      ],
+      [
+        -1.6000000000000005,
+        0,
+        22.6
+      ],
+      [
+        -0.5999999999999996,
+        0,
+        20.6
+      ],
+      [
+        -1.7763568394002505e-15,
+        0,
+        18
+      ]
+    ],
+    "endPoint": [
+      -1.7763568394002505e-15,
+      0,
+      18
+    ],
+    "accumulatedYRotation": 6.283185307179586
+  },
+  {
+    "id": "73917851-9498-4f21-a969-252c6f7af91b",
+    "modelPath": "/objects/rail-straight.glb",
+    "position": [
+      -1.7763568394002505e-15,
+      0,
+      18
+    ],
+    "rotation": [
+      0,
+      6.283185307179586,
+      0
+    ],
+    "points": [
+      [
+        -1.7763568394002505e-15,
+        0,
+        18
+      ],
+      [
+        -3.067806804234267e-16,
+        0,
+        12
+      ]
+    ],
+    "endPoint": [
+      -3.067806804234267e-16,
+      0,
+      12
+    ],
+    "accumulatedYRotation": 6.283185307179586
+  }
+]
