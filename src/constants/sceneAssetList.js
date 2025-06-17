@@ -2,7 +2,6 @@ export const SCENE_ASSET_LIST = [
   {
     type: 'coaster',
     name: 'coaster',
-    src: '/images/coaster.png',
     model: '/objects/coaster.glb',
   },
   {
