@@ -5,11 +5,12 @@ import { useSceneStore } from '@/store/useSceneStore';
 
 const Simulation = () => {
   const simulationProgress = useSceneStore((state) => state.simulationProgress);
+  const isSimulationFinished = simulationProgress >= 1;
 
   return (
     <main className="h-full">
       <SimulationCanvas />
-      {simulationProgress >= 1 ? <RestartButton /> : <SwitchViewButton />}
+      {isSimulationFinished ? <RestartButton /> : <SwitchViewButton />}
     </main>
   );
 };

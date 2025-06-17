@@ -68,7 +68,9 @@ const CartFollower = () => {
   }, []);
 
   useFrame((_, delta) => {
-    if (!coasterPath || !cartRef.current || simulationProgress >= 1) {
+    const shouldSkipFrame = !coasterPath || !cartRef.current || simulationProgress >= 1;
+
+    if (shouldSkipFrame) {
       return;
     }
     const direction = coasterPath.getTangentAt(simulationProgress);
