@@ -14,19 +14,17 @@ export const useSceneStore = create((set) => ({
   simulationProgress: 0,
   setSelectedItem: (item) => set({ selectedItem: item }),
   setSelectedRail: (rail) => set({ selectedRail: rail }),
-  setCoasterPath: (path) => set({ coasterPath: path }),
-  setPlacedItems: (item) => set({ placedItems: item }),
+  setPlacedItems: (items) => set({ placedItems: items }),
   setPlacedRails: (rails) =>
     set((state) => ({
       placedRails: rails,
       railHistory: [...state.railHistory, [...state.placedRails]],
     })),
-  toggleViewMode: () =>
-    set((state) => ({
-      viewMode: state.viewMode === 'firstPerson' ? 'thirdPerson' : 'firstPerson',
-    })),
-  setSimulationSpeed: (value) => set({ simulationSpeed: value }),
-  setSimulationProgress: (value) => set({ simulationProgress: value }),
+  setCoasterPath: (path) => set({ coasterPath: path }),
+  setSimulationSpeed: (speed) => set({ simulationSpeed: speed }),
+  setSimulationProgress: (progress) => set({ simulationProgress: progress }),
+  setViewMode: (mode) => set({ viewMode: mode }),
+
   undoRail: () =>
     set((state) => {
       if (state.railHistory.length <= 1) {
@@ -36,7 +34,7 @@ export const useSceneStore = create((set) => ({
         };
       }
 
-      const previous = state.railHistory[state.railHistory.length - 2];
+      const previous = state.railHistory[state.railHistory.length - 1];
       const newHistory = state.railHistory.slice(0, -1);
 
       return {
@@ -44,9 +42,20 @@ export const useSceneStore = create((set) => ({
         railHistory: newHistory,
       };
     }),
+
   resetRails: () =>
     set(() => ({
       placedRails: [...INITIAL_RAILS],
       railHistory: [[...INITIAL_RAILS]],
+    })),
+
+  resetItems: () =>
+    set(() => ({
+      placedItems: [],
+    })),
+
+  toggleViewMode: () =>
+    set((state) => ({
+      viewMode: state.viewMode === 'firstPerson' ? 'thirdPerson' : 'firstPerson',
     })),
 }));
