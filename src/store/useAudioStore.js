@@ -9,54 +9,68 @@ export const useAudioStore = create((set, get) => {
     SFX: { RAIL_INSTALL_VOLUME },
   } = SOUND_CONFIG;
 
-  let loopAudio = null;
-
   return {
+    bgmAudio: null,
     src: null,
-    playing: false,
+    isBgmPlaying: false,
     volume: DEFAULT_VOLUME,
-    currentSfxAudio: null,
-    lastRailType: null,
+    oneShotSfxAudio: null,
+    loopingSfxAudio: null,
 
-    playBgm: (src) => {
-      localStorage.setItem('bgm_enabled', 'true');
-      set({ src, playing: true });
+    playBgm: async (src) => {
+      const { bgmAudio, volume } = get();
+
+      if (bgmAudio) {
+        bgmAudio.pause();
+        bgmAudio.currentTime = 0;
+      }
+
+      const audio = new Audio(src);
+
+      audio.loop = true;
+      audio.volume = volume;
+
+      try {
+        await audio.play();
+        set({ bgmAudio: audio, isBgmPlaying: true, src });
+      } catch {
+        toast.error('🔇 BGM 재생 실패');
+      }
     },
 
     pauseBgm: () => {
+      const { bgmAudio } = get();
+
+      if (bgmAudio) {
+        bgmAudio.pause();
+        bgmAudio.currentTime = 0;
+      }
+
       localStorage.removeItem('bgm_enabled');
-      set({ playing: false });
+      set({ isBgmPlaying: false, bgmAudio: null });
     },
 
     playSfx: async (src, sfxVolume = RAIL_INSTALL_VOLUME, loop = false) => {
+      const state = get();
+
+      if (loop && state.loopingSfxAudio) {
+        state.loopingSfxAudio.pause();
+        state.loopingSfxAudio.currentTime = 0;
+        set({ loopingSfxAudio: null });
+      }
+
       try {
-        if (loop && loopAudio) {
-          loopAudio.pause();
-          loopAudio.currentTime = 0;
-          loopAudio.src = '';
-          loopAudio = null;
-        }
+        const audio = new Audio(src);
+
+        audio.volume = sfxVolume;
+        audio.loop = loop;
+
+        await audio.play();
 
         if (loop) {
-          const audio = new Audio(src);
-
-          audio.volume = sfxVolume;
-          audio.loop = true;
-          loopAudio = audio;
-
-          audio.addEventListener('canplaythrough', () => {
-            audio.play().catch(() => {
-              toast.error('🔇 효과음 재생 실패', { duration: 1000 });
-            });
-          });
-
-          audio.load();
+          set({ loopingSfxAudio: audio });
         } else {
-          const sfx = new Audio(src);
-
-          sfx.volume = sfxVolume;
-          await sfx.play();
-          set({ currentSfxAudio: sfx });
+          set({ oneShotSfxAudio: audio });
         }
       } catch (error) {
         toast.error('🔇 효과음 재생 실패', { duration: 1000 });
@@ -64,19 +78,18 @@ export const useAudioStore = create((set, get) => {
     },
 
     stopSfx: () => {
-      const { currentSfxAudio } = get();
+      const { oneShotSfxAudio, loopingSfxAudio } = get();
 
-      if (currentSfxAudio) {
-        currentSfxAudio.pause();
-        currentSfxAudio.currentTime = 0;
-        set({ currentSfxAudio: null });
+      if (oneShotSfxAudio) {
+        oneShotSfxAudio.pause();
+        oneShotSfxAudio.currentTime = 0;
+        set({ oneShotSfxAudio: null });
       }
 
-      if (loopAudio) {
-        loopAudio.pause();
-        loopAudio.currentTime = 0;
-        loopAudio.src = '';
-        loopAudio = null;
+      if (loopingSfxAudio) {
+        loopingSfxAudio.pause();
+        loopingSfxAudio.currentTime = 0;
+        set({ loopingSfxAudio: null });
       }
     },
 
@@ -84,8 +97,18 @@ export const useAudioStore = create((set, get) => {
       const numericVolume = parseFloat(volume);
 
       set({ volume: numericVolume });
-    },
 
-    setLastRailType: (type) => set({ lastRailType: type }),
+      const { bgmAudio, loopingSfxAudio, oneShotSfxAudio } = get();
+
+      if (bgmAudio) {
+        bgmAudio.volume = numericVolume;
+      }
+      if (loopingSfxAudio) {
+        loopingSfxAudio.volume = numericVolume;
+      }
+      if (oneShotSfxAudio) {
+        oneShotSfxAudio.volume = numericVolume;
+      }
+    },
   };
 });
