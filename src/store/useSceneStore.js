@@ -14,17 +14,19 @@ export const useSceneStore = create((set) => ({
   simulationProgress: 0,
   setSelectedItem: (item) => set({ selectedItem: item }),
   setSelectedRail: (rail) => set({ selectedRail: rail }),
-  setPlacedItems: (items) => set({ placedItems: items }),
+  setCoasterPath: (path) => set({ coasterPath: path }),
+  setPlacedItems: (item) => set({ placedItems: item }),
   setPlacedRails: (rails) =>
     set((state) => ({
       placedRails: rails,
       railHistory: [...state.railHistory, [...state.placedRails]],
     })),
-  setCoasterPath: (path) => set({ coasterPath: path }),
-  setSimulationSpeed: (speed) => set({ simulationSpeed: speed }),
-  setSimulationProgress: (progress) => set({ simulationProgress: progress }),
-  setViewMode: (mode) => set({ viewMode: mode }),
-
+  toggleViewMode: () =>
+    set((state) => ({
+      viewMode: state.viewMode === 'firstPerson' ? 'thirdPerson' : 'firstPerson',
+    })),
+  setSimulationSpeed: (value) => set({ simulationSpeed: value }),
+  setSimulationProgress: (value) => set({ simulationProgress: value }),
   undoRail: () =>
     set((state) => {
       if (state.railHistory.length <= 1) {
@@ -42,20 +44,13 @@ export const useSceneStore = create((set) => ({
         railHistory: newHistory,
       };
     }),
-
   resetRails: () =>
     set(() => ({
       placedRails: [...INITIAL_RAILS],
       railHistory: [[...INITIAL_RAILS]],
     })),
-
   resetItems: () =>
     set(() => ({
       placedItems: [],
-    })),
-
-  toggleViewMode: () =>
-    set((state) => ({
-      viewMode: state.viewMode === 'firstPerson' ? 'thirdPerson' : 'firstPerson',
     })),
 }));
