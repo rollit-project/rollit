@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 
 import { BASE_CART_SPEED, MIN_CART_SPEED, SPEED_REDUCTION } from '@/constants/cartSpeed';
 import { SIMULATION_CAMERA } from '@/constants/simulationCamera';
+import { useAudio } from '@/hooks/useAudio';
 import { useSceneStore } from '@/store/useSceneStore';
 import { getRotationFromDirection } from '@/utils/getRotationFromDirection';
 
@@ -20,6 +21,8 @@ const CartFollower = () => {
   const { camera } = useThree();
 
   const { FIRST_PERSON, THIRD_PERSON, LERP } = SIMULATION_CAMERA;
+
+  const { stopSfx } = useAudio();
 
   const updateCartAndCamera = (newProgress, direction) => {
     const cartHeightOffset = 2;
@@ -80,6 +83,10 @@ const CartFollower = () => {
 
     setSimulationProgress(nextProgress);
     updateCartAndCamera(nextProgress, direction);
+
+    if (nextProgress >= 1) {
+      stopSfx();
+    }
   });
 
   return <primitive ref={cartRef} object={cart} scale={[1, 1, 0.8]} />;
