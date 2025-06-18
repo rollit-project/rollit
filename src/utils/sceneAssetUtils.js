@@ -1,9 +1,9 @@
-import { PRESET_LIST } from '@/constants/presetList';
+import { PRESETS } from '@/constants/rail/presets';
 import { SCENE_ASSET_LIST } from '@/constants/sceneAssetList';
 
 export const getImageListByType = (type) => {
   if (type === 'preset') {
-    return PRESET_LIST;
+    return PRESETS;
   }
 
   return SCENE_ASSET_LIST.filter((item) => item.type === type);

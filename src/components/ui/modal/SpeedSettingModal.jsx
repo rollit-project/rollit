@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 import ModalLayout from '@/components/ui/modal/ModalLayout';
-import { useSceneStore } from '@/store/useSceneStore';
+import { useSimulationStore } from '@/store/useSimulationStore';
 
 const SpeedSettingModal = ({ onCancel, onStart }) => {
   const [sliderSpeed, setSliderSpeed] = useState(1);
-  const setSimulationSpeed = useSceneStore((state) => state.setSimulationSpeed);
+  const setSimulationSpeed = useSimulationStore((state) => state.setSimulationSpeed);
 
   const handleStart = () => {
     setSimulationSpeed(sliderSpeed);

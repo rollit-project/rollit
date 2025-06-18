@@ -1,7 +1,7 @@
 import { useGLTF } from '@react-three/drei';
 
 const Ground = () => {
-  const { scene } = useGLTF('/objects/tree.glb');
+  const { scene } = useGLTF('/objects/environment/tree.glb');
 
   const treePositions = [
     [30, -0.5, -130],

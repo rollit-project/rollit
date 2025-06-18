@@ -4,7 +4,7 @@ import {
   CAMERA_SPEED_STEP,
   MAX_CAMERA_SPEED,
   MIN_CAMERA_SPEED,
-} from '@/constants/cameraSensitivity';
+} from '@/constants/camera/cameraSensitivity';
 
 const CameraSpeedSlider = ({ label, id, value, onChange }) => {
   return (

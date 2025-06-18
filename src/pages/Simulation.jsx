@@ -6,12 +6,12 @@ import RestartButton from '@/components/ui/simulation/RestartButton';
 import SwitchViewButton from '@/components/ui/simulation/SwitchViewButton';
 import { SFX_PATHS } from '@/constants/sound';
 import { useAudio } from '@/hooks/useAudio';
-import { useSceneStore } from '@/store/useSceneStore';
+import { useSimulationStore } from '@/store/useSimulationStore';
 
 const Simulation = () => {
   const navigate = useNavigate();
-  const simulationProgress = useSceneStore((state) => state.simulationProgress);
-  const coasterPath = useSceneStore((state) => state.coasterPath);
+  const simulationProgress = useSimulationStore((state) => state.simulationProgress);
+  const coasterPath = useSimulationStore((state) => state.coasterPath);
   const isSimulationFinished = simulationProgress >= 1;
 
   const { playSfx, stopSfx } = useAudio();

@@ -5,18 +5,19 @@ import { v4 as uuidv4 } from 'uuid';
 import EditorActionControls from '@/components/ui/editor/EditorActionControls';
 import EditorCategorySelector from '@/components/ui/editor/EditorCategorySelector';
 import PanelItems from '@/components/ui/editor/PanelItems';
-import { PRESET_LIST } from '@/constants/presetList';
+import { PRESETS } from '@/constants/rail/presets';
 import { useAutoHorizontalScroll } from '@/hooks/useAutoHorizontalScroll';
 import { useAudioStore } from '@/store/useAudioStore';
-import { useSceneStore } from '@/store/useSceneStore';
+import { useItemStore } from '@/store/useItemStore';
+import { useRailStore } from '@/store/useRailStore';
 import { loadPreset } from '@/utils/loadPreset';
 import { getImageListByType } from '@/utils/sceneAssetUtils';
 
 const EditorPanel = () => {
   const [activePanelType, setActivePanelType] = useState('');
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const setSelectedItem = useSceneStore((state) => state.setSelectedItem);
-  const setSelectedRail = useSceneStore((state) => state.setSelectedRail);
+  const setSelectedItem = useItemStore((state) => state.setSelectedItem);
+  const setSelectedRail = useRailStore((state) => state.setSelectedRail);
   const { scrollRef, handleMouseMove, handleMouseLeave } = useAutoHorizontalScroll();
   const playSfx = useAudioStore((state) => state.playSfx);
 
@@ -26,7 +27,7 @@ const EditorPanel = () => {
   };
 
   const handlePresetClick = (name) => {
-    const jsonPath = PRESET_LIST.find((preset) => preset.name === name)?.json;
+    const jsonPath = PRESETS.find((preset) => preset.name === name)?.json;
 
     if (jsonPath) {
       loadPreset(jsonPath);

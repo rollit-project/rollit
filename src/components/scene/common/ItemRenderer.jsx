@@ -1,8 +1,8 @@
 import ItemModel from '@/components/scene/common/ItemModel';
-import { useSceneStore } from '@/store/useSceneStore';
+import { useItemStore } from '@/store/useItemStore';
 
 const ItemRenderer = () => {
-  const placedItems = useSceneStore((state) => state.placedItems);
+  const placedItems = useItemStore((state) => state.placedItems);
 
   return (
     <>

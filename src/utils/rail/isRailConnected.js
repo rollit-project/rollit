@@ -1,9 +1,9 @@
 import * as THREE from 'three';
 
-import { useSceneStore } from '@/store/useSceneStore';
+import { useRailStore } from '@/store/useRailStore';
 
 export const isRailConnected = () => {
-  const { placedRails } = useSceneStore.getState();
+  const { placedRails } = useRailStore.getState();
 
   if (placedRails.length < 2) {
     return false;

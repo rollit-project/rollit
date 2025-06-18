@@ -1,17 +1,17 @@
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 
-import { RAIL_POINT_TEMPLATES } from '@/constants/railPointTemplates';
-import { RAIL_ROTATION_MAP } from '@/constants/railRotationMap';
-import { useSceneStore } from '@/store/useSceneStore';
-import { getWorldRailPoints } from '@/utils/getWorldRailPoints';
+import { POINT_TEMPLATES } from '@/constants/rail/pointTemplates';
+import { ROTATION_MAP } from '@/constants/rail/rotationMap';
+import { useRailStore } from '@/store/useRailStore';
 import { isGroundCollision } from '@/utils/isGroundCollision';
+import { getWorldRailPoints } from '@/utils/rail/getWorldRailPoints';
 import { getModelPathByName } from '@/utils/sceneAssetUtils';
 
 export const usePlaceRails = (initialRails = []) => {
-  const selectedRail = useSceneStore((state) => state.selectedRail);
-  const placedRails = useSceneStore((state) => state.placedRails);
-  const setPlacedRails = useSceneStore((state) => state.setPlacedRails);
+  const selectedRail = useRailStore((state) => state.selectedRail);
+  const placedRails = useRailStore((state) => state.placedRails);
+  const setPlacedRails = useRailStore((state) => state.setPlacedRails);
 
   useEffect(() => {
     setPlacedRails(initialRails);
@@ -26,8 +26,8 @@ export const usePlaceRails = (initialRails = []) => {
     const startPosition = lastPlacedRail.endPoint;
     const previousYRotation = lastPlacedRail.accumulatedYRotation;
 
-    const railPoints = RAIL_POINT_TEMPLATES[selectedRail.name];
-    const currentRailYRotation = RAIL_ROTATION_MAP[selectedRail.name] ?? 0;
+    const railPoints = POINT_TEMPLATES[selectedRail.name];
+    const currentRailYRotation = ROTATION_MAP[selectedRail.name] ?? 0;
     const accumulatedYRotation = previousYRotation + currentRailYRotation;
     const worldPoints = getWorldRailPoints(railPoints, startPosition, [0, previousYRotation, 0]);
     const endPosition = worldPoints.at(-1);
