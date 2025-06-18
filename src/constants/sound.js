@@ -7,6 +7,7 @@ export const SOUND_CONFIG = {
   },
   SFX: {
     RAIL_INSTALL_VOLUME: 1.0,
+    START_VOLUME: 0.5,
   },
 };
 

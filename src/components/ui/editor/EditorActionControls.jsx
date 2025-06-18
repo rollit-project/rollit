@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 import ActionButton from '@/components/ui/editor/ActionButton';
 import SpeedSettingModal from '@/components/ui/modal/SpeedSettingModal';
-import { SFX_PATHS } from '@/constants/sound';
+import { SFX_PATHS, SOUND_CONFIG } from '@/constants/sound';
 import { useAudio } from '@/hooks/useAudio';
 import { useSceneStore } from '@/store/useSceneStore';
 import { generateRailCurve } from '@/utils/generateRailCurve';
@@ -21,7 +21,7 @@ const EditorActionControls = () => {
   const undoRail = useSceneStore((state) => state.undoRail);
   const resetRails = useSceneStore((state) => state.resetRails);
   const { playSfx } = useAudio();
-
+  const { START_VOLUME } = SOUND_CONFIG;
   const handlePlayClick = () => {
     if (!isRailConnected()) {
       toast.error('레일이 완전히 연결되지 않았습니다! ', {
@@ -38,7 +38,7 @@ const EditorActionControls = () => {
     const smoothPoints = generateSmoothCurvePoints(placedRails);
     const generatedCurve = generateRailCurve(smoothPoints);
 
-    playSfx(SFX_PATHS.play, 0.5, true);
+    playSfx(SFX_PATHS.play, START_VOLUME, true);
 
     setCoasterPath(generatedCurve);
     navigate('/simulation');
