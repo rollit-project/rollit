@@ -6,13 +6,20 @@ import {
 } from '@/constants/cartSpeed';
 
 export const getCartSpeed = (direction) => {
-  if (direction.y > 0) {
-    const reducedSpeed = BASE_CART_SPEED - direction.y * SPEED_REDUCTION;
+  const isUphill = direction.y > 0;
+  const isDownhill = direction.y < 0;
+
+  if (isUphill) {
+    const uphillSlowdown = direction.y * SPEED_REDUCTION;
+    const reducedSpeed = BASE_CART_SPEED - uphillSlowdown;
 
     return Math.max(reducedSpeed, MIN_CART_SPEED);
   }
-  if (direction.y < 0) {
-    return BASE_CART_SPEED + Math.abs(direction.y) * SPEED_ACCELERATION;
+
+  if (isDownhill) {
+    const downhillBoost = Math.abs(direction.y) * SPEED_ACCELERATION;
+
+    return BASE_CART_SPEED + downhillBoost;
   }
 
   return BASE_CART_SPEED;
