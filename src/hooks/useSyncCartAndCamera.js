@@ -2,7 +2,7 @@ import { useThree } from '@react-three/fiber';
 
 import { SIMULATION_CAMERA } from '@/constants/camera/simulationCamera';
 import { useSceneStore } from '@/store/useSceneStore';
-import { getRotationFromDirection } from '@/utils/getRotationFromDirection';
+import { getRotationFromDirection } from '@/utils/rail/getRotationFromDirection';
 
 export const useSyncCartAndCamera = (cartRef) => {
   const { camera } = useThree();

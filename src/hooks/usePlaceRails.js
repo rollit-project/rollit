@@ -4,8 +4,8 @@ import toast from 'react-hot-toast';
 import { POINT_TEMPLATES } from '@/constants/rail/pointTemplates';
 import { ROTATION_MAP } from '@/constants/rail/rotationMap';
 import { useSceneStore } from '@/store/useSceneStore';
-import { getWorldRailPoints } from '@/utils/getWorldRailPoints';
 import { isGroundCollision } from '@/utils/isGroundCollision';
+import { getWorldRailPoints } from '@/utils/rail/getWorldRailPoints';
 import { getModelPathByName } from '@/utils/sceneAssetUtils';
 
 export const usePlaceRails = (initialRails = []) => {

@@ -9,9 +9,9 @@ import SpeedSettingModal from '@/components/ui/modal/SpeedSettingModal';
 import { SFX_PATHS, SOUND_CONFIG } from '@/constants/sound';
 import { useAudio } from '@/hooks/useAudio';
 import { useSceneStore } from '@/store/useSceneStore';
-import { generateRailCurve } from '@/utils/generateRailCurve';
-import { generateSmoothCurvePoints } from '@/utils/generateSmoothCurvePoints';
-import { isRailConnected } from '@/utils/isRailConnected';
+import { generateRailCurve } from '@/utils/rail/generateRailCurve';
+import { generateSmoothCurvePoints } from '@/utils/rail/generateSmoothCurvePoints';
+import { isRailConnected } from '@/utils/rail/isRailConnected';
 
 const EditorActionControls = () => {
   const [showSpeedModal, setShowSpeedModal] = useState(false);

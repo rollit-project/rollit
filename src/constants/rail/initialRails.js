@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 import { POINT_TEMPLATES } from '@/constants/rail/pointTemplates';
-import { getWorldRailPoints } from '@/utils/getWorldRailPoints';
+import { getWorldRailPoints } from '@/utils/rail/getWorldRailPoints';
 import { getModelPathByName } from '@/utils/sceneAssetUtils';
 
 export const INITIAL_RAILS = [
