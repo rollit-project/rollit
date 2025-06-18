@@ -5,6 +5,7 @@ import EditorActionControls from '@/components/ui/editor/EditorActionControls';
 import EditorCategorySelector from '@/components/ui/editor/EditorCategorySelector';
 import PanelItems from '@/components/ui/editor/PanelItems';
 import { useAutoHorizontalScroll } from '@/hooks/useAutoHorizontalScroll';
+import { useAudioStore } from '@/store/useAudioStore';
 import { useSceneStore } from '@/store/useSceneStore';
 import { getImageListByType } from '@/utils/sceneAssetUtils';
 
@@ -18,10 +19,11 @@ const EditorPanel = () => {
     setIsPanelOpen(activePanelType !== buttonType);
     setActivePanelType(activePanelType !== buttonType ? buttonType : '');
   };
-
+  const playSfx = useAudioStore((state) => state.playSfx);
   const handlePanelItemClick = (name) => {
     if (activePanelType === 'rail') {
       setSelectedRail({ name, id: uuidv4() });
+      playSfx('/sounds/install.mp3');
     } else {
       setSelectedItem(name);
     }
