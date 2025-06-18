@@ -3,8 +3,10 @@ import { useEffect, useState } from 'react';
 import EditorCanvas from '@/components/canvas/EditorCanvas';
 import CameraSpeedSlider from '@/components/ui/editor/CameraSpeedSlider';
 import EditorPanel from '@/components/ui/editor/EditorPanel';
+import VolumeSlider from '@/components/ui/editor/VolumeSlider';
 import { MIN_CAMERA_SPEED } from '@/constants/cameraSensitivity';
 import { INITIAL_RAILS } from '@/constants/initialRails';
+import { useAudio } from '@/hooks/useAudio';
 import { usePlaceRails } from '@/hooks/usePlaceRails';
 import { useSceneStore } from '@/store/useSceneStore';
 
@@ -14,6 +16,8 @@ const Editor = () => {
   const resetRails = useSceneStore((state) => state.resetRails);
   const resetItems = useSceneStore((state) => state.resetItems);
   const setCoasterPath = useSceneStore((state) => state.setCoasterPath);
+  const { volume, setVolume } = useAudio();
+
   const handleRotationSpeedChange = (value) => {
     setCameraRotationSpeed(value);
   };
@@ -47,6 +51,7 @@ const Editor = () => {
           value={cameraMoveSpeed}
           onChange={handleMoveSpeedChange}
         />
+        <VolumeSlider label="BGM 볼륨" id="bgmVolume" value={volume} onChange={setVolume} />
       </aside>
     </main>
   );

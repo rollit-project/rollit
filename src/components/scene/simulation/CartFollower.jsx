@@ -2,6 +2,7 @@ import { useGLTF } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { useEffect, useRef } from 'react';
 
+import { useAudio } from '@/hooks/useAudio';
 import { useSyncCartAndCamera } from '@/hooks/useSyncCartAndCamera';
 import { useSceneStore } from '@/store/useSceneStore';
 import { getCartSpeed } from '@/utils/getCartSpeed';
@@ -16,6 +17,8 @@ const CartFollower = () => {
 
   const { scene: cart } = useGLTF('/objects/cart.glb');
   const syncCartAndCamera = useSyncCartAndCamera(cartRef);
+
+  const { stopSfx } = useAudio();
 
   useEffect(() => {
     setSimulationProgress(0);
@@ -34,6 +37,10 @@ const CartFollower = () => {
 
     setSimulationProgress(nextProgress);
     syncCartAndCamera(nextProgress, direction);
+
+    if (nextProgress >= 1) {
+      stopSfx();
+    }
   });
 
   return <primitive ref={cartRef} object={cart} scale={[1, 1, 0.8]} />;

@@ -7,6 +7,7 @@ import EditorCategorySelector from '@/components/ui/editor/EditorCategorySelecto
 import PanelItems from '@/components/ui/editor/PanelItems';
 import { PRESET_LIST } from '@/constants/presetList';
 import { useAutoHorizontalScroll } from '@/hooks/useAutoHorizontalScroll';
+import { useAudioStore } from '@/store/useAudioStore';
 import { useSceneStore } from '@/store/useSceneStore';
 import { loadPreset } from '@/utils/loadPreset';
 import { getImageListByType } from '@/utils/sceneAssetUtils';
@@ -17,6 +18,7 @@ const EditorPanel = () => {
   const setSelectedItem = useSceneStore((state) => state.setSelectedItem);
   const setSelectedRail = useSceneStore((state) => state.setSelectedRail);
   const { scrollRef, handleMouseMove, handleMouseLeave } = useAutoHorizontalScroll();
+  const playSfx = useAudioStore((state) => state.playSfx);
 
   const handlePanelToggle = (buttonType) => {
     setIsPanelOpen(activePanelType !== buttonType);
@@ -40,6 +42,7 @@ const EditorPanel = () => {
         break;
       case 'rail':
         setSelectedRail({ name, id: uuidv4() });
+        playSfx('/sounds/install.mp3');
         break;
       case 'item':
         setSelectedItem(name);
