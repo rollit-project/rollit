@@ -15,7 +15,7 @@ const CartFollower = () => {
   const coasterPath = useSceneStore((state) => state.coasterPath);
   const simulationSpeed = useSceneStore((state) => state.simulationSpeed);
 
-  const { scene: cart } = useGLTF('/objects/cart.glb');
+  const { scene: cart } = useGLTF('/objects/coaster/cart.glb');
   const syncCartAndCamera = useSyncCartAndCamera(cartRef);
 
   const { stopSfx } = useAudio();
