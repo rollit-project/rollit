@@ -6,7 +6,7 @@ import {
   MIN_CAMERA_SPEED,
 } from '@/constants/cameraSensitivity';
 
-const Slider = ({ label, id, value, onChange }) => {
+const CameraSpeedSlider = ({ label, id, value, onChange }) => {
   return (
     <div>
       <label htmlFor={id} className="block text-sm font-medium text-gray-900 dark:text-white">
@@ -26,11 +26,11 @@ const Slider = ({ label, id, value, onChange }) => {
   );
 };
 
-Slider.propTypes = {
+CameraSpeedSlider.propTypes = {
   label: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   value: PropTypes.number.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
-export default Slider;
+export default CameraSpeedSlider;
