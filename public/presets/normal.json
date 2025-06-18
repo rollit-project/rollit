@@ -1,7 +1,7 @@
 [
   {
     "id": "init-1",
-    "modelPath": "/objects/rail-straight.glb",
+    "modelPath": "/objects/rail/straight.glb",
     "position": [
       0,
       0,
@@ -33,7 +33,7 @@
   },
   {
     "id": "init-2",
-    "modelPath": "/objects/rail-straight.glb",
+    "modelPath": "/objects/rail/straight.glb",
     "position": [
       0,
       0,
@@ -65,7 +65,7 @@
   },
   {
     "id": "init-3",
-    "modelPath": "/objects/rail-straight.glb",
+    "modelPath": "/objects/rail/straight.glb",
     "position": [
       0,
       0,
@@ -97,7 +97,7 @@
   },
   {
     "id": "90b17a6d-d545-4085-97d1-ca6ff7ba6e43",
-    "modelPath": "/objects/rail-up-start.glb",
+    "modelPath": "/objects/rail/up-start.glb",
     "position": [
       0,
       0,
@@ -134,7 +134,7 @@
   },
   {
     "id": "8916dd8a-2306-4ac7-8b79-0280a05ee694",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       0,
       0.6,
@@ -166,7 +166,7 @@
   },
   {
     "id": "0dbe175c-7d63-440e-b555-6a421940e994",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       0,
       3,
@@ -198,7 +198,7 @@
   },
   {
     "id": "b861c007-da62-4067-ba7d-f6dd87e8533f",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       0,
       5.4,
@@ -230,7 +230,7 @@
   },
   {
     "id": "057876bb-9e5f-4b83-a152-f525d3eab21f",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       0,
       7.800000000000001,
@@ -262,7 +262,7 @@
   },
   {
     "id": "3d9f4890-3746-4fa0-9653-c8c1afa59a8c",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       0,
       10.200000000000001,
@@ -294,7 +294,7 @@
   },
   {
     "id": "a4eb3ad5-5241-4018-9e6f-a78eb4a5e5e3",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       0,
       12.600000000000001,
@@ -326,7 +326,7 @@
   },
   {
     "id": "92a466be-176d-4351-b191-47b3b49a6195",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       0,
       15.000000000000002,
@@ -358,7 +358,7 @@
   },
   {
     "id": "65de432f-5d3a-44be-95f3-b24251ff25c4",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       0,
       17.400000000000002,
@@ -390,7 +390,7 @@
   },
   {
     "id": "52cd1d5f-fd55-4951-a082-c1e1014bd587",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       0,
       19.8,
@@ -422,7 +422,7 @@
   },
   {
     "id": "245c078f-f3a8-465e-afb1-a044d9cc44c9",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       0,
       22.2,
@@ -454,7 +454,7 @@
   },
   {
     "id": "75565ecd-5445-4db3-8383-45cb849c7516",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       0,
       24.599999999999998,
@@ -486,7 +486,7 @@
   },
   {
     "id": "62bb4ca9-730b-47e8-9d94-dfb096383a4f",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       0,
       26.999999999999996,
@@ -518,7 +518,7 @@
   },
   {
     "id": "9e4241ec-513d-46af-96c0-2daafbdf1b86",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       0,
       29.399999999999995,
@@ -550,7 +550,7 @@
   },
   {
     "id": "224892d6-3a83-4606-87f1-e55432ba4ef3",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       0,
       31.799999999999994,
@@ -582,7 +582,7 @@
   },
   {
     "id": "27487f62-7d72-42d6-8e0c-d85e943c7646",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       0,
       34.199999999999996,
@@ -614,7 +614,7 @@
   },
   {
     "id": "ce3970f1-57fd-49c7-b8b6-bce4a8e0f03f",
-    "modelPath": "/objects/rail-up-end.glb",
+    "modelPath": "/objects/rail/up-end.glb",
     "position": [
       0,
       36.599999999999994,
@@ -651,7 +651,7 @@
   },
   {
     "id": "d0959914-3e98-4c16-b352-69e116293034",
-    "modelPath": "/objects/rail-down-start.glb",
+    "modelPath": "/objects/rail/down-start.glb",
     "position": [
       0,
       36.99999999999999,
@@ -688,7 +688,7 @@
   },
   {
     "id": "65cb310d-68ff-4575-94c1-fe7788e47a68",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       0,
       36.599999999999994,
@@ -720,7 +720,7 @@
   },
   {
     "id": "66e56a69-4de9-4fc3-8ecd-96384f03ec0a",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       0,
       34.199999999999996,
@@ -752,7 +752,7 @@
   },
   {
     "id": "6d822bdd-f008-4028-8837-6f1a57d1dac5",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       0,
       31.799999999999997,
@@ -784,7 +784,7 @@
   },
   {
     "id": "f3f8cf16-76ec-4ad2-b952-9835537091f4",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       0,
       29.4,
@@ -816,7 +816,7 @@
   },
   {
     "id": "8da7ab93-84b7-4028-8cce-aba6ad52a04f",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       0,
       27,
@@ -848,7 +848,7 @@
   },
   {
     "id": "a3f94a77-3ac0-4086-85ac-66f88c2febb0",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       0,
       24.6,
@@ -880,7 +880,7 @@
   },
   {
     "id": "21f93a47-9b22-431d-bb77-9f0f1f5c5a15",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       0,
       22.200000000000003,
@@ -912,7 +912,7 @@
   },
   {
     "id": "ebd6330e-4609-46ed-b0a7-93545dff1c6c",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       0,
       19.800000000000004,
@@ -944,7 +944,7 @@
   },
   {
     "id": "2a9717c1-af75-48d7-aef2-a2c0eaa0739b",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       0,
       17.400000000000006,
@@ -976,7 +976,7 @@
   },
   {
     "id": "c65a0ede-f431-4949-b162-469bd5d378c2",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       0,
       15.000000000000005,
@@ -1008,7 +1008,7 @@
   },
   {
     "id": "cf642c68-b46f-4ee5-8d53-1c7802cb4cf9",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       0,
       12.600000000000005,
@@ -1040,7 +1040,7 @@
   },
   {
     "id": "93ec945b-0872-4a44-b80d-fca1227c5d19",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       0,
       10.200000000000005,
@@ -1072,7 +1072,7 @@
   },
   {
     "id": "45333f86-6cfe-4115-bfac-d142a781a490",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       0,
       7.800000000000004,
@@ -1104,7 +1104,7 @@
   },
   {
     "id": "63e0cf0e-48e5-4b88-bc3f-27c33ba4ae68",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       0,
       5.400000000000004,
@@ -1136,7 +1136,7 @@
   },
   {
     "id": "3d53c8e6-c0d3-4139-83a9-b3501074d34a",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       0,
       3.000000000000004,
@@ -1168,7 +1168,7 @@
   },
   {
     "id": "7b6f8e6f-7992-4d79-a7aa-5ee5bd2d0634",
-    "modelPath": "/objects/rail-down-end.glb",
+    "modelPath": "/objects/rail/down-end.glb",
     "position": [
       0,
       0.6000000000000041,
@@ -1205,7 +1205,7 @@
   },
   {
     "id": "e6c15f04-3eb9-440f-a9ba-3daa8f44c738",
-    "modelPath": "objects/rail-curve-left.glb",
+    "modelPath": "objects/rail/curve-left.glb",
     "position": [
       0,
       4.107825191113079e-15,
@@ -1257,7 +1257,7 @@
   },
   {
     "id": "5d8b1fe6-1278-4d76-99e7-8da81d9f00c8",
-    "modelPath": "objects/rail-curve-left.glb",
+    "modelPath": "objects/rail/curve-left.glb",
     "position": [
       -6.6,
       4.107825191113079e-15,
@@ -1309,7 +1309,7 @@
   },
   {
     "id": "00045cdd-1878-420a-868b-6b012cb9fd70",
-    "modelPath": "/objects/rail-straight.glb",
+    "modelPath": "/objects/rail/straight.glb",
     "position": [
       -13.2,
       4.107825191113079e-15,
@@ -1341,7 +1341,7 @@
   },
   {
     "id": "3ae55187-6a52-415a-8f74-417675d7f48a",
-    "modelPath": "/objects/rail-up-start.glb",
+    "modelPath": "/objects/rail/up-start.glb",
     "position": [
       -13.2,
       4.107825191113079e-15,
@@ -1378,7 +1378,7 @@
   },
   {
     "id": "9fbb5cab-adb6-4b64-b9f5-d730bde1b92b",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       -13.2,
       0.6000000000000041,
@@ -1410,7 +1410,7 @@
   },
   {
     "id": "433c7064-7eca-4937-b640-944915fd3b7e",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       -13.2,
       3.000000000000004,
@@ -1442,7 +1442,7 @@
   },
   {
     "id": "1afaf521-db93-4407-8486-67db3240aed0",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       -13.2,
       5.400000000000004,
@@ -1474,7 +1474,7 @@
   },
   {
     "id": "632ea3de-832a-4f15-ae8b-ca80ba3fb655",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       -13.2,
       7.800000000000004,
@@ -1506,7 +1506,7 @@
   },
   {
     "id": "402797fe-1edd-4c4b-ac37-fd850faab152",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       -13.2,
       10.200000000000005,
@@ -1538,7 +1538,7 @@
   },
   {
     "id": "0a9183ff-a336-44e4-81c7-0e84b05d2720",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       -13.2,
       12.600000000000005,
@@ -1570,7 +1570,7 @@
   },
   {
     "id": "fd841d20-cff3-407a-9f70-9e7f56ba1f9a",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       -13.2,
       15.000000000000005,
@@ -1602,7 +1602,7 @@
   },
   {
     "id": "51d1548d-d434-41fb-8a75-e90fbf140589",
-    "modelPath": "/objects/rail-up-middle.glb",
+    "modelPath": "/objects/rail/up-middle.glb",
     "position": [
       -13.2,
       17.400000000000006,
@@ -1634,7 +1634,7 @@
   },
   {
     "id": "af56f584-c9b9-4664-b462-715a81d076f0",
-    "modelPath": "/objects/rail-up-end.glb",
+    "modelPath": "/objects/rail/up-end.glb",
     "position": [
       -13.2,
       19.800000000000004,
@@ -1671,7 +1671,7 @@
   },
   {
     "id": "e79b8ff8-103a-4eab-ae3e-a73ca7fbdb20",
-    "modelPath": "/objects/rail-down-start.glb",
+    "modelPath": "/objects/rail/down-start.glb",
     "position": [
       -13.2,
       20.200000000000003,
@@ -1708,7 +1708,7 @@
   },
   {
     "id": "7e1cf17e-f47a-4128-82b4-6f082842161a",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       -13.2,
       19.800000000000004,
@@ -1740,7 +1740,7 @@
   },
   {
     "id": "ab28bedc-1dfd-4753-84e2-26d315dd8a90",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       -13.2,
       17.400000000000006,
@@ -1772,7 +1772,7 @@
   },
   {
     "id": "b73f4d79-10f9-44c5-a204-2c89b60a2aca",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       -13.2,
       15.000000000000005,
@@ -1804,7 +1804,7 @@
   },
   {
     "id": "abcde041-27b6-493e-b471-f80bbc9edb8d",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       -13.2,
       12.600000000000005,
@@ -1836,7 +1836,7 @@
   },
   {
     "id": "646d2ad7-88fa-4b03-a5ad-eccfaf896887",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       -13.2,
       10.200000000000005,
@@ -1868,7 +1868,7 @@
   },
   {
     "id": "ab0af194-4297-47f3-bef7-2500a7bc805f",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       -13.2,
       7.800000000000004,
@@ -1900,7 +1900,7 @@
   },
   {
     "id": "2b73d5a8-a16f-47bc-8c68-4de601dcf54b",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       -13.2,
       5.400000000000004,
@@ -1932,7 +1932,7 @@
   },
   {
     "id": "2304c240-1f01-45f0-9ded-13582847fca8",
-    "modelPath": "/objects/rail-down-middle.glb",
+    "modelPath": "/objects/rail/down-middle.glb",
     "position": [
       -13.2,
       3.000000000000004,
@@ -1964,7 +1964,7 @@
   },
   {
     "id": "421f8eda-1a8b-4eb4-ac7c-ae9cf72fbbe5",
-    "modelPath": "/objects/rail-down-end.glb",
+    "modelPath": "/objects/rail/down-end.glb",
     "position": [
       -13.2,
       0.6000000000000041,
@@ -2001,7 +2001,7 @@
   },
   {
     "id": "92212760-7400-45ca-ab1f-a65f937daf8d",
-    "modelPath": "/objects/rail-straight.glb",
+    "modelPath": "/objects/rail/straight.glb",
     "position": [
       -13.2,
       4.107825191113079e-15,
@@ -2033,7 +2033,7 @@
   },
   {
     "id": "cb08232a-4550-49a7-aba3-c835e7509010",
-    "modelPath": "/objects/rail-straight.glb",
+    "modelPath": "/objects/rail/straight.glb",
     "position": [
       -13.2,
       4.107825191113079e-15,
@@ -2065,7 +2065,7 @@
   },
   {
     "id": "8ed9f725-a395-4b64-a1ce-2c04c1d138e7",
-    "modelPath": "/objects/rail-up-slope-full.glb",
+    "modelPath": "/objects/rail/up-slope-full.glb",
     "position": [
       -13.2,
       4.107825191113079e-15,
@@ -2107,7 +2107,7 @@
   },
   {
     "id": "1a6dd1fe-2690-4b38-8b03-6a5941a44969",
-    "modelPath": "/objects/rail-down-slope-full.glb",
+    "modelPath": "/objects/rail/down-slope-full.glb",
     "position": [
       -13.2,
       3.400000000000004,
@@ -2149,7 +2149,7 @@
   },
   {
     "id": "d190d4ba-0fae-4ec7-9f4f-a614e3bb5670",
-    "modelPath": "/objects/rail-up-slope-full.glb",
+    "modelPath": "/objects/rail/up-slope-full.glb",
     "position": [
       -13.2,
       3.9968028886505635e-15,
@@ -2191,7 +2191,7 @@
   },
   {
     "id": "c085a065-d451-4cc6-bb54-a8429c5d1ef2",
-    "modelPath": "/objects/rail-up-slope-full.glb",
+    "modelPath": "/objects/rail/up-slope-full.glb",
     "position": [
       -13.2,
       3.400000000000004,
@@ -2233,7 +2233,7 @@
   },
   {
     "id": "e3c2881a-a6a7-4f1a-8040-e8c06a06ddd5",
-    "modelPath": "/objects/rail-up-slope-full.glb",
+    "modelPath": "/objects/rail/up-slope-full.glb",
     "position": [
       -13.2,
       6.800000000000004,
@@ -2275,7 +2275,7 @@
   },
   {
     "id": "3bfccc9f-9d8c-451a-ae55-b7e7a2e2f77c",
-    "modelPath": "/objects/rail-down-slope-full.glb",
+    "modelPath": "/objects/rail/down-slope-full.glb",
     "position": [
       -13.2,
       10.200000000000005,
@@ -2317,7 +2317,7 @@
   },
   {
     "id": "9254b5b0-75a1-4f63-a67e-ef0700047fb4",
-    "modelPath": "/objects/rail-down-slope-full.glb",
+    "modelPath": "/objects/rail/down-slope-full.glb",
     "position": [
       -13.2,
       6.800000000000004,
@@ -2359,7 +2359,7 @@
   },
   {
     "id": "5a1e6445-a0ab-4af2-8a72-8e21458c5b57",
-    "modelPath": "/objects/rail-down-slope-full.glb",
+    "modelPath": "/objects/rail/down-slope-full.glb",
     "position": [
       -13.2,
       3.4000000000000044,
@@ -2401,7 +2401,7 @@
   },
   {
     "id": "89881776-e364-419e-8137-449bba0351ed",
-    "modelPath": "objects/rail-curve-left.glb",
+    "modelPath": "objects/rail/curve-left.glb",
     "position": [
       -13.2,
       4.440892098500626e-15,
@@ -2453,7 +2453,7 @@
   },
   {
     "id": "92300b1b-6ce2-45ef-ba06-ff67ca71f97c",
-    "modelPath": "objects/rail-curve-left.glb",
+    "modelPath": "objects/rail/curve-left.glb",
     "position": [
       -6.6000000000000005,
       4.440892098500626e-15,
@@ -2505,7 +2505,7 @@
   },
   {
     "id": "eef0bb28-36db-4424-92a5-ef5637abcb31",
-    "modelPath": "/objects/rail-straight.glb",
+    "modelPath": "/objects/rail/straight.glb",
     "position": [
       -1.7763568394002505e-15,
       4.440892098500626e-15,
@@ -2537,7 +2537,7 @@
   },
   {
     "id": "bc8279a9-740a-4580-9350-1880742fee17",
-    "modelPath": "/objects/rail-straight.glb",
+    "modelPath": "/objects/rail/straight.glb",
     "position": [
       -3.067806804234267e-16,
       4.440892098500626e-15,

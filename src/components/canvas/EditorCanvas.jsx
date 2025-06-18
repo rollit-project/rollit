@@ -12,7 +12,7 @@ import MoveControls from '@/components/scene/editor/MoveControls';
 
 const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed }) => {
   const orbitControlsRef = useRef();
-  const gltf = useGLTF('/objects/coasterEntrance.glb');
+  const gltf = useGLTF('/objects/coaster/entrance.glb');
 
   if (!gltf?.scene) {
     return null;

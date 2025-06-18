@@ -8,7 +8,7 @@ import RailRenderer from '@/components/scene/common/RailRenderer';
 import CartFollower from '@/components/scene/simulation/CartFollower';
 
 const SimulationCanvas = () => {
-  const gltf = useGLTF('/objects/coasterEntrance.glb');
+  const gltf = useGLTF('/objects/coaster/entrance.glb');
 
   if (!gltf?.scene) {
     return null;
