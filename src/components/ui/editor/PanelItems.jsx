@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 
-import { RAIL_TOOLTIP_MAP } from '@/constants/railTooltipMap';
+import { TOOLTIP_MAP } from '@/constants/tooltipMap';
 
 const PanelItems = forwardRef(({ imageList, onClick, onMouseMove, onMouseLeave }, ref) => {
-  const getTooltipText = (name) => RAIL_TOOLTIP_MAP[name] ?? '설명 없음';
+  const getTooltipText = (name) => TOOLTIP_MAP[name] ?? '설명 없음';
 
   return (
     <div

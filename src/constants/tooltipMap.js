@@ -1,4 +1,4 @@
-export const RAIL_TOOLTIP_MAP = {
+export const TOOLTIP_MAP = {
   straight: '직선 레일',
   curveLeft: '좌회전 (진행 방향 기준)',
   curveRight: '우회전 (진행 방향 기준)',
@@ -10,4 +10,12 @@ export const RAIL_TOOLTIP_MAP = {
   downEnd: '내리막 끝',
   upSlopeFull: '오르막 (곡선 포함 통합형)',
   downSlopeFull: '내리막 (곡선 포함 통합형)',
+  bench: '벤치',
+  iceCreamCar: '아이스크림차',
+  bumperCar: '범퍼카',
+  ferrisWheel: '관람차',
+  coffeeCart: '커피차',
+  easy: '쉬운 레일',
+  normal: '기본 레일',
+  extreme: '고난도 레일',
 };
