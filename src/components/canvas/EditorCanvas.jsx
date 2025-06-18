@@ -21,7 +21,7 @@ const EditorCanvas = ({ cameraRotationSpeed, cameraMoveSpeed }) => {
   const { scene: coasterEntrance } = gltf;
 
   return (
-    <Canvas shadows camera={{ position: [0, 5, 10], fov: 75 }}>
+    <Canvas shadows camera={{ position: [20, 10, 25], fov: 75 }}>
       <color attach="background" args={['#b0eaff']} />
       <MouseFollower />
       <MoveControls moveSpeed={cameraMoveSpeed} orbitControlsRef={orbitControlsRef} />
