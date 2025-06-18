@@ -16,7 +16,7 @@ const Editor = () => {
   const resetRails = useSceneStore((state) => state.resetRails);
   const resetItems = useSceneStore((state) => state.resetItems);
   const setCoasterPath = useSceneStore((state) => state.setCoasterPath);
-  const { stopSfx, volume, setVolume } = useAudio();
+  const { volume, setVolume } = useAudio();
 
   const handleRotationSpeedChange = (value) => {
     setCameraRotationSpeed(value);
@@ -29,7 +29,6 @@ const Editor = () => {
   usePlaceRails(INITIAL_RAILS);
 
   useEffect(() => {
-    stopSfx();
     resetRails();
     resetItems();
     setCoasterPath(null);
