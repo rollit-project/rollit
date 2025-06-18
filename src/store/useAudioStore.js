@@ -9,6 +9,16 @@ export const useAudioStore = create((set, get) => {
     SFX: { RAIL_INSTALL_VOLUME },
   } = SOUND_CONFIG;
 
+  const pauseAndReset = (audio) => {
+    if (!audio) {
+      return;
+    }
+    const audioRef = audio;
+
+    audioRef.pause();
+    audioRef.currentTime = 0;
+  };
+
   return {
     bgm: {
       audio: null,
@@ -24,8 +34,7 @@ export const useAudioStore = create((set, get) => {
       const { bgm, volume } = get();
 
       if (bgm.audio) {
-        bgm.audio.pause();
-        bgm.audio.currentTime = 0;
+        pauseAndReset(bgm.audio);
       }
 
       const audio = new Audio(src);
@@ -45,8 +54,7 @@ export const useAudioStore = create((set, get) => {
       const { bgm } = get();
 
       if (bgm.audio) {
-        bgm.audio.pause();
-        bgm.audio.currentTime = 0;
+        pauseAndReset(bgm.audio);
       }
 
       localStorage.removeItem('bgm_enabled');
@@ -57,11 +65,9 @@ export const useAudioStore = create((set, get) => {
       const { sfx } = get();
 
       if (loop && sfx.loop) {
-        sfx.loop.pause();
-        sfx.loop.currentTime = 0;
+        pauseAndReset(sfx.loop);
       } else if (!loop && sfx.oneShot) {
-        sfx.oneShot.pause();
-        sfx.oneShot.currentTime = 0;
+        pauseAndReset(sfx.oneShot);
       }
 
       const audio = new Audio(src);
@@ -87,13 +93,11 @@ export const useAudioStore = create((set, get) => {
       const { sfx } = get();
 
       if (sfx.oneShot) {
-        sfx.oneShot.pause();
-        sfx.oneShot.currentTime = 0;
+        pauseAndReset(sfx.oneShot);
       }
 
       if (sfx.loop) {
-        sfx.loop.pause();
-        sfx.loop.currentTime = 0;
+        pauseAndReset(sfx.loop);
       }
 
       set({ sfx: { oneShot: null, loop: null } });
