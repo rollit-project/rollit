@@ -3,15 +3,15 @@ import toast from 'react-hot-toast';
 
 import { POINT_TEMPLATES } from '@/constants/rail/pointTemplates';
 import { ROTATION_MAP } from '@/constants/rail/rotationMap';
-import { useSceneStore } from '@/store/useSceneStore';
+import { useRailStore } from '@/store/useRailStore';
 import { isGroundCollision } from '@/utils/isGroundCollision';
 import { getWorldRailPoints } from '@/utils/rail/getWorldRailPoints';
 import { getModelPathByName } from '@/utils/sceneAssetUtils';
 
 export const usePlaceRails = (initialRails = []) => {
-  const selectedRail = useSceneStore((state) => state.selectedRail);
-  const placedRails = useSceneStore((state) => state.placedRails);
-  const setPlacedRails = useSceneStore((state) => state.setPlacedRails);
+  const selectedRail = useRailStore((state) => state.selectedRail);
+  const placedRails = useRailStore((state) => state.placedRails);
+  const setPlacedRails = useRailStore((state) => state.setPlacedRails);
 
   useEffect(() => {
     setPlacedRails(initialRails);

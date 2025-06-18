@@ -1,13 +1,13 @@
 import { useThree } from '@react-three/fiber';
 
 import { SIMULATION_CAMERA } from '@/constants/camera/simulationCamera';
-import { useSceneStore } from '@/store/useSceneStore';
+import { useSimulationStore } from '@/store/useSimulationStore';
 import { getRotationFromDirection } from '@/utils/rail/getRotationFromDirection';
 
 export const useSyncCartAndCamera = (cartRef) => {
   const { camera } = useThree();
-  const coasterPath = useSceneStore((state) => state.coasterPath);
-  const viewMode = useSceneStore((state) => state.viewMode);
+  const coasterPath = useSimulationStore((state) => state.coasterPath);
+  const viewMode = useSimulationStore((state) => state.viewMode);
   const { FIRST_PERSON, THIRD_PERSON, LERP } = SIMULATION_CAMERA;
 
   const updateCartAndCamera = (newProgress, direction) => {

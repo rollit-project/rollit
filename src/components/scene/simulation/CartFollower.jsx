@@ -4,16 +4,16 @@ import { useEffect, useRef } from 'react';
 
 import { useAudio } from '@/hooks/useAudio';
 import { useSyncCartAndCamera } from '@/hooks/useSyncCartAndCamera';
-import { useSceneStore } from '@/store/useSceneStore';
+import { useSimulationStore } from '@/store/useSimulationStore';
 import { getCartSpeed } from '@/utils/getCartSpeed';
 
 const CartFollower = () => {
   const cartRef = useRef();
 
-  const simulationProgress = useSceneStore((state) => state.simulationProgress);
-  const setSimulationProgress = useSceneStore((state) => state.setSimulationProgress);
-  const coasterPath = useSceneStore((state) => state.coasterPath);
-  const simulationSpeed = useSceneStore((state) => state.simulationSpeed);
+  const simulationProgress = useSimulationStore((state) => state.simulationProgress);
+  const setSimulationProgress = useSimulationStore((state) => state.setSimulationProgress);
+  const coasterPath = useSimulationStore((state) => state.coasterPath);
+  const simulationSpeed = useSimulationStore((state) => state.simulationSpeed);
 
   const { scene: cart } = useGLTF('/objects/coaster/cart.glb');
   const syncCartAndCamera = useSyncCartAndCamera(cartRef);

@@ -1,8 +1,8 @@
 import RailModel from '@/components/scene/common/RailModel';
-import { useSceneStore } from '@/store/useSceneStore';
+import { useRailStore } from '@/store/useRailStore';
 
 const RailRenderer = () => {
-  const placedRails = useSceneStore((state) => state.placedRails);
+  const placedRails = useRailStore((state) => state.placedRails);
 
   return (
     <>

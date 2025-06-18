@@ -8,7 +8,8 @@ import ActionButton from '@/components/ui/editor/ActionButton';
 import SpeedSettingModal from '@/components/ui/modal/SpeedSettingModal';
 import { SFX_PATHS, SOUND_CONFIG } from '@/constants/sound';
 import { useAudio } from '@/hooks/useAudio';
-import { useSceneStore } from '@/store/useSceneStore';
+import { useRailStore } from '@/store/useRailStore';
+import { useSimulationStore } from '@/store/useSimulationStore';
 import { generateRailCurve } from '@/utils/rail/generateRailCurve';
 import { generateSmoothCurvePoints } from '@/utils/rail/generateSmoothCurvePoints';
 import { isRailConnected } from '@/utils/rail/isRailConnected';
@@ -16,10 +17,10 @@ import { isRailConnected } from '@/utils/rail/isRailConnected';
 const EditorActionControls = () => {
   const [showSpeedModal, setShowSpeedModal] = useState(false);
   const navigate = useNavigate();
-  const placedRails = useSceneStore((state) => state.placedRails);
-  const setCoasterPath = useSceneStore((state) => state.setCoasterPath);
-  const undoRail = useSceneStore((state) => state.undoRail);
-  const resetRails = useSceneStore((state) => state.resetRails);
+  const placedRails = useRailStore((state) => state.placedRails);
+  const setCoasterPath = useSimulationStore((state) => state.setCoasterPath);
+  const undoRail = useRailStore((state) => state.undoRail);
+  const resetRails = useRailStore((state) => state.resetRails);
   const { playSfx } = useAudio();
   const { START_VOLUME } = SOUND_CONFIG;
   const handlePlayClick = () => {

@@ -8,15 +8,16 @@ import PanelItems from '@/components/ui/editor/PanelItems';
 import { PRESETS } from '@/constants/rail/presets';
 import { useAutoHorizontalScroll } from '@/hooks/useAutoHorizontalScroll';
 import { useAudioStore } from '@/store/useAudioStore';
-import { useSceneStore } from '@/store/useSceneStore';
+import { useItemStore } from '@/store/useItemStore';
+import { useRailStore } from '@/store/useRailStore';
 import { loadPreset } from '@/utils/loadPreset';
 import { getImageListByType } from '@/utils/sceneAssetUtils';
 
 const EditorPanel = () => {
   const [activePanelType, setActivePanelType] = useState('');
   const [isPanelOpen, setIsPanelOpen] = useState(false);
-  const setSelectedItem = useSceneStore((state) => state.setSelectedItem);
-  const setSelectedRail = useSceneStore((state) => state.setSelectedRail);
+  const setSelectedItem = useItemStore((state) => state.setSelectedItem);
+  const setSelectedRail = useRailStore((state) => state.setSelectedRail);
   const { scrollRef, handleMouseMove, handleMouseLeave } = useAutoHorizontalScroll();
   const playSfx = useAudioStore((state) => state.playSfx);
 

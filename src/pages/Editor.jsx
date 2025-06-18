@@ -8,14 +8,16 @@ import { MIN_CAMERA_SPEED } from '@/constants/camera/cameraSensitivity';
 import { INITIAL_RAILS } from '@/constants/rail/initialRails';
 import { useAudio } from '@/hooks/useAudio';
 import { usePlaceRails } from '@/hooks/usePlaceRails';
-import { useSceneStore } from '@/store/useSceneStore';
+import { useItemStore } from '@/store/useItemStore';
+import { useRailStore } from '@/store/useRailStore';
+import { useSimulationStore } from '@/store/useSimulationStore';
 
 const Editor = () => {
   const [cameraRotationSpeed, setCameraRotationSpeed] = useState(MIN_CAMERA_SPEED);
   const [cameraMoveSpeed, setCameraMoveSpeed] = useState(MIN_CAMERA_SPEED);
-  const resetRails = useSceneStore((state) => state.resetRails);
-  const resetItems = useSceneStore((state) => state.resetItems);
-  const setCoasterPath = useSceneStore((state) => state.setCoasterPath);
+  const resetRails = useRailStore((state) => state.resetRails);
+  const resetItems = useItemStore((state) => state.resetItems);
+  const setCoasterPath = useSimulationStore((state) => state.setCoasterPath);
   const { volume, setVolume } = useAudio();
 
   const handleRotationSpeedChange = (value) => {

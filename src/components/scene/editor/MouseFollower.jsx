@@ -5,7 +5,7 @@ import * as THREE from 'three';
 import { v4 as uuidv4 } from 'uuid';
 
 import ItemModel from '@/components/scene/common/ItemModel';
-import { useSceneStore } from '@/store/useSceneStore';
+import { useItemStore } from '@/store/useItemStore';
 
 const MouseFollower = () => {
   const { camera, gl } = useThree();
@@ -14,10 +14,10 @@ const MouseFollower = () => {
   const [previewPosition, setPreviewPosition] = useState(new THREE.Vector3());
   const [rotationY, setRotationY] = useState(0);
 
-  const selectedItem = useSceneStore((state) => state.selectedItem);
-  const setSelectedItem = useSceneStore((state) => state.setSelectedItem);
-  const placedItems = useSceneStore((state) => state.placedItems);
-  const setPlacedItems = useSceneStore((state) => state.setPlacedItems);
+  const selectedItem = useItemStore((state) => state.selectedItem);
+  const setSelectedItem = useItemStore((state) => state.setSelectedItem);
+  const placedItems = useItemStore((state) => state.placedItems);
+  const setPlacedItems = useItemStore((state) => state.setPlacedItems);
 
   const computeIntersectPosition = useCallback(
     (event) => {

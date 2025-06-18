@@ -1,10 +1,10 @@
 import { FaEye, FaUser } from 'react-icons/fa';
 
-import { useSceneStore } from '@/store/useSceneStore';
+import { useSimulationStore } from '@/store/useSimulationStore';
 
 const SwitchViewButton = () => {
-  const viewMode = useSceneStore((state) => state.viewMode);
-  const toggleViewMode = useSceneStore((state) => state.toggleViewMode);
+  const viewMode = useSimulationStore((state) => state.viewMode);
+  const toggleViewMode = useSimulationStore((state) => state.toggleViewMode);
 
   const icon = viewMode === 'firstPerson' ? <FaUser /> : <FaEye />;
   const label = viewMode === 'firstPerson' ? '3인칭 보기' : '1인칭 보기';

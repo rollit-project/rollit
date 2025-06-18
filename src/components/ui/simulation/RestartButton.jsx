@@ -2,11 +2,11 @@ import { FaCar } from 'react-icons/fa';
 
 import { SFX_PATHS, SOUND_CONFIG } from '@/constants/sound';
 import { useAudio } from '@/hooks/useAudio';
-import { useSceneStore } from '@/store/useSceneStore';
+import { useSimulationStore } from '@/store/useSimulationStore';
 
 const RestartButton = () => {
   const { playSfx } = useAudio();
-  const setSimulationProgress = useSceneStore((state) => state.setSimulationProgress);
+  const setSimulationProgress = useSimulationStore((state) => state.setSimulationProgress);
   const { START_VOLUME } = SOUND_CONFIG;
 
   return (

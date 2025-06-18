@@ -1,7 +1,7 @@
 import toast from 'react-hot-toast';
 import * as THREE from 'three';
 
-import { useSceneStore } from '@/store/useSceneStore';
+import { useRailStore } from '@/store/useRailStore';
 
 const toVector3 = (v) =>
   Array.isArray(v) ? new THREE.Vector3(...v) : new THREE.Vector3(v.x, v.y, v.z);
@@ -18,7 +18,7 @@ export const loadPreset = async (path) => {
       points: rail.points?.map(toVector3),
     }));
 
-    useSceneStore.getState().setPlacedRails(safeParsed);
+    useRailStore.getState().setPlacedRails(safeParsed);
   } catch (err) {
     toast.error('프리셋 로드 실패: 프리셋을 불러오는 데 실패했습니다.');
   }
