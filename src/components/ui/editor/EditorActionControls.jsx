@@ -38,6 +38,8 @@ const EditorActionControls = () => {
     const smoothPoints = generateSmoothCurvePoints(placedRails);
     const generatedCurve = generateRailCurve(smoothPoints);
 
+    playSfx(SFX_PATHS.play, 0.5, true);
+
     setCoasterPath(generatedCurve);
     navigate('/simulation');
   };
