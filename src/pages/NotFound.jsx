@@ -14,7 +14,7 @@ const NotFound = () => {
         Back to Home
       </Link>
       <img
-        src="/images/ui/roller-coaster.png"
+        src="/images/roller-coaster.png"
         alt="rollercoaster"
         className="mt-10 h-auto w-[300px]"
       />
