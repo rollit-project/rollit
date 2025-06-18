@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-export const RAIL_POINT_TEMPLATES = {
+export const POINT_TEMPLATES = {
   straight: [new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, -6)],
   upSlopeFull: [
     new THREE.Vector3(0, 0, 0),

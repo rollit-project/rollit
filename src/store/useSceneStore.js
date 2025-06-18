@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import { INITIAL_RAILS } from '@/constants/initialRails';
+import { INITIAL_RAILS } from '@/constants/rail/initialRails';
 
 export const useSceneStore = create((set) => ({
   selectedItem: null,

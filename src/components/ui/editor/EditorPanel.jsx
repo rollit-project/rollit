@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import EditorActionControls from '@/components/ui/editor/EditorActionControls';
 import EditorCategorySelector from '@/components/ui/editor/EditorCategorySelector';
 import PanelItems from '@/components/ui/editor/PanelItems';
-import { PRESET_LIST } from '@/constants/presetList';
+import { PRESETS } from '@/constants/rail/presets';
 import { useAutoHorizontalScroll } from '@/hooks/useAutoHorizontalScroll';
 import { useAudioStore } from '@/store/useAudioStore';
 import { useSceneStore } from '@/store/useSceneStore';
@@ -26,7 +26,7 @@ const EditorPanel = () => {
   };
 
   const handlePresetClick = (name) => {
-    const jsonPath = PRESET_LIST.find((preset) => preset.name === name)?.json;
+    const jsonPath = PRESETS.find((preset) => preset.name === name)?.json;
 
     if (jsonPath) {
       loadPreset(jsonPath);

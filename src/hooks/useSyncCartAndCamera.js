@@ -1,6 +1,6 @@
 import { useThree } from '@react-three/fiber';
 
-import { SIMULATION_CAMERA } from '@/constants/simulationCamera';
+import { SIMULATION_CAMERA } from '@/constants/camera/simulationCamera';
 import { useSceneStore } from '@/store/useSceneStore';
 import { getRotationFromDirection } from '@/utils/getRotationFromDirection';
 

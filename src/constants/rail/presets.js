@@ -1,4 +1,4 @@
-export const PRESET_LIST = [
+export const PRESETS = [
   {
     name: 'easy',
     src: '/images/preset/easy.png',
