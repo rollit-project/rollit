@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 
 import ActionButton from '@/components/ui/editor/ActionButton';
 import SpeedSettingModal from '@/components/ui/modal/SpeedSettingModal';
+import { SFX_PATHS } from '@/constants/sound';
+import { useAudio } from '@/hooks/useAudio';
 import { useSceneStore } from '@/store/useSceneStore';
 import { generateRailCurve } from '@/utils/generateRailCurve';
 import { generateSmoothCurvePoints } from '@/utils/generateSmoothCurvePoints';
@@ -18,6 +20,7 @@ const EditorActionControls = () => {
   const setCoasterPath = useSceneStore((state) => state.setCoasterPath);
   const undoRail = useSceneStore((state) => state.undoRail);
   const resetRails = useSceneStore((state) => state.resetRails);
+  const { playSfx } = useAudio();
 
   const handlePlayClick = () => {
     if (!isRailConnected()) {
@@ -27,7 +30,7 @@ const EditorActionControls = () => {
 
       return;
     }
-
+    playSfx(SFX_PATHS.start);
     setShowSpeedModal(true);
   };
 
@@ -48,12 +51,18 @@ const EditorActionControls = () => {
     {
       key: 'undo',
       icon: RiArrowGoBackFill,
-      onClick: undoRail,
+      onClick: () => {
+        undoRail();
+        playSfx(SFX_PATHS.action);
+      },
     },
     {
       key: 'reset',
       icon: RiResetLeftFill,
-      onClick: resetRails,
+      onClick: () => {
+        resetRails();
+        playSfx(SFX_PATHS.action);
+      },
     },
   ];
 
