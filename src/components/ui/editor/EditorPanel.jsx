@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
 
 import EditorActionControls from '@/components/ui/editor/EditorActionControls';
@@ -27,6 +28,8 @@ const EditorPanel = () => {
 
     if (jsonPath) {
       loadPreset(jsonPath);
+    } else {
+      toast.error('프리셋 경로를 찾지 못했습니다.');
     }
   };
 
