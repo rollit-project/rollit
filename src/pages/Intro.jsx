@@ -11,7 +11,7 @@ const Intro = () => {
   };
 
   return (
-    <main className="h-screen bg-[url(/images/intro.png)] bg-cover bg-center">
+    <main className="h-screen bg-[url(/images/ui/intro.png)] bg-cover bg-center">
       <Link
         to="/editor"
         onClick={handleStart}
