@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 
 const CATEGORY_LABELS = {
   rail: '레일',
-  item: '아이템',
-  preset: '프리셋',
+  item: '소품',
+  preset: '추천 코스',
 };
 
 const EditorCategorySelector = ({ activePanelType, onButtonClick }) => {
