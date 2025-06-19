@@ -17,7 +17,7 @@ export const useRailStore = create((set) => ({
       if (state.railHistory.length <= 1) {
         return state;
       }
-      const previous = state.railHistory[state.railHistory.length - 2];
+      const previous = state.railHistory[state.railHistory.length - 1];
       const newHistory = state.railHistory.slice(0, -1);
 
       return { placedRails: previous, railHistory: newHistory };
