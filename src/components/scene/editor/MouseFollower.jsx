@@ -1,11 +1,15 @@
 import { useThree } from '@react-three/fiber';
-import PropTypes from 'prop-types';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import toast from 'react-hot-toast';
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { v4 as uuidv4 } from 'uuid';
 
 import ItemModel from '@/components/scene/common/ItemModel';
 import { useItemStore } from '@/store/useItemStore';
+import { useRailStore } from '@/store/useRailStore';
+import { isObjectCollidingWithSceneObjects } from '@/utils/isObjectCollidingWithSceneObjects';
+import { getModelPathByName } from '@/utils/sceneAssetUtils';
 
 const MouseFollower = () => {
   const { camera, gl } = useThree();
@@ -18,6 +22,7 @@ const MouseFollower = () => {
   const setSelectedItem = useItemStore((state) => state.setSelectedItem);
   const placedItems = useItemStore((state) => state.placedItems);
   const setPlacedItems = useItemStore((state) => state.setPlacedItems);
+  const placedRails = useRailStore((state) => state.placedRails);
 
   const computeIntersectPosition = useCallback(
     (event) => {
@@ -57,16 +62,57 @@ const MouseFollower = () => {
       }
     };
 
-    const handlePointerDown = (event) => {
+    const handlePointerDown = async (event) => {
       const intersect = computeIntersectPosition(event);
 
-      if (intersect && selectedItem) {
+      if (!intersect || !selectedItem) {
+        return;
+      }
+
+      try {
+        const loader = new GLTFLoader();
+        const gltf = await loader.loadAsync(getModelPathByName(selectedItem));
+        const mesh = gltf.scene.clone();
+
+        mesh.position.copy(intersect);
+        mesh.rotation.set(0, rotationY, 0);
+
+        const isItemCollision = await isObjectCollidingWithSceneObjects({
+          targetObject: mesh,
+          sceneObjects: placedItems,
+          getModelPath: (item) => getModelPathByName(item.name),
+          getPosition: (item) => item.position,
+          getRotation: (item) => [0, item.rotationY || 0, 0],
+        });
+
+        const isRailCollision = await isObjectCollidingWithSceneObjects({
+          targetObject: mesh,
+          sceneObjects: placedRails,
+          getModelPath: (rail) => rail.modelPath,
+          getPosition: (rail) => rail.position,
+          getRotation: (rail) => rail.rotation || [0, 0, 0],
+        });
+
+        if (isItemCollision || isRailCollision) {
+          toast.error('충돌로 인해 설치할 수 없습니다.');
+
+          return;
+        }
+
         setPlacedItems([
           ...placedItems,
-          { name: selectedItem, position: intersect.clone(), id: uuidv4(), rotationY },
+          {
+            name: selectedItem,
+            position: intersect.clone(),
+            id: uuidv4(),
+            rotationY,
+          },
         ]);
         setSelectedItem(null);
         setRotationY(0);
+      } catch (err) {
+        console.error('❌ 모델 로딩 실패:', err);
+        toast.error('모델 로딩 실패로 설치할 수 없습니다.');
       }
     };
 
@@ -79,7 +125,16 @@ const MouseFollower = () => {
       dom.removeEventListener('pointermove', handlePointerMove);
       dom.removeEventListener('pointerdown', handlePointerDown);
     };
-  }, [gl, selectedItem, rotationY]);
+  }, [
+    gl,
+    selectedItem,
+    rotationY,
+    placedItems,
+    setPlacedItems,
+    placedRails,
+    computeIntersectPosition,
+    setSelectedItem,
+  ]);
 
   if (!selectedItem) {
     return null;
