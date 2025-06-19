@@ -1,11 +1,11 @@
 import { useThree } from '@react-three/fiber';
-import PropTypes from 'prop-types';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { v4 as uuidv4 } from 'uuid';
 
 import ItemModel from '@/components/scene/common/ItemModel';
 import { useItemStore } from '@/store/useItemStore';
+import { useRailStore } from '@/store/useRailStore';
+import { validateAndPlaceItem } from '@/utils/validateAndPlaceItem';
 
 const MouseFollower = () => {
   const { camera, gl } = useThree();
@@ -18,6 +18,7 @@ const MouseFollower = () => {
   const setSelectedItem = useItemStore((state) => state.setSelectedItem);
   const placedItems = useItemStore((state) => state.placedItems);
   const setPlacedItems = useItemStore((state) => state.setPlacedItems);
+  const placedRails = useRailStore((state) => state.placedRails);
 
   const computeIntersectPosition = useCallback(
     (event) => {
@@ -57,17 +58,23 @@ const MouseFollower = () => {
       }
     };
 
-    const handlePointerDown = (event) => {
+    const handlePointerDown = async (event) => {
       const intersect = computeIntersectPosition(event);
 
-      if (intersect && selectedItem) {
-        setPlacedItems([
-          ...placedItems,
-          { name: selectedItem, position: intersect.clone(), id: uuidv4(), rotationY },
-        ]);
-        setSelectedItem(null);
-        setRotationY(0);
+      if (!intersect || !selectedItem) {
+        return;
       }
+
+      await validateAndPlaceItem({
+        selectedItem,
+        position: intersect,
+        rotationY,
+        placedItems,
+        placedRails,
+        setPlacedItems,
+        setSelectedItem,
+        setRotationY,
+      });
     };
 
     const dom = gl.domElement;
@@ -79,7 +86,16 @@ const MouseFollower = () => {
       dom.removeEventListener('pointermove', handlePointerMove);
       dom.removeEventListener('pointerdown', handlePointerDown);
     };
-  }, [gl, selectedItem, rotationY]);
+  }, [
+    gl,
+    selectedItem,
+    rotationY,
+    placedItems,
+    setPlacedItems,
+    placedRails,
+    computeIntersectPosition,
+    setSelectedItem,
+  ]);
 
   if (!selectedItem) {
     return null;
