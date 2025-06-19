@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { v4 as uuidv4 } from 'uuid';
 
 import { POINT_TEMPLATES } from '@/constants/rail/pointTemplates';
 import { ROTATION_MAP } from '@/constants/rail/rotationMap';
@@ -38,7 +39,7 @@ export const usePlaceRails = (initialRails = []) => {
       const endPosition = worldPoints.at(-1);
 
       const newRail = {
-        id: selectedRail.id,
+        id: uuidv4(),
         modelPath: getModelPathByName(selectedRail.name),
         position: startPosition,
         rotation: [0, previousYRotation, 0],
@@ -93,7 +94,7 @@ export const usePlaceRails = (initialRails = []) => {
     };
 
     placeRail();
-  }, [selectedRail, placedItems, placedRails, setPlacedRails]);
+  }, [selectedRail]);
 
   return placedRails;
 };
