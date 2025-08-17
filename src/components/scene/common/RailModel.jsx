@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { useMemo } from 'react';
 import { Vector3 } from 'three';
 
-const Rail = ({ path, position = [0, 0, 0], rotation = [0, 0, 0] }) => {
+const RailModel = ({ path, position = [0, 0, 0], rotation = [0, 0, 0] }) => {
   const { scene } = useGLTF(path);
 
-  const clonedScene = useMemo(() => scene.clone(), [scene]);
+  const clonedScene = useMemo(() => scene.clone(true), [scene]);
 
   return (
     <>
@@ -15,7 +15,7 @@ const Rail = ({ path, position = [0, 0, 0], rotation = [0, 0, 0] }) => {
   );
 };
 
-Rail.propTypes = {
+RailModel.propTypes = {
   path: PropTypes.string.isRequired,
   position: PropTypes.oneOfType([
     PropTypes.instanceOf(Vector3),
@@ -24,4 +24,4 @@ Rail.propTypes = {
   rotation: PropTypes.arrayOf(PropTypes.number),
 };
 
-export default Rail;
+export default RailModel;
